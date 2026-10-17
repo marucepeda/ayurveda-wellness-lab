@@ -28,4 +28,4 @@ The project explores how personal wellness knowledge can be translated into an a
 
 ## Disclaimer
 
-This is a personal project for informational purposes only. It is not medical or nutritional advice, and it was designed for one specific person, so it may not suit you. References to Ayurveda come from a traditional framework, not from scientific evidence. Consult a health professional before changing your diet or exercise routine.
+This is a personal project for informational purposes only. It is not medical or nutritional advice, and it was designed for one specific person, so it may not suit you. References to Ayurveda reflect a traditional system of thought and are not backed by scientific evidence. They are used here as an organizing framework, not as medical claims.
