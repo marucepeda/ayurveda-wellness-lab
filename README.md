@@ -2,8 +2,6 @@
 
 An interactive wellness planning tool that helps organize nutrition, training, recovery, and daily routines into a practical, easy-to-follow framework.
 
-🔗 **Live site:** https://marucepeda.github.io/ayurveda-wellness-lab/
-
 ## Overview
 
 This project consolidates personal wellness and planning frameworks into a single web page. It started as a personal tool: a 12-week nutrition and training plan adapted to winter in Argentina, with different versions for high, medium, and low energy days.
