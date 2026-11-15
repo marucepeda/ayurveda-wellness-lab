@@ -195,6 +195,17 @@ z-index:100;
 }
 }
 
+
+/* ── IDENTIDAD DEL LABORATORIO ── */
+.lab-header{display:flex;flex-direction:column;gap:7px;padding:22px 24px 20px;margin:0 0 18px;background:linear-gradient(120deg,#26382F 0%,#405747 100%);border-radius:20px;color:#F5F2E9;box-shadow:0 8px 24px rgba(38,56,47,.13)}
+.lab-title{margin:0;font-size:clamp(23px,4vw,31px);font-weight:700;letter-spacing:-.045em;color:#F5F2E9}
+.lab-subtitle{font-size:10px;font-weight:600;letter-spacing:.13em;color:#D5DDCF}
+.module-btns{display:flex;gap:9px;flex-wrap:wrap;padding:7px;margin:0 0 22px;background:#EDE9DF;border:1px solid #E4DED1;border-radius:16px}
+.mod-btn{flex:1 1 170px;padding:12px 18px;font-size:14px;font-weight:650;border:1px solid transparent;border-radius:11px;background:transparent;color:#59675B;cursor:pointer;transition:background .18s,box-shadow .18s,transform .18s}
+.mod-btn:hover{background:rgba(255,255,255,.65)}
+.mod-btn.active{background:#fff;color:#304638;border-color:#E5E9E1;box-shadow:0 3px 10px rgba(38,56,47,.09)}
+@media(max-width:600px){.lab-header{padding:18px 17px 16px;border-radius:16px;margin-bottom:14px}.lab-subtitle{font-size:9px;letter-spacing:.09em}.module-btns{gap:6px;padding:5px;margin-bottom:18px}.mod-btn{flex-basis:130px;padding:11px 9px;font-size:13px}}
+
 </style>
 </head>
 <body>
@@ -202,6 +213,12 @@ z-index:100;
 <!-- ══════════════════════════════════════════════
      SELECTOR DE MÓDULO
      ══════════════════════════════════════════════ -->
+<!-- IDENTIDAD DEL LABORATORIO -->
+<header class="lab-header">
+  <h1 class="lab-title">🌿 Ayurveda Wellness Lab</h1>
+  <div class="lab-subtitle">BIENESTAR INTEGRAL · NUTRICIÓN · MOVIMIENTO · HÁBITOS</div>
+</header>
+
 <div class="module-btns" role="tablist" aria-label="Módulo">
   <button class="mod-btn active" onclick="showModule('nutri')" role="tab">🥣 Nutrición</button>
   <button class="mod-btn" onclick="showModule('entren')" role="tab">🏋️ Entrenamiento</button>
