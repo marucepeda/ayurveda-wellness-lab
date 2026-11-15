@@ -239,16 +239,11 @@ z-index:100;
 
 
 <div class="season-selector" role="group" aria-label="Seleccionar estación">
-  <span class="season-label">Elegí tu estación</span>
   <button class="season-btn active" id="season-summer-btn" type="button" aria-pressed="true" onclick="setSeason('summer')">☀️ Verano</button>
   <button class="season-btn" id="season-winter-btn" type="button" aria-pressed="false" onclick="setSeason('winter')">🍂 Invierno</button>
 </div>
 
 <div id="season-summer" class="season-panel visible" aria-live="polite">
-  <div class="season-intro">
-    <h2>☀️ Verano argentino</h2>
-    <p>Frescura, variedad y alimentos de estación. Una propuesta flexible para sostener energía, fuerza, digestión y recuperación durante los meses de calor.</p>
-  </div>
   <div class="summer-tabs" role="tablist" aria-label="Contenido de verano">
     <button class="tab-btn active" type="button" onclick="showSummerTab('nutricion',this)" role="tab" aria-selected="true">🥗 Nutrición</button>
     <button class="tab-btn" type="button" onclick="showSummerTab('menu',this)" role="tab" aria-selected="false">🍑 Menú semanal</button>
@@ -407,10 +402,6 @@ z-index:100;
 </div>
 
 <div id="season-winter" class="season-panel">
-  <div class="season-intro">
-    <h2>🍂 Invierno</h2>
-    <p>Contenido invernal del laboratorio.</p>
-  </div>
   <div class="module-btns" role="tablist" aria-label="Módulo">
   <button class="mod-btn active" onclick="showModule('nutri')" role="tab">🥣 Nutrición</button>
   <button class="mod-btn" onclick="showModule('entren')" role="tab">🏋️ Entrenamiento</button>
