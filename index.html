@@ -1,394 +1,96 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌿 Ayurveda Wellness Lab</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box}
-body{margin:0;padding:16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#fff;color:#1a1a1a;
-  --color-background-primary:#ffffff;
-  --color-background-secondary:#f5f5f5;
-  --color-text-primary:#1a1a1a;
-  --color-text-secondary:#555;
-  --color-border-primary:#aaa;
-  --color-border-secondary:#ccc;
-  --color-border-tertiary:#e5e5e5;
-  --border-radius-md:6px;
-  --border-radius-lg:10px;
-}
-
-/* ── MÓDULOS ── */
-.module-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.2rem}
-.mod-btn{padding:10px 18px;font-size:14px;font-weight:600;border:1.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;transition:all .15s}
-.mod-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
-.module{display:none}.module.visible{display:block}
-
-/* ── PESTAÑAS ── */
-.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:1.5rem}
-.tab-btn{padding:7px 12px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;font-weight:400;white-space:nowrap}
-.tab-btn.active{background:var(--color-background-primary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-primary)}
-.section{display:none}.section.visible{display:block}
-
-/* ── TABLAS ── */
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{background:var(--color-background-secondary);color:var(--color-text-secondary);font-weight:500;padding:8px 10px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary)}
-td{padding:8px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:top}
-tr:last-child td{border-bottom:none}
-.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.table-scroll table{min-width:480px}
-
-/* ── CARDS Y MÉTRICAS ── */
-.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:1rem}
-.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:1rem}
-.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px}
-.metric-label{font-size:12px;color:var(--color-text-secondary);margin-bottom:4px}
-.metric-value{font-size:17px;font-weight:500;color:var(--color-text-primary)}
-.metric-sub{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
-
-/* ── TIPOGRAFÍA ── */
-h2{font-size:16px;font-weight:600;color:var(--color-text-primary);margin:0 0 1rem}
-h3{font-size:15px;font-weight:500;color:var(--color-text-primary);margin:1.2rem 0 0.6rem}
-h4{font-size:12px;font-weight:500;color:var(--color-text-secondary);margin:.8rem 0 .4rem;text-transform:uppercase;letter-spacing:.04em}
-p{font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin:.3rem 0}
-ul{font-size:13px;color:var(--color-text-secondary);line-height:1.9;padding-left:1.2rem;margin:.3rem 0}
-
-/* ── BADGES ── */
-.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);font-weight:500}
-.bt{background:#EEEDFE;color:#3C3489}
-.bg{background:#E1F5EE;color:#085041}
-.ba{background:#FAEEDA;color:#633806}
-.bc{background:#FAECE7;color:#712B13}
-.bgr{background:#EAF3DE;color:#27500A}
-
-/* ── CAJAS COLOREADAS ── */
-.warm-box{background:#FAEEDA;border-left:3px solid #EF9F27;padding:10px 14px;margin:.8rem 0}
-.warm-box p{color:#633806}
-.teal-box{background:#E1F5EE;border-left:3px solid #1D9E75;padding:10px 14px;margin:.8rem 0}
-.teal-box p{color:#085041}
-.purple-box{background:#EEEDFE;border-left:3px solid #7F77DD;padding:10px 14px;margin:.8rem 0}
-.purple-box p{color:#3C3489}
-.coral-box{background:#FAECE7;border-left:3px solid #D85A30;padding:10px 14px;margin:.8rem 0}
-.coral-box p{color:#712B13}
-
-.divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:1rem 0}
-
-/* ── SUB-BOTONES (energía / fases) ── */
-.energy-btns,.phase-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
-.e-btn,.p-btn{padding:7px 12px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;white-space:nowrap}
-.e-btn.active,.p-btn.active{background:var(--color-background-primary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-primary)}
-.e-section{display:none}.e-section.visible{display:block}
-.p-section{display:none}.p-section.visible{display:block}
-
-/* ── DAY GRID (plan nutricional) ── */
-.day-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:1rem}
-.day-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px}
-.day-title{font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px}
-.day-meal{font-size:11px;color:var(--color-text-secondary);line-height:1.7;margin:2px 0}
-.day-meal strong{color:var(--color-text-primary);font-weight:500}
-
-/* ── RESPONSIVE ── */
-@media(max-width:600px){
-  body{padding:10px}
-  .mod-btn{padding:8px 12px;font-size:13px}
-  .tab-btn{padding:6px 9px;font-size:12px}
-  .metric-grid{grid-template-columns:repeat(2,1fr)}
-  .card{padding:.8rem 1rem}
-  th,td{padding:7px 8px;font-size:12px}
-  h3{font-size:14px}
-  .e-btn,.p-btn{font-size:12px;padding:6px 10px}
-}
-@media(max-width:380px){
-  .metric-grid{grid-template-columns:1fr 1fr}
-  .tabs{gap:3px}
-  .tab-btn{font-size:11px;padding:5px 7px}
-}
-
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-
-/* ===== Wellness Premium Theme ===== */
-body{
-font-family:'Inter',sans-serif !important;
-background:#F8F6F1 !important;
-color:#2E2E2E !important;
-max-width:1400px;
-margin:auto;
-}
-
-.card{
-background:#fff !important;
-border:none !important;
-border-radius:18px !important;
-box-shadow:0 8px 24px rgba(0,0,0,.06) !important;
-padding:1.25rem 1.4rem !important;
-}
-
-.metric{
-background:linear-gradient(135deg,#ffffff,#f4f1ea) !important;
-border-radius:16px !important;
-padding:16px !important;
-box-shadow:0 4px 12px rgba(0,0,0,.05);
-}
-
-.metric-value{font-weight:700 !important;}
-h2,h3{letter-spacing:-0.02em;}
-h3{font-size:18px !important;}
-
-.mod-btn{
-border:none !important;
-border-radius:14px !important;
-background:#ECE7DD !important;
-}
-.mod-btn.active{
-background:#8AA38C !important;
-}
-
-.tab-btn{
-border:none !important;
-border-radius:12px !important;
-background:#EFEAE1 !important;
-}
-.tab-btn.active{
-background:#FFFFFF !important;
-box-shadow:0 2px 10px rgba(0,0,0,.08);
-}
-
-.warm-box,.teal-box,.purple-box,.coral-box{
-border-radius:14px;
-border-left:none !important;
-padding:14px 18px !important;
-}
-
-.warm-box{background:#F8E8CF !important;}
-.teal-box{background:#E6F2EC !important;}
-.purple-box{background:#EEEAF8 !important;}
-.coral-box{background:#F8EAE4 !important;}
-
-table{
-background:#fff;
-border-radius:14px;
-overflow:hidden;
-}
-
-th{
-background:#F1ECE4 !important;
-font-weight:600 !important;
-}
-
-.badge{
-border-radius:999px !important;
-padding:4px 10px !important;
-}
-
-.metric-grid{
-gap:14px !important;
-}
-
-@media(min-width:1100px){
-.module-btns{
-position:sticky;
-top:12px;
-z-index:100;
-}
-}
-
-
-/* ── IDENTIDAD DEL LABORATORIO ── */
-.lab-header{display:flex;flex-direction:column;gap:7px;padding:22px 24px 20px;margin:0 0 18px;background:linear-gradient(120deg,#26382F 0%,#405747 100%);border-radius:20px;color:#F5F2E9;box-shadow:0 8px 24px rgba(38,56,47,.13)}
-.lab-title{margin:0;font-size:clamp(23px,4vw,31px);font-weight:700;letter-spacing:-.045em;color:#F5F2E9}
-.lab-subtitle{font-size:10px;font-weight:600;letter-spacing:.13em;color:#D5DDCF}
-.module-btns{display:flex;gap:9px;flex-wrap:wrap;padding:7px;margin:0 0 22px;background:#EDE9DF;border:1px solid #E4DED1;border-radius:16px}
-.mod-btn{flex:1 1 170px;padding:12px 18px;font-size:14px;font-weight:650;border:1px solid transparent;border-radius:11px;background:transparent;color:#59675B;cursor:pointer;transition:background .18s,box-shadow .18s,transform .18s}
-.mod-btn:hover{background:rgba(255,255,255,.65)}
-.mod-btn.active{background:#fff;color:#304638;border-color:#E5E9E1;box-shadow:0 3px 10px rgba(38,56,47,.09)}
-@media(max-width:600px){.lab-header{padding:18px 17px 16px;border-radius:16px;margin-bottom:14px}.lab-subtitle{font-size:9px;letter-spacing:.09em}.module-btns{gap:6px;padding:5px;margin-bottom:18px}.mod-btn{flex-basis:130px;padding:11px 9px;font-size:13px}}
-
-
-/* ── SELECTOR ESTACIONAL ── */
-.season-selector{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 18px;padding:14px 16px;background:#EDE9DF;border:1px solid #E4DED1;border-radius:16px}
-.season-label{font-size:11px;font-weight:700;letter-spacing:.1em;color:#59675B;text-transform:uppercase;margin-right:4px}
-.season-btn{flex:1 1 130px;min-height:46px;padding:11px 16px;border:1px solid transparent;border-radius:12px;background:transparent;color:#59675B;font:600 14px Inter,sans-serif;cursor:pointer;transition:all .18s}
-.season-btn:hover{background:rgba(255,255,255,.65)}
-.season-btn.active{background:#fff;color:#304638;border-color:#E5E9E1;box-shadow:0 3px 10px rgba(38,56,47,.09)}
-.season-panel{display:none}.season-panel.visible{display:block}
-.summer-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 1.25rem}
-.summer-tabs .tab-btn{padding:9px 13px;font-size:13px}
-.summer-section{display:none}.summer-section.visible{display:block}
-.summer-section .card h3{margin-top:.2rem}
-.summer-section a{color:#405747;text-decoration:underline;text-underline-offset:3px}
-@media(max-width:600px){.summer-tabs{gap:5px}.summer-tabs .tab-btn{font-size:12px;padding:8px 10px}}
-.season-intro{padding:18px 20px;margin:0 0 18px;background:#fff;border:1px solid #E7E2D8;border-radius:16px}
-.season-intro h2{font-size:17px;margin:0 0 7px;color:#304638}
-.season-intro p{margin:0;font-size:13px;line-height:1.6}
-@media(max-width:600px){.season-selector{gap:6px;padding:10px}.season-label{width:100%;margin:0 0 2px}.season-btn{font-size:13px;padding:10px 8px}}
-\n</style>
-</head>
-<body>
-
-<!-- ══════════════════════════════════════════════
-     SELECTOR DE MÓDULO
-     ══════════════════════════════════════════════ -->
-<!-- IDENTIDAD DEL LABORATORIO -->
-<header class="lab-header">
-  <h1 class="lab-title">🌿 Ayurveda Wellness Lab</h1>
-  <div class="lab-subtitle">BIENESTAR INTEGRAL · NUTRICIÓN · MOVIMIENTO · HÁBITOS</div>
-</header>
-
-
-<div class="season-selector" role="group" aria-label="Seleccionar estación">
-  <span class="season-label">Elegí tu estación</span>
-  <button class="season-btn active" id="season-summer-btn" type="button" aria-pressed="true" onclick="setSeason('summer')">☀️ Verano</button>
-  <button class="season-btn" id="season-winter-btn" type="button" aria-pressed="false" onclick="setSeason('winter')">🍂 Invierno</button>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ayurveda Wellness Lab</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--ink:#2e342f;--muted:#687168;--paper:#f8f6f1;--line:#e7e2d8;--sage:#8aa38c;--sage-dark:#304638;--cream:#ede9df;--white:#fff}
+*{box-sizing:border-box}body{margin:0 auto;padding:16px;max-width:1400px;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.lab-header{padding:22px 24px;margin:0 0 16px;background:linear-gradient(120deg,#26382f,#405747);border-radius:20px;color:#f5f2e9}
+.lab-title{margin:0;font-size:clamp(23px,4vw,31px);letter-spacing:-.045em}.lab-subtitle{margin-top:7px;font-size:10px;font-weight:600;letter-spacing:.13em;color:#d5ddcf}
+.season-selector,.module-btns{display:flex;gap:8px;flex-wrap:wrap;padding:7px;margin:0 0 18px;background:var(--cream);border:1px solid var(--line);border-radius:16px}
+.season-btn,.mod-btn,.tab-btn,.e-btn{font:600 13px Inter,sans-serif;border:0;border-radius:11px;padding:11px 15px;background:transparent;color:#59675b;cursor:pointer}
+.season-btn{flex:1 1 130px;min-height:44px;font-size:14px}.season-btn.active,.mod-btn.active{background:#fff;color:var(--sage-dark);box-shadow:0 3px 10px #26382f16}
+.mod-btn{flex:1 1 170px}.module{display:none}.module.visible{display:block}
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin:0 0 18px}.tab-btn{padding:9px 12px;background:#efeae1;font-weight:500}.tab-btn.active,.e-btn.active{background:#fff;color:var(--sage-dark);box-shadow:0 2px 10px #0000000d}
+.section,.e-section,.season-panel{display:none}.section.visible,.e-section.visible,.season-panel.visible{display:block}
+.card{padding:18px 20px;margin:0 0 14px;background:#fff;border-radius:16px;box-shadow:0 5px 18px #00000009}
+h2{font-size:17px;margin:0 0 14px}h3{font-size:16px;margin:0 0 12px;color:#304638}h4{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:16px 0 8px}
+p,li{font-size:13px;line-height:1.6;color:var(--muted)}p{margin:7px 0}ul,ol{padding-left:20px;margin:8px 0}li{margin:4px 0}
+table{width:100%;border-collapse:collapse;font-size:13px;background:#fff}th{text-align:left;background:#f1ece4;color:#48564b;font-weight:650}th,td{padding:9px 10px;border-bottom:1px solid #eee9e0;vertical-align:top}tr:last-child td{border-bottom:0}.table-scroll{overflow-x:auto}.table-scroll table{min-width:500px}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}.metric{padding:13px;border-radius:13px;background:linear-gradient(135deg,#fff,#f4f1ea)}.metric-label{font-size:11px;color:var(--muted)}.metric-value{font-size:16px;font-weight:700;margin:3px 0}.metric-sub{font-size:11px;color:var(--muted)}
+.energy-btns{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 12px}.e-btn{background:#efeae1}
+.note{padding:12px 15px;border-radius:12px;background:#e6f2ec;margin-top:12px}.note p{margin:0}
+@media(max-width:600px){body{padding:10px}.lab-header{padding:18px 17px;border-radius:16px}.lab-subtitle{font-size:9px;letter-spacing:.09em}.season-selector,.module-btns{gap:5px;padding:5px}.season-btn,.mod-btn{padding:10px 8px;font-size:13px}.mod-btn{flex-basis:130px}.tab-btn{padding:8px 9px;font-size:12px}.card{padding:15px}th,td{padding:7px 8px;font-size:12px}}
+</style></head><body>
+<header class="lab-header"><h1 class="lab-title">🌿 Ayurveda Wellness Lab</h1><div class="lab-subtitle">BIENESTAR INTEGRAL · NUTRICIÓN · MOVIMIENTO · HÁBITOS</div></header>
+<nav class="season-selector" aria-label="Estación"><button class="season-btn active" id="season-summer-btn" aria-pressed="true" onclick="setSeason('summer')">☀️ Verano</button><button class="season-btn" id="season-winter-btn" aria-pressed="false" onclick="setSeason('winter')">🍂 Invierno</button></nav>
+<section id="season-summer" class="season-panel visible" aria-label="Verano">
+<div class="module-btns" role="tablist" aria-label="Áreas"><button class="mod-btn active" onclick="showSeasonModule('summer','nutri',this)">🥣 Nutrición</button><button class="mod-btn" onclick="showSeasonModule('summer','entren',this)">🏋️ Entrenamiento</button></div>
+<div id="summer-module-nutri" class="module visible">
+<div class="tabs" role="tablist" aria-label="Nutrición"><button class="tab-btn active" onclick="showSeasonTab('summer','nutri','nutricion',this)">Nutrición</button><button class="tab-btn" onclick="showSeasonTab('summer','nutri','menu',this)">Menú</button><button class="tab-btn" onclick="showSeasonTab('summer','nutri','batch',this)">Batch cooking</button><button class="tab-btn" onclick="showSeasonTab('summer','nutri','compras',this)">Compras</button><button class="tab-btn" onclick="showSeasonTab('summer','nutri','easy',this)">Días difíciles</button></div>
+<div class="section visible" id="summer-nutri-tab-nutricion"><div class="card"><h3>Composición de comidas</h3><div class="metric-grid"><div class="metric"><div class="metric-label">½ plato</div><div class="metric-value">Vegetales</div><div class="metric-sub">Tomate, pepino, hojas, zapallito, berenjena</div></div><div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Proteína</div><div class="metric-sub">Huevos, pollo, pescado, legumbres, tofu</div></div><div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Carbohidratos</div><div class="metric-sub">Arroz, papa, choclo, quinoa, pan o pasta</div></div><div class="metric"><div class="metric-label">Complemento</div><div class="metric-value">Grasas</div><div class="metric-sub">Aceite de oliva, palta, nueces, semillas</div></div></div></div>
+<div class="card"><h3>Productos de estación</h3><p><b>Frutas:</b> sandía, melón, durazno, ciruela, uva, cereza, damasco e higo.</p><p><b>Verduras:</b> tomate, pepino, morrón, berenjena, zapallito, chauchas, choclo, calabaza y hojas verdes.</p><p><b>Proteínas prácticas:</b> huevos, pollo, atún, pescado, yogur y legumbres.</p></div>
+<div class="card"><h3>Combinaciones base</h3><div class="table-scroll"><table><tr><th>Base</th><th>Proteína</th><th>Vegetales y extras</th></tr><tr><td>Arroz o quinoa</td><td>Atún, huevo o garbanzos</td><td>Tomate, pepino, oliva</td></tr><tr><td>Papa o batata</td><td>Pollo o porotos</td><td>Hojas verdes, morrón</td></tr><tr><td>Tortilla o pan</td><td>Huevo y queso</td><td>Tomate, rúcula, palta</td></tr><tr><td>Fideos</td><td>Lentejas o pollo</td><td>Berenjena, albahaca</td></tr></table></div></div>
+<div class="card"><h3>Porciones orientativas</h3><p>Como referencia visual por comida principal: 1 palma de proteína, 1 puño de arroz/papa/pasta, 2 puños de vegetales y 1 porción pequeña de grasas. Ajustar según apetito, actividad y necesidades.</p><p>En comidas cercanas al entrenamiento, incluir carbohidratos y una fuente de proteína.</p></div></div>
+<div class="section" id="summer-nutri-tab-menu"><div class="card"><h3>Menú semanal</h3><div class="table-scroll"><table><tr><th>Día</th><th>Desayuno</th><th>Almuerzo</th><th>Cena</th><th>Colación opcional</th></tr>
+<tr><td>Lun</td><td>Yogur, avena y durazno</td><td>Arroz, atún, tomate y pepino</td><td>Tortilla de zapallito y ensalada</td><td>Sandía y nueces</td></tr>
+<tr><td>Mar</td><td>Tostadas, huevo y fruta</td><td>Pollo, papa y hojas verdes</td><td>Wrap de hummus y vegetales</td><td>Yogur</td></tr>
+<tr><td>Mié</td><td>Avena y banana</td><td>Lentejas, tomate, morrón y huevo</td><td>Pescado, calabaza y chauchas</td><td>Ciruelas y almendras</td></tr>
+<tr><td>Jue</td><td>Yogur, fruta y semillas</td><td>Quinoa, garbanzos y vegetales</td><td>Omelette, ensalada y pan</td><td>Fruta</td></tr>
+<tr><td>Vie</td><td>Tostadas con ricota</td><td>Fideos con berenjena y pollo</td><td>Ensalada con huevo y choclo</td><td>Licuado</td></tr>
+<tr><td>Sáb</td><td>Huevos, pan y fruta</td><td>Sándwich de pollo, palta y tomate</td><td>Pizza casera con vegetales</td><td>Melón o uvas</td></tr>
+<tr><td>Dom</td><td>Panqueques de avena</td><td>Parrilla o legumbres con ensalada</td><td>Ensalada tibia de papa, chauchas y huevo</td><td>Yogur o fruta</td></tr></table></div></div>
+<div class="card"><h3>Preparaciones principales</h3><ul><li><b>Ensalada completa:</b> 1 taza de arroz cocido, 1 lata chica de atún o ¾ taza de garbanzos, tomate, pepino y limón.</li><li><b>Tortilla:</b> 2 zapallitos, 3 huevos, cebolla y queso opcional.</li><li><b>Wrap:</b> tortilla, hummus, pollo o legumbres, zanahoria y hojas verdes.</li><li><b>Bowl:</b> ¾ taza de quinoa cocida, garbanzos, vegetales asados y oliva.</li></ul></div></div>
+<div class="section" id="summer-nutri-tab-batch"><div class="card"><h3>Preparación semanal · 90 minutos</h3><ol><li><b>0–10 min:</b> precalentar horno; poner arroz/quinoa y huevos a cocinar.</li><li><b>10–35 min:</b> hornear calabaza, berenjena, morrón y zapallito; cocinar pollo o tofu.</li><li><b>35–55 min:</b> preparar legumbres o enjuagar conservas; mezclar aderezo de limón y oliva.</li><li><b>55–75 min:</b> porcionar bases y proteínas; lavar y secar hojas.</li><li><b>75–90 min:</b> guardar en recipientes, refrigerar o congelar según uso.</li></ol></div>
+<div class="card"><h3>De las bases a cuatro comidas</h3><div class="table-scroll"><table><tr><th>Preparación</th><th>Armado</th></tr><tr><td>Arroz + garbanzos</td><td>Bowl con tomate, pepino y oliva</td></tr><tr><td>Pollo + vegetales asados</td><td>Wrap con hojas y hummus</td></tr><tr><td>Papas + huevos</td><td>Ensalada tibia con chauchas</td></tr><tr><td>Vegetales asados</td><td>Tarta con huevo y ricota</td></tr></table></div><p>Refrigerar pronto las preparaciones cocidas. Transportar viandas con frío cuando corresponda.</p></div></div>
+<div class="section" id="summer-nutri-tab-compras"><div class="card"><h3>Lista de compras · 1 persona</h3><div class="table-scroll"><table><tr><th>Grupo</th><th>Compra semanal orientativa</th></tr><tr><td>Frutas</td><td>7–10 unidades/porciones variadas: banana, durazno, ciruela, cítricos, sandía o melón.</td></tr><tr><td>Verduras</td><td>Tomate (4), pepino (2), morrón (2), zapallito (3), berenjena (1–2), hojas verdes (1 paquete), zanahoria (3), choclo (2).</td></tr><tr><td>Proteínas</td><td>Huevos (12), pollo (500–700 g), atún (2 latas), yogur (4–7 porciones), legumbres (2 tazas cocidas).</td></tr><tr><td>Cereales y bases</td><td>Arroz/quinoa, avena, pan o tortillas, pasta, papa o batata (1 kg).</td></tr><tr><td>Extras</td><td>Oliva, limón, palta, frutos secos o semillas, hummus o ingredientes.</td></tr></table></div><p>Cantidades aproximadas: ajustar por apetito, menú elegido, presupuesto y alimentos disponibles en casa.</p></div></div>
+<div class="section" id="summer-nutri-tab-easy"><div class="card"><h3>Comidas de 5–15 minutos</h3><div class="table-scroll"><table><tr><th>Tiempo</th><th>Comida</th></tr><tr><td>5 min</td><td>Yogur + fruta + avena; tostadas + queso + tomate.</td></tr><tr><td>10 min</td><td>Huevos revueltos + pan + vegetales; garbanzos + atún + tomate.</td></tr><tr><td>15 min</td><td>Arroz ya cocido + pollo + vegetales congelados; wrap de hummus y huevo.</td></tr><tr><td>Sin cocinar</td><td>Sándwich completo, ensalada armada o comida preparada con proteína y vegetales.</td></tr></table></div></div>
+<div class="card"><h3>Stock de emergencia</h3><p><b>Alacena:</b> legumbres, atún, arroz, fideos, tomate triturado. <b>Freezer:</b> verduras, pan, porciones de pollo cocido. <b>Heladera:</b> huevos, yogur, queso y vegetales resistentes.</p></div></div></div>
+<div id="summer-module-entren" class="module"><div class="tabs" role="tablist" aria-label="Entrenamiento"><button class="tab-btn active" onclick="showSeasonTab('summer','entren','semana',this)">Semana tipo</button><button class="tab-btn" onclick="showSeasonTab('summer','entren','doce',this)">12 semanas</button><button class="tab-btn" onclick="showSeasonTab('summer','entren','rutinas',this)">Rutinas</button><button class="tab-btn" onclick="showSeasonTab('summer','entren','energia',this)">Nivel de energía</button></div>
+<div class="section visible" id="summer-entren-tab-semana"><div class="card"><h3>Distribución semanal</h3><div class="table-scroll"><table><tr><th>Día</th><th>Sesión</th><th>Duración</th></tr><tr><td>Lunes</td><td>Fuerza A · tren inferior</td><td>30–40 min</td></tr><tr><td>Martes</td><td>Caminata o bicicleta</td><td>25–40 min</td></tr><tr><td>Miércoles</td><td>Fuerza B · tren superior</td><td>30–40 min</td></tr><tr><td>Jueves</td><td>Movilidad o descanso</td><td>10–20 min</td></tr><tr><td>Viernes</td><td>Fuerza C · cuerpo completo</td><td>25–35 min</td></tr><tr><td>Sábado</td><td>Actividad recreativa</td><td>Flexible</td></tr><tr><td>Domingo</td><td>Descanso</td><td>—</td></tr></table></div><p>En días de calor intenso, entrenar en horarios frescos, reducir la intensidad y priorizar espacios ventilados.</p><p>Frecuencia inicial: 2 sesiones de fuerza y 2 aeróbicas. Progresar hacia 3 de fuerza si la recuperación es adecuada.</p></div></div>
+<div class="section" id="summer-entren-tab-doce"><div class="card"><h3>Progresión · 12 semanas</h3><div class="table-scroll"><table><tr><th>Semanas</th><th>Volumen</th><th>Objetivo</th></tr><tr><td>1–2</td><td>2 sesiones · 2 series</td><td>Técnica y adaptación</td></tr><tr><td>3–4</td><td>2–3 sesiones · 2 series</td><td>Sumar repeticiones con control</td></tr><tr><td>5–6</td><td>3 sesiones · 2 series</td><td>Aumentar gradualmente la resistencia</td></tr><tr><td>7–8</td><td>3 sesiones · 2–3 series</td><td>Consolidar fuerza y técnica</td></tr><tr><td>9–10</td><td>3 sesiones · 3 series</td><td>Progresar una variable por vez</td></tr><tr><td>11–12</td><td>3 sesiones</td><td>Consolidar y evaluar resultados</td></tr></table></div><p>Avanzar cuando se complete el rango de repeticiones con técnica estable y recuperación adecuada. Si no, repetir la etapa.</p><p><b>Registro semanal:</b> sesiones, ejercicios, repeticiones, carga y recuperación.</p></div></div>
+<div class="section" id="summer-entren-tab-rutinas">
+<div class="card"><h3>Rutina A · Tren inferior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Referencia técnica</th></tr><tr><td>Sentadilla a silla</td><td>2–3 × 8–12</td><td>Apoyo estable, bajada controlada</td></tr><tr><td>Puente de glúteos</td><td>2–3 × 10–15</td><td>Elevar cadera sin arquear espalda</td></tr><tr><td>Peso muerto rumano con mochila</td><td>2–3 × 8–12</td><td>Cadera atrás, espalda neutra</td></tr><tr><td>Estocada asistida</td><td>2 × 8 por lado</td><td>Usar apoyo para equilibrio</td></tr><tr><td>Dead bug</td><td>2 × 8 por lado</td><td>Movimiento lento y controlado</td></tr></table></div></div>
+<div class="card"><h3>Rutina B · Tren superior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Referencia técnica</th></tr><tr><td>Flexiones inclinadas</td><td>2–3 × 8–12</td><td>Cuerpo alineado</td></tr><tr><td>Remo con mochila o botellas</td><td>2–3 × 10–12</td><td>Codos atrás, torso estable</td></tr><tr><td>Press de hombros liviano</td><td>2 × 8–12</td><td>Sin arquear espalda</td></tr><tr><td>Curl de bíceps</td><td>2 × 10–12</td><td>Codos junto al cuerpo</td></tr><tr><td>Bird dog</td><td>2 × 8 por lado</td><td>Sin rotar el torso</td></tr></table></div></div>
+<div class="card"><h3>Rutina C · Cuerpo completo</h3><p>2–3 rondas. Descanso: 60–120 segundos entre ejercicios.</p><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Repeticiones</th></tr><tr><td>Sentadilla a silla</td><td>10–12</td></tr><tr><td>Remo con mochila</td><td>10–12</td></tr><tr><td>Puente de glúteos</td><td>12–15</td></tr><tr><td>Flexiones inclinadas</td><td>8–10</td></tr><tr><td>Plancha elevada</td><td>15–30 segundos</td></tr></table></div></div>
+<div class="card"><h3>Entrada en calor · 6 minutos</h3><p>Marcha en el lugar, movilidad de hombros y cadera, gato-vaca, sentadillas sin carga y una serie de práctica del primer ejercicio.</p><h4>Progresión de carga</h4><p>Cuando completes el máximo de repeticiones en todas las series durante dos sesiones, aumentá ligeramente el peso o la dificultad. Mantener 1–3 repeticiones posibles al finalizar cada serie.</p></div>
 </div>
-
-
-<div id="season-summer" class="season-panel visible" aria-live="polite">
-  <div class="module-btns" role="tablist" aria-label="Módulos de verano">
-    <button class="mod-btn active" type="button" onclick="showSeasonModule('summer','nutri',this)" role="tab">🥣 Nutrición</button>
-    <button class="mod-btn" type="button" onclick="showSeasonModule('summer','entren',this)" role="tab">🏋️ Entrenamiento</button>
-  </div>
-  <div id="summer-module-nutri" class="module visible">
-    <div class="tabs" role="tablist" aria-label="Nutrición de verano">
-      <button class="tab-btn active" onclick="showSeasonTab('summer','nutri','nutricion',this)" role="tab">Nutrición</button>
-      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','menu',this)" role="tab">Menú semanal</button>
-      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','batch',this)" role="tab">Batch cooking</button>
-      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','compras',this)" role="tab">Lista de compras</button>
-      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','energia',this)" role="tab">Días difíciles</button>
-    </div>
-    <div id="summer-nutri-tab-nutricion" class="section visible">
-      <div class="card"><h3>El plato de verano</h3><p>Una guía flexible: ajustá cantidades a tu hambre, actividad y objetivos.</p><div class="metric-grid">
-        <div class="metric"><div class="metric-label">½ plato</div><div class="metric-value">Vegetales</div><div class="metric-sub">Crudos o cocidos, variados</div></div>
-        <div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Proteína</div><div class="metric-sub">Huevos, pollo, pescado, legumbres o tofu</div></div>
-        <div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Energía</div><div class="metric-sub">Arroz, papa, batata, choclo, quinoa o pan</div></div>
-        <div class="metric"><div class="metric-label">Complemento</div><div class="metric-value">Grasas</div><div class="metric-sub">Oliva, palta, nueces o semillas</div></div></div></div>
-      <div class="card"><h3>Elegí productos de estación</h3><p><strong>Frutas:</strong> sandía, melón, durazno, ciruela, uva, cereza, damasco, higo y frutilla.</p><p><strong>Verduras:</strong> tomate, pepino, morrón, berenjena, zapallito, chauchas, choclo, calabaza y hojas verdes.</p><p class="metric-sub">La disponibilidad varía según región y mes. Priorizá lo fresco y accesible.</p></div>
-      <div class="card"><h3>Combinaciones que resuelven</h3><div class="table-scroll"><table><tr><th>Base</th><th>Proteína</th><th>Vegetales / extra</th></tr><tr><td>Arroz o quinoa</td><td>Atún, huevo o garbanzos</td><td>Tomate, pepino y oliva</td></tr><tr><td>Papa o batata</td><td>Pollo o porotos</td><td>Hojas verdes y morrón</td></tr><tr><td>Tortilla o pan</td><td>Huevo y queso</td><td>Tomate, rúcula y palta</td></tr><tr><td>Fideos</td><td>Lentejas o pollo</td><td>Berenjena y albahaca</td></tr></table></div></div>
-      <div class="warm-box"><p><strong>Inspiración ayurvédica:</strong> en días calurosos podés elegir preparaciones frescas y livianas; si preferís comidas cocidas o tibias, también está bien. Adaptá según gusto, tolerancia y contexto.</p></div>
-    
-      <div class="card"><h3>Porciones orientativas sin balanza</h3><p>Usá la mano como referencia flexible por comida principal: una palma de proteína, un puño de arroz/papa/pasta o legumbres, dos puños de vegetales y una porción pequeña de grasas. Ajustá según hambre, tamaño corporal, actividad y objetivos; no es una regla rígida.</p><p><strong>Si entrenás:</strong> incluí una fuente de carbohidratos en la comida previa o posterior. <strong>Si hace mucho calor:</strong> elegí preparaciones que puedas conservar y transportar de forma segura.</p></div>
-      <div class="card"><h3>Ideas para rotar durante la semana</h3><ul><li><strong>Desayunos:</strong> yogur con avena y fruta; tostadas con huevo; licuado de leche o yogur, banana y avena.</li><li><strong>Almuerzos:</strong> ensalada de arroz y atún; tarta de verduras con ensalada; bowl de legumbres y vegetales.</li><li><strong>Cenas:</strong> tortilla de zapallitos; pollo con verduras al horno; pescado con papa y ensalada.</li><li><strong>Colaciones opcionales:</strong> fruta, yogur, puñado de frutos secos o tostada con queso.</li></ul></div>
-      <div class="card"><h3>Combinaciones por objetivo práctico</h3><div class="table-scroll"><table><tr><th>Necesitás...</th><th>Combinación</th></tr><tr><td>Algo fresco y completo</td><td>Garbanzos + tomate + pepino + huevo + oliva.</td></tr><tr><td>Más saciedad</td><td>Pollo + papa + ensalada abundante.</td></tr><tr><td>Una opción económica</td><td>Tortilla de acelga + arroz + tomate.</td></tr><tr><td>Una comida para llevar</td><td>Wrap de pollo o hummus con vegetales, bien refrigerado.</td></tr></table></div></div></div>
-    <div id="summer-nutri-tab-menu" class="section"><div class="card"><h3>Menú orientativo de 7 días</h3><p>Intercambiá almuerzos y cenas según horarios, apetito y disponibilidad. Colaciones opcionales.</p><div class="table-scroll"><table><tr><th>Día</th><th>Desayuno</th><th>Almuerzo</th><th>Cena</th><th>Colación</th></tr>
-      <tr><td>Lunes</td><td>Yogur, avena y durazno</td><td>Arroz, atún, tomate y pepino</td><td>Tortilla de zapallito y ensalada</td><td>Sandía y nueces</td></tr>
-      <tr><td>Martes</td><td>Tostadas, huevo y fruta</td><td>Pollo, papa y hojas verdes</td><td>Wrap de hummus y vegetales</td><td>Yogur</td></tr>
-      <tr><td>Miércoles</td><td>Avena y banana</td><td>Lentejas, tomate, morrón y huevo</td><td>Pescado, calabaza y chauchas</td><td>Ciruelas y almendras</td></tr>
-      <tr><td>Jueves</td><td>Yogur, fruta y semillas</td><td>Quinoa, garbanzos y vegetales</td><td>Omelette, ensalada y pan</td><td>Fruta</td></tr>
-      <tr><td>Viernes</td><td>Tostadas con ricota</td><td>Fideos con berenjena y pollo</td><td>Ensalada completa con huevo y choclo</td><td>Licuado</td></tr>
-      <tr><td>Sábado</td><td>Huevos, pan y fruta</td><td>Sándwich de pollo, palta y tomate</td><td>Pizza casera con vegetales</td><td>Melón o uvas</td></tr>
-      <tr><td>Domingo</td><td>Panqueques de avena</td><td>Parrilla o legumbres con ensalada</td><td>Ensalada tibia de papa, chauchas y huevo</td><td>Yogur o fruta</td></tr></table></div></div>
-      <div class="card"><h3>Preparaciones clave del menú</h3><ul><li><strong>Ensalada completa:</strong> 1 taza de arroz cocido, 1 lata chica de atún o ¾ taza de garbanzos, tomate, pepino y limón.</li><li><strong>Tortilla de zapallito:</strong> 2 zapallitos, 3 huevos, cebolla y queso opcional. Acompañá con ensalada.</li><li><strong>Wrap:</strong> tortilla, hummus, pollo desmenuzado o legumbres, zanahoria y hojas verdes.</li><li><strong>Bowl de quinoa:</strong> ¾ taza cocida, garbanzos, vegetales asados y oliva.</li></ul><p class="metric-sub">Cantidades orientativas para una porción; duplicá o triplicá según comensales.</p></div>
-      <div class="card"><h3>Cómo adaptar el menú</h3><p>Vegetariano: reemplazá pollo, pescado o atún por lentejas, garbanzos, porotos, tofu, huevo o queso. Sin tiempo: usá legumbres en conserva enjuagadas, vegetales congelados y arroz ya cocido. Presupuesto ajustado: priorizá huevos, legumbres, frutas y verduras de estación, y elegí una proteína animal para varias preparaciones.</p></div></div>
-    <div id="summer-nutri-tab-batch" class="section"><div class="card"><h3>Batch cooking de verano</h3><p>Una sesión de 90–120 minutos puede dejar bases listas para combinar, sin cocinar todo el menú por adelantado.</p><div class="table-scroll"><table><tr><th>Preparación</th><th>Cómo aprovecharla</th></tr><tr><td>Arroz, quinoa o papas</td><td>Bases para bowls, ensaladas y guarniciones.</td></tr><tr><td>Huevos duros</td><td>Sumar a ensaladas, sándwiches y wraps.</td></tr><tr><td>Pollo al horno o plancha</td><td>Desmenuzar para wraps, bowls y tartas.</td></tr><tr><td>Garbanzos o lentejas</td><td>Ensaladas completas, hummus o salteados.</td></tr><tr><td>Vegetales lavados y cortados</td><td>Tomate, pepino, zanahoria, hojas y morrón listos para usar.</td></tr><tr><td>Fruta porcionada</td><td>Desayunos, yogur y colaciones.</td></tr></table></div><p>Guardá las preparaciones refrigeradas en recipientes cerrados, enfriá pronto lo cocido y consumí dentro de plazos seguros; congelá lo que no vayas a usar.</p></div><div class="teal-box"><p>Atajo: prepará 2 proteínas, 2 bases y vegetales variados. Combiná distinto cada día.</p></div>
-      <div class="card"><h3>Sesión de preparación: 90 minutos</h3><ol><li><strong>Min 0–10:</strong> precalentá horno, lavá vegetales y poné arroz/quinoa y huevos a cocinar.</li><li><strong>Min 10–35:</strong> horneá una bandeja de calabaza, berenjena, morrón y zapallito; cociná pollo o tofu.</li><li><strong>Min 35–55:</strong> prepará garbanzos/lentejas (o abrí y enjuagá conserva), aderezo de limón y oliva.</li><li><strong>Min 55–75:</strong> porcioná bases y proteínas; lavá y secá hojas.</li><li><strong>Min 75–90:</strong> rotulá recipientes, refrigerá lo que usarás pronto y congelá porciones futuras.</li></ol></div>
-      <div class="card"><h3>Armado rápido de 4 comidas</h3><div class="table-scroll"><table><tr><th>Comida</th><th>Armado</th></tr><tr><td>Bowl mediterráneo</td><td>Arroz + garbanzos + tomate + pepino + oliva.</td></tr><tr><td>Wrap</td><td>Pollo + vegetales asados + hojas + hummus.</td></tr><tr><td>Ensalada tibia</td><td>Papa + huevo + chauchas + mostaza y limón.</td></tr><tr><td>Tarta exprés</td><td>Vegetales asados + huevo/ricota en masa comprada.</td></tr></table></div><p><strong>Seguridad:</strong> no dejes preparaciones cocidas a temperatura ambiente por períodos prolongados. Enfriá y refrigerá pronto; llevá viandas con conservadora cuando haga falta.</p></div></div>
-    <div id="summer-nutri-tab-compras" class="section"><div class="card"><h3>Lista base para una semana</h3><p>Ajustá cantidades a cuántas personas comen y a lo que ya tenés en casa.</p><div class="table-scroll"><table><tr><th>Grupo</th><th>Opciones</th></tr><tr><td>Frutas</td><td>Sandía o melón, duraznos, bananas, cítricos y fruta a elección</td></tr><tr><td>Verduras</td><td>Tomate, pepino, morrón, zapallito, berenjena, hojas verdes, zanahoria y choclo</td></tr><tr><td>Proteínas</td><td>Huevos, pollo, atún, pescado, yogur, queso y legumbres</td></tr><tr><td>Almacén</td><td>Arroz, quinoa o fideos, avena, pan o tortillas, garbanzos y lentejas</td></tr><tr><td>Extras</td><td>Aceite de oliva, palta, nueces, semillas, limón y condimentos</td></tr></table></div></div>
-      <div class="card"><h3>Lista editable por prioridad</h3><ul><li><strong>Base semanal:</strong> huevos, arroz o papa, avena, legumbres, pollo o atún, yogur.</li><li><strong>Vegetales:</strong> elegí 4–6 según precio: tomate, pepino, zanahoria, zapallito, berenjena, hojas verdes, morrón.</li><li><strong>Frutas:</strong> elegí 3 variedades de estación y una opción rendidora como banana o manzana.</li><li><strong>Complementos:</strong> aceite, limón, queso, frutos secos o semillas si entran en el presupuesto.</li></ul><p>Antes de comprar, revisá heladera, freezer y alacena. Comprá primero lo que falta para completar comidas, no ingredientes sueltos que después no combinan.</p></div></div>
-    <div id="summer-nutri-tab-energia" class="section"><div class="card"><h3>Comidas para días difíciles</h3><p>Cuando no hay tiempo, ganas o energía: resolver primero, perfeccionar nunca.</p><div class="table-scroll"><table><tr><th>Si tenés...</th><th>Resolvé con...</th></tr><tr><td>5 minutos</td><td>Yogur + fruta + avena o tostadas + queso + tomate.</td></tr><tr><td>10 minutos</td><td>Huevos revueltos + pan + vegetales; o ensalada de garbanzos de lata, tomate y atún.</td></tr><tr><td>Algo congelado</td><td>Verduras + legumbres o pollo ya cocido, salteados con arroz.</td></tr><tr><td>Cero ganas de cocinar</td><td>Sándwich completo, wrap o rotisería: sumá una proteína y algún vegetal si está disponible.</td></tr></table></div></div><div class="warm-box"><p>Una comida simple también cuenta. No hace falta compensar ni “empezar de nuevo” mañana.</p></div></div>
-  </div>
-  <div id="summer-module-entren" class="module">
-    <div class="tabs" role="tablist" aria-label="Entrenamiento de verano">
-      <button class="tab-btn active" onclick="showSeasonTab('summer','entren','semana',this)" role="tab">Semana tipo</button>
-      <button class="tab-btn" onclick="showSeasonTab('summer','entren','doce',this)" role="tab">12 semanas</button>
-      <button class="tab-btn" onclick="showSeasonTab('summer','entren','rutinas',this)" role="tab">Rutinas detalladas</button>
-      <button class="tab-btn" onclick="showSeasonTab('summer','entren','energia',this)" role="tab">Por nivel de energía</button>
-    
-      <div class="card"><h3>Kit de emergencia para tener a mano</h3><p>En alacena: legumbres en conserva, atún, arroz, fideos, tomate triturado y frutos secos. En freezer: verduras, pan, porciones de pollo cocido y frutas para licuados. En heladera: huevos, yogur, queso y vegetales resistentes.</p><p><strong>Regla de rescate:</strong> elegí una proteína + una base + algo vegetal. No hace falta que sea una receta ni que quede digno de Instagram.</p></div></div>
-    <div id="summer-entren-tab-semana" class="section visible"><div class="card"><h3>Semana tipo</h3><p>Una distribución orientativa. Dejá al menos un día de recuperación y ajustá volumen a tu experiencia.</p><div class="table-scroll"><table><tr><th>Día</th><th>Sesión</th><th>Duración</th></tr><tr><td>Lunes</td><td>Fuerza A — tren inferior y core</td><td>30–40 min</td></tr><tr><td>Martes</td><td>Caminata, bici suave o movilidad</td><td>25–40 min</td></tr><tr><td>Miércoles</td><td>Fuerza B — tren superior y core</td><td>30–40 min</td></tr><tr><td>Jueves</td><td>Descanso o movilidad suave</td><td>10–20 min</td></tr><tr><td>Viernes</td><td>Fuerza C — cuerpo completo</td><td>25–35 min</td></tr><tr><td>Sábado</td><td>Bicicleta o actividad recreativa</td><td>Según comodidad</td></tr><tr><td>Domingo</td><td>Descanso</td><td>—</td></tr></table></div><div class="warm-box"><p>En días de mucho calor, entrená en horarios más frescos, bajá intensidad y elegí un lugar ventilado. Frená si aparece mareo, debilidad o malestar.</p></div></div>
-      <div class="card"><h3>Cómo distribuir el esfuerzo</h3><p>Las sesiones de fuerza deben dejarte con sensación de trabajo, no de agotamiento total. En caminatas y bicicleta, mantené un ritmo que permita hablar en frases. Si recién empezás, hacé dos sesiones de fuerza y dos aeróbicas; sumá frecuencia gradualmente.</p><p><strong>Calor:</strong> evitá las horas centrales, buscá sombra o interior ventilado y reducí duración/intensidad en días extremos. Interrumpí ante mareo, náuseas, debilidad o confusión.</p></div></div>
-    <div id="summer-entren-tab-doce" class="section"><div class="card"><h3>Progresión de 12 semanas</h3><div class="table-scroll"><table><tr><th>Etapa</th><th>Semanas</th><th>Enfoque</th><th>Progresión</th></tr><tr><td>Base</td><td>1–4</td><td>Aprender técnica y crear regularidad</td><td>2 series por ejercicio; esfuerzo cómodo. Semanas 1–2 priorizá técnica, 3–4 sumá repeticiones si mantenés buena forma.</td></tr><tr><td>Construcción</td><td>5–8</td><td>Desarrollar fuerza y resistencia</td><td>Pasá a 3 series cuando puedas completar el rango con control. Aumentá una variable por vez.</td></tr><tr><td>Consolidación</td><td>9–12</td><td>Afianzar y evaluar</td><td>Mantené 3 series o subí levemente la resistencia. Semana 12 revisá técnica, constancia y cómo te sentís.</td></tr></table></div><p>Dejá 1–3 repeticiones “en reserva” en la mayoría de las series. Si una semana se complica, repetí la etapa: no hay que recuperar sesiones perdidas.</p></div>
-      <div class="card"><h3>Guía de avance semana a semana</h3><div class="table-scroll"><table><tr><th>Semanas</th><th>Qué hacer</th><th>Señal para avanzar</th></tr><tr><td>1–2</td><td>2 sesiones, 2 series, aprender movimientos.</td><td>Terminás con técnica estable y sin dolor inusual.</td></tr><tr><td>3–4</td><td>2–3 sesiones, sumar repeticiones dentro del rango.</td><td>Completás el máximo de reps con control.</td></tr><tr><td>5–6</td><td>3 sesiones, 2 series; aumentar un poco la resistencia si corresponde.</td><td>La carga se siente desafiante pero manejable.</td></tr><tr><td>7–8</td><td>3 series en ejercicios principales si recuperás bien.</td><td>Mantenés técnica en todas las series.</td></tr><tr><td>9–10</td><td>Consolidar cargas y regularidad; no subir todo a la vez.</td><td>Podés repetir rendimiento sin compensaciones.</td></tr><tr><td>11–12</td><td>Mantener, evaluar y elegir próximo objetivo.</td><td>Comparás reps, resistencia, energía y adherencia.</td></tr></table></div><p>Dejá al menos un día entre sesiones exigentes de fuerza. Si aparece dolor agudo, mareo o malestar, detené el ejercicio y buscá orientación apropiada.</p></div></div>
-    <div id="summer-entren-tab-rutinas" class="section"><div class="card"><h3>Rutina A — Tren inferior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Clave técnica</th></tr><tr><td>Sentadilla a silla</td><td>2–3 × 8–12</td><td>Rodillas acompañan la dirección de los pies; controlá la bajada.</td></tr><tr><td>Puente de glúteos</td><td>2–3 × 10–15</td><td>Subí la cadera sin arquear la espalda.</td></tr><tr><td>Peso muerto rumano con mochila</td><td>2–3 × 8–12</td><td>Llevá la cadera atrás y mantené espalda neutra.</td></tr><tr><td>Estocada asistida</td><td>2 × 8 por lado</td><td>Usá una pared o silla para equilibrio.</td></tr><tr><td>Dead bug</td><td>2 × 8 por lado</td><td>Mové lento, sin despegar la zona lumbar.</td></tr></table></div></div><div class="card"><h3>Rutina B — Tren superior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Clave técnica</th></tr><tr><td>Flexiones contra pared o apoyo</td><td>2–3 × 8–12</td><td>Cuerpo alineado; elegí una inclinación controlable.</td></tr><tr><td>Remo con mochila o botella</td><td>2–3 × 10–12</td><td>Llevá codos hacia atrás sin girar el torso.</td></tr><tr><td>Press de hombros liviano</td><td>2 × 8–12</td><td>Evitá arquear la espalda.</td></tr><tr><td>Curl de bíceps</td><td>2 × 10–12</td><td>Codos cerca del cuerpo.</td></tr><tr><td>Bird dog</td><td>2 × 8 por lado</td><td>Extendé brazo y pierna opuestos sin rotar.</td></tr></table></div></div><div class="card"><h3>Rutina C — Cuerpo completo</h3><p>2–3 rondas, descansando lo necesario entre ejercicios.</p><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Repeticiones</th></tr><tr><td>Sentadilla a silla</td><td>10–12</td></tr><tr><td>Remo con mochila</td><td>10–12</td></tr><tr><td>Puente de glúteos</td><td>12–15</td></tr><tr><td>Flexiones inclinadas</td><td>8–10</td></tr><tr><td>Plancha elevada</td><td>15–30 segundos</td></tr></table></div></div>
-      <div class="card"><h3>Entrada en calor y vuelta a la calma</h3><p><strong>Antes (5–7 min):</strong> marcha en el lugar, círculos de hombros, movilidad de cadera, sentadillas cortas sin carga y 1 serie suave del primer ejercicio.</p><p><strong>Después (4–6 min):</strong> caminata lenta, movilidad suave de cadera/pecho y respiración tranquila. No fuerces estiramientos.</p></div>
-      <div class="card"><h3>Cómo elegir la carga</h3><p>Empezá con peso corporal o mochila liviana. La última repetición debe costar, pero poder hacerse sin perder postura. Descansá 60–120 segundos entre series; más si lo necesitás. Cuando completes el máximo de repeticiones en todas las series con buena técnica durante dos sesiones, aumentá apenas la carga o la dificultad.</p></div></div>
-    <div id="summer-entren-tab-energia" class="section"><div class="energy-btns"><button class="e-btn active" onclick="showSeasonEnergy('summer','alta',this)">Energía alta</button><button class="e-btn" onclick="showSeasonEnergy('summer','media',this)">Energía media</button><button class="e-btn" onclick="showSeasonEnergy('summer','baja',this)">Energía baja</button></div>
-      <div id="summer-energy-alta" class="e-section visible"><div class="card"><h3>Energía alta</h3><p>Hacé la sesión prevista con todas las series, manteniendo técnica y descansos. No conviertas cada día bueno en una prueba máxima.</p></div></div>
-      <div id="summer-energy-media" class="e-section"><div class="card"><h3>Energía media</h3><p>Reducí a 2 series por ejercicio o hacé los primeros 3 ejercicios de la rutina. En cardio, elegí un ritmo conversacional y acortá la duración.</p></div></div>
-      <div id="summer-energy-baja" class="e-section"><div class="card"><h3>Energía baja</h3><p>Elegí 5–10 minutos de movilidad o una caminata suave. Si necesitás descansar, descansá. La continuidad se construye también respetando la recuperación.</p></div></div>
-    </div>
-  </div>
+<div class="section" id="summer-entren-tab-energia"><div class="energy-btns"><button class="e-btn active" onclick="showSeasonEnergy('summer','alta',this)">Alta</button><button class="e-btn" onclick="showSeasonEnergy('summer','media',this)">Media</button><button class="e-btn" onclick="showSeasonEnergy('summer','baja',this)">Baja</button></div>
+<div class="e-section visible" id="summer-energy-alta"><div class="card"><h3>Sesión completa</h3><p>Rutina prevista, series completas y descansos habituales.</p></div></div>
+<div class="e-section" id="summer-energy-media"><div class="card"><h3>Sesión reducida</h3><p>2 series por ejercicio o los primeros 3 movimientos. Duración: 15–20 minutos.</p></div></div>
+<div class="e-section" id="summer-energy-baja"><div class="card"><h3>Recuperación activa</h3><p>5–10 minutos de movilidad, paseo suave o descanso.</p></div></div>
+</div></div>
+</section><section id="season-winter" class="season-panel " aria-label="Invierno">
+<div class="module-btns" role="tablist" aria-label="Áreas"><button class="mod-btn active" onclick="showSeasonModule('winter','nutri',this)">🥣 Nutrición</button><button class="mod-btn" onclick="showSeasonModule('winter','entren',this)">🏋️ Entrenamiento</button></div>
+<div id="winter-module-nutri" class="module visible">
+<div class="tabs" role="tablist" aria-label="Nutrición"><button class="tab-btn active" onclick="showSeasonTab('winter','nutri','nutricion',this)">Nutrición</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','menu',this)">Menú</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','batch',this)">Batch cooking</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','compras',this)">Compras</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','easy',this)">Días difíciles</button></div>
+<div class="section visible" id="winter-nutri-tab-nutricion"><div class="card"><h3>Composición de comidas</h3><div class="metric-grid"><div class="metric"><div class="metric-label">½ plato</div><div class="metric-value">Vegetales</div><div class="metric-sub">Calabaza, zanahoria, acelga, espinaca, brócoli</div></div><div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Proteína</div><div class="metric-sub">Huevos, pollo, pescado, carne, legumbres</div></div><div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Carbohidratos</div><div class="metric-sub">Papa, batata, arroz, avena, pasta</div></div><div class="metric"><div class="metric-label">Complemento</div><div class="metric-value">Grasas</div><div class="metric-sub">Oliva, nueces y semillas</div></div></div></div>
+<div class="card"><h3>Productos de estación</h3><p><b>Verduras:</b> zapallo, calabaza, zanahoria, remolacha, papa, batata, acelga, espinaca, brócoli y repollo.</p><p><b>Frutas:</b> naranja, mandarina, pomelo, limón, manzana y pera.</p><p><b>Proteínas:</b> huevos, pollo, pescado, legumbres, yogur y queso.</p></div>
+<div class="card"><h3>Comidas completas</h3><div class="table-scroll"><table><tr><th>Preparación</th><th>Composición</th></tr><tr><td>Sopa crema</td><td>Verduras + lentejas, huevo, queso o pollo + pan</td></tr><tr><td>Guiso</td><td>Legumbres + vegetales + arroz o papa</td></tr><tr><td>Tarta</td><td>Verduras + huevo/ricota + ensalada</td></tr><tr><td>Puré</td><td>Calabaza/papa + pollo, pescado, huevo o legumbres</td></tr></table></div></div></div>
+<div class="section" id="winter-nutri-tab-menu"><div class="card"><h3>Menú semanal</h3><div class="table-scroll"><table><tr><th>Día</th><th>Desayuno</th><th>Almuerzo</th><th>Cena</th><th>Colación opcional</th></tr>
+<tr><td>Lun</td><td>Avena con leche y banana</td><td>Pollo al horno, calabaza y arroz</td><td>Tortilla de espinaca</td><td>Yogur y fruta</td></tr><tr><td>Mar</td><td>Tostadas, huevo y fruta</td><td>Guiso de lentejas</td><td>Sopa de verduras, queso y pan</td><td>Mandarina y nueces</td></tr><tr><td>Mié</td><td>Yogur, avena y manzana</td><td>Tarta de acelga y ensalada</td><td>Pescado, papa y brócoli</td><td>Ricota con fruta</td></tr><tr><td>Jue</td><td>Huevos revueltos y tostadas</td><td>Garbanzos, calabaza y arroz</td><td>Pollo salteado con vegetales</td><td>Fruta y semillas</td></tr><tr><td>Vie</td><td>Avena con pera y canela</td><td>Carne magra, puré y zanahoria</td><td>Omelette de verduras</td><td>Yogur</td></tr><tr><td>Sáb</td><td>Tostadas con ricota</td><td>Guiso de porotos</td><td>Milanesa al horno con calabaza</td><td>Fruta</td></tr><tr><td>Dom</td><td>Panqueques de avena</td><td>Puchero de verduras, carne o pollo</td><td>Sopa con sobrantes</td><td>Yogur o fruta</td></tr></table></div></div>
+<div class="card"><h3>Preparaciones principales</h3><ul><li><b>Guiso:</b> lentejas, cebolla, zanahoria, tomate, papa y pimentón.</li><li><b>Tarta:</b> acelga, cebolla, huevos y ricota o queso.</li><li><b>Pollo al horno:</b> presas con calabaza, zanahoria y cebolla; reservar para sopa o sándwich.</li><li><b>Sopa completa:</b> verduras + garbanzos o pollo + arroz/fideos.</li></ul></div></div>
+<div class="section" id="winter-nutri-tab-batch"><div class="card"><h3>Preparación semanal · 90 minutos</h3><ol><li><b>Inicio:</b> cocinar una olla de legumbres y otra de arroz; precalentar horno.</li><li><b>Horno:</b> asar calabaza, zanahoria, cebolla y brócoli.</li><li><b>Proteína:</b> cocinar pollo o preparar huevos duros.</li><li><b>Olla:</b> preparar sopa base o guiso.</li><li><b>Cierre:</b> porcionar, rotular, refrigerar o congelar.</li></ol></div>
+<div class="card"><h3>Una base, tres platos</h3><p><b>Verduras asadas:</b> guarnición, relleno de tarta o sopa crema. <b>Legumbres:</b> guiso, ensalada tibia o hamburguesas. <b>Pollo:</b> plato con puré, sopa o sándwich.</p><p>Refrigerar pronto las preparaciones cocidas y congelar porciones para más adelante.</p></div></div>
+<div class="section" id="winter-nutri-tab-compras"><div class="card"><h3>Lista de compras · 1 persona</h3><div class="table-scroll"><table><tr><th>Grupo</th><th>Compra semanal orientativa</th></tr><tr><td>Verdulería</td><td>Calabaza (½–1), zanahoria (4), papa/batata (1 kg), acelga o espinaca (1 atado), cebolla (3), brócoli (1), remolacha (2).</td></tr><tr><td>Frutas</td><td>7–10 porciones: manzana, pera, naranja y mandarina.</td></tr><tr><td>Proteínas</td><td>Huevos (12), pollo (500–700 g), pescado o carne (2 porciones), yogur y queso.</td></tr><tr><td>Legumbres y cereales</td><td>Lentejas/garbanzos/porotos, arroz, avena y pasta.</td></tr><tr><td>Almacén</td><td>Tomate triturado, oliva, nueces, semillas y condimentos.</td></tr></table></div><p>Cantidades aproximadas para adaptar al menú, apetito y presupuesto.</p></div></div>
+<div class="section" id="winter-nutri-tab-easy"><div class="card"><h3>Comidas de 5–15 minutos</h3><div class="table-scroll"><table><tr><th>Tiempo</th><th>Comida</th></tr><tr><td>5 min</td><td>Yogur + avena + fruta; tostadas con queso y huevo.</td></tr><tr><td>10 min</td><td>Omelette con vegetales congelados; sopa lista con legumbres.</td></tr><tr><td>15 min</td><td>Lentejas en conserva con tomate y huevo; arroz con pollo cocido.</td></tr><tr><td>Sin cocinar</td><td>Sándwich completo, tarta comprada con ensalada o comida preparada con proteína.</td></tr></table></div></div>
+<div class="card"><h3>Stock de emergencia</h3><p><b>Alacena:</b> legumbres, arroz, pasta, tomate triturado y atún. <b>Freezer:</b> vegetales, pan y porciones cocidas. <b>Heladera:</b> huevos, yogur, queso y verduras resistentes.</p></div></div></div>
+<div id="winter-module-entren" class="module"><div class="tabs" role="tablist" aria-label="Entrenamiento"><button class="tab-btn active" onclick="showSeasonTab('winter','entren','semana',this)">Semana tipo</button><button class="tab-btn" onclick="showSeasonTab('winter','entren','doce',this)">12 semanas</button><button class="tab-btn" onclick="showSeasonTab('winter','entren','rutinas',this)">Rutinas</button><button class="tab-btn" onclick="showSeasonTab('winter','entren','energia',this)">Nivel de energía</button></div>
+<div class="section visible" id="winter-entren-tab-semana"><div class="card"><h3>Distribución semanal</h3><div class="table-scroll"><table><tr><th>Día</th><th>Sesión</th><th>Duración</th></tr><tr><td>Lunes</td><td>Fuerza A · tren inferior</td><td>30–40 min</td></tr><tr><td>Martes</td><td>Caminata o bicicleta</td><td>25–40 min</td></tr><tr><td>Miércoles</td><td>Fuerza B · tren superior</td><td>30–40 min</td></tr><tr><td>Jueves</td><td>Movilidad o descanso</td><td>10–20 min</td></tr><tr><td>Viernes</td><td>Fuerza C · cuerpo completo</td><td>25–35 min</td></tr><tr><td>Sábado</td><td>Actividad recreativa</td><td>Flexible</td></tr><tr><td>Domingo</td><td>Descanso</td><td>—</td></tr></table></div><p>En días fríos, comenzar con una entrada en calor progresiva y adaptar la actividad al clima.</p><p>Frecuencia inicial: 2 sesiones de fuerza y 2 aeróbicas. Progresar hacia 3 de fuerza si la recuperación es adecuada.</p></div></div>
+<div class="section" id="winter-entren-tab-doce"><div class="card"><h3>Progresión · 12 semanas</h3><div class="table-scroll"><table><tr><th>Semanas</th><th>Volumen</th><th>Objetivo</th></tr><tr><td>1–2</td><td>2 sesiones · 2 series</td><td>Técnica y adaptación</td></tr><tr><td>3–4</td><td>2–3 sesiones · 2 series</td><td>Sumar repeticiones con control</td></tr><tr><td>5–6</td><td>3 sesiones · 2 series</td><td>Aumentar gradualmente la resistencia</td></tr><tr><td>7–8</td><td>3 sesiones · 2–3 series</td><td>Consolidar fuerza y técnica</td></tr><tr><td>9–10</td><td>3 sesiones · 3 series</td><td>Progresar una variable por vez</td></tr><tr><td>11–12</td><td>3 sesiones</td><td>Consolidar y evaluar resultados</td></tr></table></div><p>Avanzar cuando se complete el rango de repeticiones con técnica estable y recuperación adecuada. Si no, repetir la etapa.</p><p><b>Registro semanal:</b> sesiones, ejercicios, repeticiones, carga y recuperación.</p></div></div>
+<div class="section" id="winter-entren-tab-rutinas">
+<div class="card"><h3>Rutina A · Tren inferior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Referencia técnica</th></tr><tr><td>Sentadilla a silla</td><td>2–3 × 8–12</td><td>Apoyo estable, bajada controlada</td></tr><tr><td>Puente de glúteos</td><td>2–3 × 10–15</td><td>Elevar cadera sin arquear espalda</td></tr><tr><td>Peso muerto rumano con mochila</td><td>2–3 × 8–12</td><td>Cadera atrás, espalda neutra</td></tr><tr><td>Estocada asistida</td><td>2 × 8 por lado</td><td>Usar apoyo para equilibrio</td></tr><tr><td>Dead bug</td><td>2 × 8 por lado</td><td>Movimiento lento y controlado</td></tr></table></div></div>
+<div class="card"><h3>Rutina B · Tren superior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Referencia técnica</th></tr><tr><td>Flexiones inclinadas</td><td>2–3 × 8–12</td><td>Cuerpo alineado</td></tr><tr><td>Remo con mochila o botellas</td><td>2–3 × 10–12</td><td>Codos atrás, torso estable</td></tr><tr><td>Press de hombros liviano</td><td>2 × 8–12</td><td>Sin arquear espalda</td></tr><tr><td>Curl de bíceps</td><td>2 × 10–12</td><td>Codos junto al cuerpo</td></tr><tr><td>Bird dog</td><td>2 × 8 por lado</td><td>Sin rotar el torso</td></tr></table></div></div>
+<div class="card"><h3>Rutina C · Cuerpo completo</h3><p>2–3 rondas. Descanso: 60–120 segundos entre ejercicios.</p><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Repeticiones</th></tr><tr><td>Sentadilla a silla</td><td>10–12</td></tr><tr><td>Remo con mochila</td><td>10–12</td></tr><tr><td>Puente de glúteos</td><td>12–15</td></tr><tr><td>Flexiones inclinadas</td><td>8–10</td></tr><tr><td>Plancha elevada</td><td>15–30 segundos</td></tr></table></div></div>
+<div class="card"><h3>Entrada en calor · 6 minutos</h3><p>Marcha en el lugar, movilidad de hombros y cadera, gato-vaca, sentadillas sin carga y una serie de práctica del primer ejercicio.</p><h4>Progresión de carga</h4><p>Cuando completes el máximo de repeticiones en todas las series durante dos sesiones, aumentá ligeramente el peso o la dificultad. Mantener 1–3 repeticiones posibles al finalizar cada serie.</p></div>
 </div>
-
-<div id="season-winter" class="season-panel" aria-live="polite">
-  <div class="module-btns" role="tablist" aria-label="Módulos de invierno">
-    <button class="mod-btn active" type="button" onclick="showSeasonModule('winter','nutri',this)" role="tab">🥣 Nutrición</button>
-    <button class="mod-btn" type="button" onclick="showSeasonModule('winter','entren',this)" role="tab">🏋️ Entrenamiento</button>
-  </div>
-  <div id="winter-module-nutri" class="module visible">
-    <div class="tabs" role="tablist" aria-label="Nutrición de invierno">
-      <button class="tab-btn active" onclick="showSeasonTab('winter','nutri','nutricion',this)" role="tab">Nutrición</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','menu',this)" role="tab">Menú semanal</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','batch',this)" role="tab">Batch cooking</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','compras',this)" role="tab">Lista de compras</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','energia',this)" role="tab">Días difíciles</button>
-    
-      <div class="card"><h3>Regla para decidir sin negociar media hora</h3><ul><li><strong>Alta:</strong> sesión completa si dormiste y te sentís recuperada.</li><li><strong>Media:</strong> reducí una serie por ejercicio o hacé 15–20 minutos.</li><li><strong>Baja:</strong> movilidad suave, paseo corto o descanso.</li></ul><p>La versión reducida no es un fracaso: es una forma de sostener el hábito sin convertir cada entrenamiento en una deuda.</p></div></div>
-    <div id="winter-nutri-tab-nutricion" class="section visible"><div class="card"><h3>El plato de invierno</h3><p>Una estructura flexible para comidas completas, con preparaciones calientes o frías según preferencia.</p><div class="metric-grid"><div class="metric"><div class="metric-label">½ plato</div><div class="metric-value">Vegetales</div><div class="metric-sub">Calabaza, zanahoria, acelga, espinaca</div></div><div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Proteína</div><div class="metric-sub">Huevos, pollo, pescado, carne o legumbres</div></div><div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Energía</div><div class="metric-sub">Papa, batata, arroz, avena o pasta</div></div><div class="metric"><div class="metric-label">Complemento</div><div class="metric-value">Grasas</div><div class="metric-sub">Oliva, nueces y semillas</div></div></div></div><div class="card"><h3>Productos de estación</h3><p><strong>Verduras:</strong> zapallo, calabaza, zanahoria, remolacha, papa, batata, acelga, espinaca, brócoli y repollo.</p><p><strong>Frutas:</strong> naranja, mandarina, pomelo, limón, manzana y pera.</p><p><strong>Proteínas y bases:</strong> huevos, pollo, pescado, legumbres, avena, arroz y pastas.</p></div><div class="card"><h3>Combinaciones que resuelven</h3><div class="table-scroll"><table><tr><th>Base</th><th>Proteína</th><th>Complemento</th></tr><tr><td>Puré de calabaza</td><td>Pollo al horno</td><td>Espinaca salteada</td></tr><tr><td>Guiso de lentejas</td><td>Lentejas y huevo</td><td>Zanahoria y tomate</td></tr><tr><td>Arroz</td><td>Atún o garbanzos</td><td>Brócoli y oliva</td></tr><tr><td>Tarta</td><td>Huevo y ricota</td><td>Acelga y cebolla</td></tr></table></div></div><div class="warm-box"><p><strong>Inspiración ayurvédica:</strong> podés elegir platos tibios, cocidos y especiados si te resultan reconfortantes. No hay obligación de evitar alimentos crudos o fríos.</p></div>
-      <div class="card"><h3>Cómo armar platos completos</h3><p>Combiná una fuente de proteína, una base de energía y vegetales. Las sopas y guisos también pueden ser comidas completas si incluyen legumbres, carne, huevo o lácteos y no quedan solo en caldo.</p><div class="table-scroll"><table><tr><th>Preparación</th><th>Cómo completarla</th></tr><tr><td>Sopa crema</td><td>Sumá lentejas, huevo, queso o pollo y pan.</td></tr><tr><td>Guiso</td><td>Legumbres + vegetales + arroz/papa; agregá huevo o carne si querés.</td></tr><tr><td>Tarta</td><td>Relleno de verduras y huevo/ricota + ensalada o sopa.</td></tr><tr><td>Puré</td><td>Acompañá con pollo, pescado, huevo o legumbres y vegetales.</td></tr></table></div></div>
-      <div class="card"><h3>Recursos para variar</h3><p>Usá condimentos, hierbas, limón, ajo, cebolla y diferentes texturas para evitar que toda la semana sea “pollo con puré”. Alterná horno, olla, sartén y preparaciones de freezer.</p></div></div>
-    <div id="winter-nutri-tab-menu" class="section"><div class="card"><h3>Menú orientativo de 7 días</h3><div class="table-scroll"><table><tr><th>Día</th><th>Desayuno</th><th>Almuerzo</th><th>Cena</th><th>Colación</th></tr><tr><td>Lunes</td><td>Avena con leche y banana</td><td>Pollo al horno, calabaza y arroz</td><td>Tortilla de espinaca</td><td>Yogur y fruta</td></tr><tr><td>Martes</td><td>Tostadas, huevo y fruta</td><td>Guiso de lentejas y verduras</td><td>Sopa de verduras con queso y pan</td><td>Mandarina y nueces</td></tr><tr><td>Miércoles</td><td>Yogur, avena y manzana</td><td>Tarta de acelga y ensalada</td><td>Pescado con papa y brócoli</td><td>Ricota con fruta</td></tr><tr><td>Jueves</td><td>Huevos revueltos y tostadas</td><td>Garbanzos con calabaza y arroz</td><td>Pollo salteado con vegetales</td><td>Fruta y semillas</td></tr><tr><td>Viernes</td><td>Avena con pera y canela</td><td>Carne magra, puré y zanahoria</td><td>Omelette de verduras</td><td>Yogur</td></tr><tr><td>Sábado</td><td>Tostadas con ricota</td><td>Guiso de porotos y verduras</td><td>Milanesa al horno con calabaza</td><td>Fruta</td></tr><tr><td>Domingo</td><td>Panqueques de avena</td><td>Puchero de verduras, carne o pollo</td><td>Sopa con lo que quedó</td><td>Yogur o fruta</td></tr></table></div><p class="metric-sub">Colaciones opcionales. Ajustá por hambre, actividad y preferencias.</p></div>
-      <div class="card"><h3>Preparaciones clave</h3><ul><li><strong>Guiso de lentejas:</strong> lentejas, cebolla, zanahoria, tomate, papa y pimentón. Prepará una olla y congelá porciones.</li><li><strong>Tarta de acelga:</strong> acelga cocida y escurrida, cebolla, huevos y ricota o queso; acompañá con ensalada.</li><li><strong>Pollo al horno:</strong> cociná varias presas con calabaza, zanahoria y cebolla; usá sobrantes en sopa o sándwich.</li><li><strong>Sopa completa:</strong> verduras + garbanzos o pollo + arroz/fideos.</li></ul></div>
-      <div class="card"><h3>Intercambios fáciles</h3><p>Si no conseguís una verdura, reemplazala por otra de estación. Cambiá lentejas por porotos o garbanzos; pollo por huevo, pescado o tofu; arroz por papa, batata o pasta. El menú es una guía, no un contrato.</p></div></div>
-    <div id="winter-nutri-tab-batch" class="section"><div class="card"><h3>Batch cooking de invierno</h3><p>Prepará bases que se puedan combinar durante varios días.</p><div class="table-scroll"><table><tr><th>Preparación</th><th>Uso</th></tr><tr><td>Lentejas o garbanzos cocidos</td><td>Guisos, ensaladas tibias y salteados.</td></tr><tr><td>Arroz o quinoa</td><td>Guarniciones y bowls.</td></tr><tr><td>Pollo al horno o hervido</td><td>Sopas, tartas y platos principales.</td></tr><tr><td>Bandeja de verduras asadas</td><td>Guarnición, relleno o crema.</td></tr><tr><td>Sopa o caldo base</td><td>Cenas rápidas y guisos.</td></tr><tr><td>Huevos duros</td><td>Ensaladas y comidas rápidas.</td></tr></table></div><p>Refrigerá pronto en recipientes cerrados y congelá porciones que no vayas a consumir dentro de pocos días.</p></div>
-      <div class="card"><h3>Sesión de preparación: 1 hora y media</h3><ol><li><strong>Inicio:</strong> poné una olla de legumbres y una de arroz; precalentá el horno.</li><li><strong>Horno:</strong> asá una bandeja grande de calabaza, zanahoria, cebolla y brócoli.</li><li><strong>Proteína:</strong> cociná pollo o prepará huevos duros.</li><li><strong>Olla:</strong> prepará una sopa base o guiso sencillo.</li><li><strong>Cierre:</strong> porcioná, rotulá y refrigerá/congelá según cuándo lo vayas a consumir.</li></ol></div>
-      <div class="card"><h3>De una base a tres platos</h3><p><strong>Verduras asadas:</strong> guarnición con pollo; relleno de tarta; licuadas como sopa crema. <strong>Legumbres:</strong> guiso; ensalada tibia; hamburguesas caseras. <strong>Pollo:</strong> plato con puré; sopa; sándwich con vegetales.</p></div></div>
-    <div id="winter-nutri-tab-compras" class="section"><div class="card"><h3>Lista base para una semana</h3><div class="table-scroll"><table><tr><th>Grupo</th><th>Opciones</th></tr><tr><td>Verdulería</td><td>Calabaza, zanahoria, papa, batata, acelga o espinaca, cebolla, ajo, brócoli y remolacha.</td></tr><tr><td>Frutas</td><td>Manzana, pera, naranja y mandarina.</td></tr><tr><td>Proteínas</td><td>Huevos, pollo, carne magra, pescado, yogur y queso.</td></tr><tr><td>Legumbres y cereales</td><td>Lentejas, garbanzos, porotos, arroz, avena y pasta.</td></tr><tr><td>Almacén</td><td>Tomate triturado, aceite de oliva, nueces, semillas y condimentos.</td></tr></table></div></div>
-      <div class="card"><h3>Compra eficiente</h3><ul><li>Elegí 4–5 verduras que puedas usar en más de una receta.</li><li>Comprá legumbres secas o en conserva según tiempo y presupuesto.</li><li>Definí 2 proteínas principales y una alternativa económica (huevos).</li><li>Revisá qué cereales, condimentos y conservas ya tenés.</li></ul><p>Si comprás para una sola persona, priorizá vegetales resistentes, congelados y productos que puedan dividirse en porciones.</p></div></div>
-    <div id="winter-nutri-tab-energia" class="section"><div class="card"><h3>Comidas para días difíciles</h3><div class="table-scroll"><table><tr><th>Tiempo</th><th>Solución simple</th></tr><tr><td>5 minutos</td><td>Yogur con avena y fruta; tostadas con queso y huevo.</td></tr><tr><td>10 minutos</td><td>Omelette con vegetales congelados; sopa lista mejorada con legumbres.</td></tr><tr><td>15 minutos</td><td>Lentejas en conserva salteadas con tomate y huevo; arroz con pollo ya cocido.</td></tr><tr><td>Sin cocinar</td><td>Sándwich completo, tarta comprada con ensalada o comida preparada con una fuente de proteína.</td></tr></table></div></div><div class="warm-box"><p>La opción sencilla y suficiente es mejor que saltear una comida esperando tener el día perfecto.</p></div></div>
-  </div>
-  <div id="winter-module-entren" class="module"><div class="tabs" role="tablist" aria-label="Entrenamiento de invierno"><button class="tab-btn active" onclick="showSeasonTab('winter','entren','semana',this)" role="tab">Semana tipo</button><button class="tab-btn" onclick="showSeasonTab('winter','entren','doce',this)" role="tab">12 semanas</button><button class="tab-btn" onclick="showSeasonTab('winter','entren','rutinas',this)" role="tab">Rutinas detalladas</button><button class="tab-btn" onclick="showSeasonTab('winter','entren','energia',this)" role="tab">Por nivel de energía</button>
-      <div class="card"><h3>Combinaciones de rescate</h3><ul><li>Legumbres en conserva + tomate triturado + huevo: guiso rápido.</li><li>Verduras congeladas + arroz + queso o huevo: salteado completo.</li><li>Sopa lista + garbanzos + pan: cena reforzada.</li><li>Pollo cocido + puré instantáneo o papa al microondas + vegetales.</li></ul><p>Dejá 2–3 opciones anotadas o visibles para no tener que decidir desde cero cuando estés cansada.</p></div></div>
-    <div id="winter-entren-tab-semana" class="section visible"><div class="card"><h3>Semana tipo</h3><div class="table-scroll"><table><tr><th>Día</th><th>Sesión</th><th>Duración</th></tr><tr><td>Lunes</td><td>Fuerza A — tren inferior</td><td>30–40 min</td></tr><tr><td>Martes</td><td>Caminata, bici o movilidad</td><td>25–40 min</td></tr><tr><td>Miércoles</td><td>Fuerza B — tren superior</td><td>30–40 min</td></tr><tr><td>Jueves</td><td>Descanso o movilidad</td><td>10–20 min</td></tr><tr><td>Viernes</td><td>Fuerza C — cuerpo completo</td><td>25–35 min</td></tr><tr><td>Sábado</td><td>Bicicleta o paseo si el clima acompaña</td><td>Flexible</td></tr><tr><td>Domingo</td><td>Descanso</td><td>—</td></tr></table></div></div>
-      <div class="card"><h3>Alternativa según agenda</h3><p>Semana cargada: hacé fuerza A y B, más dos caminatas de 20 minutos. Semana con más disponibilidad: sumá la sesión C. Si el clima no acompaña, reemplazá la salida por movilidad o una sesión corta en casa.</p></div></div>
-    <div id="winter-entren-tab-doce" class="section"><div class="card"><h3>Progresión de 12 semanas</h3><div class="table-scroll"><table><tr><th>Etapa</th><th>Semanas</th><th>Enfoque</th><th>Progresión</th></tr><tr><td>Base</td><td>1–4</td><td>Técnica y regularidad</td><td>2 series por ejercicio; esfuerzo cómodo. Sumá repeticiones solo si mantenés control.</td></tr><tr><td>Construcción</td><td>5–8</td><td>Fuerza y resistencia</td><td>Pasá a 3 series cuando completes el rango con buena técnica. Aumentá una variable por vez.</td></tr><tr><td>Consolidación</td><td>9–12</td><td>Afianzar hábitos</td><td>Mantené 3 series o subí levemente la resistencia. Revisá constancia, técnica y recuperación.</td></tr></table></div><p>Si una semana se complica, repetí la etapa. No hace falta recuperar sesiones perdidas.</p></div>
-      <div class="card"><h3>Control simple de progreso</h3><p>Al terminar cada semana, anotá: sesiones realizadas, ejercicios/repeticiones, carga utilizada, energía percibida y molestias. Buscá tendencia, no perfección. Si una fase se siente demasiado exigente, repetila antes de avanzar.</p></div></div>
-    <div id="winter-entren-tab-rutinas" class="section"><div class="card"><h3>Rutina A — Tren inferior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Clave</th></tr><tr><td>Sentadilla a silla</td><td>2–3 × 8–12</td><td>Controlá la bajada y mantené apoyo estable.</td></tr><tr><td>Puente de glúteos</td><td>2–3 × 10–15</td><td>Subí cadera sin arquear la espalda.</td></tr><tr><td>Peso muerto rumano con mochila</td><td>2–3 × 8–12</td><td>Cadera atrás, espalda neutra.</td></tr><tr><td>Estocada asistida</td><td>2 × 8 por lado</td><td>Usá apoyo si lo necesitás.</td></tr><tr><td>Dead bug</td><td>2 × 8 por lado</td><td>Movimiento lento y controlado.</td></tr></table></div></div><div class="card"><h3>Rutina B — Tren superior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Clave</th></tr><tr><td>Flexiones inclinadas</td><td>2–3 × 8–12</td><td>Elegí un apoyo que puedas controlar.</td></tr><tr><td>Remo con mochila o botella</td><td>2–3 × 10–12</td><td>Codos atrás, torso estable.</td></tr><tr><td>Press de hombros liviano</td><td>2 × 8–12</td><td>Sin arquear la espalda.</td></tr><tr><td>Curl de bíceps</td><td>2 × 10–12</td><td>Codos cerca del cuerpo.</td></tr><tr><td>Bird dog</td><td>2 × 8 por lado</td><td>Sin rotar el torso.</td></tr></table></div><div class="card"><h3>Rutina C — Cuerpo completo</h3><p>2–3 rondas con descansos cómodos.</p><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Repeticiones</th></tr><tr><td>Sentadilla a silla</td><td>10–12</td></tr><tr><td>Remo con mochila</td><td>10–12</td></tr><tr><td>Puente de glúteos</td><td>12–15</td></tr><tr><td>Flexiones inclinadas</td><td>8–10</td></tr><tr><td>Plancha elevada</td><td>15–30 segundos</td></tr></table></div></div><div class="card"><h3>Movilidad — 10 a 15 minutos</h3><p>Gato-vaca, movilidad de cadera, rotaciones torácicas, estiramiento suave de piernas y respiración tranquila. Mové dentro de un rango cómodo, sin forzar.</p></div>
-      <div class="card"><h3>Entrada en calor — 6 minutos</h3><p>Marcha suave, movilidad de hombros y cadera, gato-vaca, sentadillas sin carga y una serie de práctica del primer ejercicio. En días fríos, empezá más suave y aumentá gradualmente.</p></div>
-      <div class="card"><h3>Progresión y descansos</h3><p>Descansá 60–120 segundos entre series. Empezá con una variante fácil y aumentá dificultad solo cuando el movimiento sea estable. No necesitás llegar al fallo muscular; dejá algunas repeticiones posibles al terminar.</p></div></div>
-    <div id="winter-entren-tab-energia" class="section"><div class="energy-btns"><button class="e-btn active" onclick="showSeasonEnergy('winter','alta',this)">Energía alta</button><button class="e-btn" onclick="showSeasonEnergy('winter','media',this)">Energía media</button><button class="e-btn" onclick="showSeasonEnergy('winter','baja',this)">Energía baja</button></div><div id="winter-energy-alta" class="e-section visible"><div class="card"><h3>Energía alta</h3><p>Realizá la sesión completa, respetando descansos y técnica. Podés sumar una pequeña carga si terminás con margen.</p></div></div><div id="winter-energy-media" class="e-section"><div class="card"><h3>Energía media</h3><p>Hacé 2 series por ejercicio o elegí los primeros 3 movimientos. Cambiá el cardio intenso por caminata cómoda.</p></div></div><div id="winter-energy-baja" class="e-section"><div class="card"><h3>Energía baja</h3><p>Probá 5–10 minutos de movilidad o una caminata breve. Si el cuerpo necesita descanso, descansá sin culpa.</p></div></div>
-      <div class="card"><h3>Plan B sin abandonar el cuidado</h3><p>Alta: rutina completa. Media: dos series y menos ejercicios. Baja: 5–10 minutos de movilidad o descanso. Si hay fiebre, dolor agudo, mareos o síntomas inusuales, no entrenes y buscá orientación si corresponde.</p></div></div>
-  </div></div>
-</div>
-
-
+<div class="section" id="winter-entren-tab-energia"><div class="energy-btns"><button class="e-btn active" onclick="showSeasonEnergy('winter','alta',this)">Alta</button><button class="e-btn" onclick="showSeasonEnergy('winter','media',this)">Media</button><button class="e-btn" onclick="showSeasonEnergy('winter','baja',this)">Baja</button></div>
+<div class="e-section visible" id="winter-energy-alta"><div class="card"><h3>Sesión completa</h3><p>Rutina prevista, series completas y descansos habituales.</p></div></div>
+<div class="e-section" id="winter-energy-media"><div class="card"><h3>Sesión reducida</h3><p>2 series por ejercicio o los primeros 3 movimientos. Duración: 15–20 minutos.</p></div></div>
+<div class="e-section" id="winter-energy-baja"><div class="card"><h3>Recuperación activa</h3><p>5–10 minutos de movilidad, paseo suave o descanso.</p></div></div>
+</div></div>
+</section>
 <script>
-function setSeason(season) {
-  if (season !== 'summer' && season !== 'winter') return;
-  document.querySelectorAll('.season-panel').forEach(panel => panel.classList.remove('visible'));
-  document.querySelectorAll('.season-btn').forEach(button => {
-    button.classList.remove('active');
-    button.setAttribute('aria-pressed', 'false');
-  });
-  document.getElementById('season-' + season).classList.add('visible');
-  const activeButton = document.getElementById('season-' + season + '-btn');
-  activeButton.classList.add('active');
-  activeButton.setAttribute('aria-pressed', 'true');
-  try { localStorage.setItem('ayurveda-wellness-season', season); } catch (error) {}
-}
-(function initializeSeason() {
-  let savedSeason = 'summer';
-  try { const storedSeason = localStorage.getItem('ayurveda-wellness-season'); if (storedSeason === 'summer' || storedSeason === 'winter') savedSeason = storedSeason; } catch (error) {}
-  setSeason(savedSeason);
-})();
-function showSeasonModule(season, moduleId, button) {
-  const panel = document.getElementById('season-' + season);
-  panel.querySelectorAll('.module').forEach(m => m.classList.remove('visible'));
-  panel.querySelectorAll('.module-btns .mod-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(season + '-module-' + moduleId).classList.add('visible');
-  button.classList.add('active');
-}
-function showSeasonTab(season, moduleId, tabId, button) {
-  const module = document.getElementById(season + '-module-' + moduleId);
-  module.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
-  module.querySelectorAll('.tabs .tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(season + '-' + moduleId + '-tab-' + tabId).classList.add('visible');
-  button.classList.add('active');
-}
-function showSeasonEnergy(season, level, button) {
-  const module = document.getElementById('season-' + season);
-  module.querySelectorAll('.e-section').forEach(s => s.classList.remove('visible'));
-  module.querySelectorAll('.energy-btns .e-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(season + '-energy-' + level).classList.add('visible');
-  button.classList.add('active');
-}
-</script>
-</body>
-</html>
+function setSeason(season){if(!['summer','winter'].includes(season))return;document.querySelectorAll('.season-panel').forEach(x=>x.classList.remove('visible'));document.querySelectorAll('.season-btn').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-pressed','false')});document.getElementById('season-'+season).classList.add('visible');const b=document.getElementById('season-'+season+'-btn');b.classList.add('active');b.setAttribute('aria-pressed','true');try{localStorage.setItem('ayurveda-wellness-season',season)}catch(e){}}
+(function(){let s='summer';try{const v=localStorage.getItem('ayurveda-wellness-season');if(v==='summer'||v==='winter')s=v}catch(e){}setSeason(s)})();
+function showSeasonModule(season,id,button){const p=document.getElementById('season-'+season);p.querySelectorAll('.module').forEach(x=>x.classList.remove('visible'));p.querySelectorAll('.module-btns .mod-btn').forEach(x=>x.classList.remove('active'));document.getElementById(season+'-module-'+id).classList.add('visible');button.classList.add('active')}
+function showSeasonTab(season,module,id,button){const p=document.getElementById(season+'-module-'+module);p.querySelectorAll('.section').forEach(x=>x.classList.remove('visible'));p.querySelectorAll('.tabs .tab-btn').forEach(x=>x.classList.remove('active'));document.getElementById(season+'-'+module+'-tab-'+id).classList.add('visible');button.classList.add('active')}
+function showSeasonEnergy(season,level,button){const p=document.getElementById('season-'+season);p.querySelectorAll('.e-section').forEach(x=>x.classList.remove('visible'));p.querySelectorAll('.energy-btns .e-btn').forEach(x=>x.classList.remove('active'));document.getElementById(season+'-energy-'+level).classList.add('visible');button.classList.add('active')}
+</script></body></html>
