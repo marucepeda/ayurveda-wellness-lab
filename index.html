@@ -206,7 +206,19 @@ z-index:100;
 .mod-btn.active{background:#fff;color:#304638;border-color:#E5E9E1;box-shadow:0 3px 10px rgba(38,56,47,.09)}
 @media(max-width:600px){.lab-header{padding:18px 17px 16px;border-radius:16px;margin-bottom:14px}.lab-subtitle{font-size:9px;letter-spacing:.09em}.module-btns{gap:6px;padding:5px;margin-bottom:18px}.mod-btn{flex-basis:130px;padding:11px 9px;font-size:13px}}
 
-</style>
+
+/* ── SELECTOR ESTACIONAL ── */
+.season-selector{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 18px;padding:14px 16px;background:#EDE9DF;border:1px solid #E4DED1;border-radius:16px}
+.season-label{font-size:11px;font-weight:700;letter-spacing:.1em;color:#59675B;text-transform:uppercase;margin-right:4px}
+.season-btn{flex:1 1 130px;min-height:46px;padding:11px 16px;border:1px solid transparent;border-radius:12px;background:transparent;color:#59675B;font:600 14px Inter,sans-serif;cursor:pointer;transition:all .18s}
+.season-btn:hover{background:rgba(255,255,255,.65)}
+.season-btn.active{background:#fff;color:#304638;border-color:#E5E9E1;box-shadow:0 3px 10px rgba(38,56,47,.09)}
+.season-panel{display:none}.season-panel.visible{display:block}
+.season-intro{padding:18px 20px;margin:0 0 18px;background:#fff;border:1px solid #E7E2D8;border-radius:16px}
+.season-intro h2{font-size:17px;margin:0 0 7px;color:#304638}
+.season-intro p{margin:0;font-size:13px;line-height:1.6}
+@media(max-width:600px){.season-selector{gap:6px;padding:10px}.season-label{width:100%;margin:0 0 2px}.season-btn{font-size:13px;padding:10px 8px}}
+\n</style>
 </head>
 <body>
 
@@ -219,7 +231,26 @@ z-index:100;
   <div class="lab-subtitle">BIENESTAR INTEGRAL · NUTRICIÓN · MOVIMIENTO · HÁBITOS</div>
 </header>
 
-<div class="module-btns" role="tablist" aria-label="Módulo">
+
+<div class="season-selector" role="group" aria-label="Seleccionar estación">
+  <span class="season-label">Elegí tu estación</span>
+  <button class="season-btn active" id="season-summer-btn" type="button" aria-pressed="true" onclick="setSeason('summer')">☀️ Verano</button>
+  <button class="season-btn" id="season-winter-btn" type="button" aria-pressed="false" onclick="setSeason('winter')">🍂 Invierno</button>
+</div>
+
+<div id="season-summer" class="season-panel visible" aria-live="polite">
+  <div class="season-intro">
+    <h2>☀️ Verano</h2>
+    <p>La experiencia de verano se está preparando. Al completar esta estación, Nutrición, Entrenamiento y Bienestar se adaptarán en conjunto a sus alimentos, clima, hidratación y necesidades de recuperación.</p>
+  </div>
+</div>
+
+<div id="season-winter" class="season-panel">
+  <div class="season-intro">
+    <h2>🍂 Invierno</h2>
+    <p>Contenido invernal del laboratorio.</p>
+  </div>
+  <div class="module-btns" role="tablist" aria-label="Módulo">
   <button class="mod-btn active" onclick="showModule('nutri')" role="tab">🥣 Nutrición</button>
   <button class="mod-btn" onclick="showModule('entren')" role="tab">🏋️ Entrenamiento</button>
 </div>
@@ -821,6 +852,8 @@ z-index:100;
   </div>
 </div><!-- /module-entren -->
 
+
+</div>
 <script>
 function showModule(id) {
   document.querySelectorAll('.module').forEach(m => m.classList.remove('visible'));
