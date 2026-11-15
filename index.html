@@ -855,6 +855,29 @@ z-index:100;
 
 </div>
 <script>
+function setSeason(season) {
+  if (season !== 'summer' && season !== 'winter') return;
+  document.querySelectorAll('.season-panel').forEach(panel => panel.classList.remove('visible'));
+  document.querySelectorAll('.season-btn').forEach(button => {
+    button.classList.remove('active');
+    button.setAttribute('aria-pressed', 'false');
+  });
+  document.getElementById('season-' + season).classList.add('visible');
+  const activeButton = document.getElementById('season-' + season + '-btn');
+  activeButton.classList.add('active');
+  activeButton.setAttribute('aria-pressed', 'true');
+  try { localStorage.setItem('ayurveda-wellness-season', season); } catch (error) {}
+}
+
+(function initializeSeason() {
+  let savedSeason = 'summer';
+  try {
+    const storedSeason = localStorage.getItem('ayurveda-wellness-season');
+    if (storedSeason === 'summer' || storedSeason === 'winter') savedSeason = storedSeason;
+  } catch (error) {}
+  setSeason(savedSeason);
+})();
+
 function showModule(id) {
   document.querySelectorAll('.module').forEach(m => m.classList.remove('visible'));
   document.querySelectorAll('.mod-btn').forEach(b => b.classList.remove('active'));
