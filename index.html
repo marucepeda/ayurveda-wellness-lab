@@ -244,160 +244,68 @@ z-index:100;
 </div>
 
 <div id="season-summer" class="season-panel visible" aria-live="polite">
-  <div class="summer-tabs" role="tablist" aria-label="Contenido de verano">
-    <button class="tab-btn active" type="button" onclick="showSummerTab('nutricion',this)" role="tab" aria-selected="true">🥗 Nutrición</button>
-    <button class="tab-btn" type="button" onclick="showSummerTab('menu',this)" role="tab" aria-selected="false">🍑 Menú semanal</button>
-    <button class="tab-btn" type="button" onclick="showSummerTab('microbiota',this)" role="tab" aria-selected="false">🦠 Microbiota</button>
-    <button class="tab-btn" type="button" onclick="showSummerTab('hidratacion',this)" role="tab" aria-selected="false">💧 Hidratación</button>
-    <button class="tab-btn" type="button" onclick="showSummerTab('entrenamiento',this)" role="tab" aria-selected="false">🏋️ Movimiento</button>
-    <button class="tab-btn" type="button" onclick="showSummerTab('organizacion',this)" role="tab" aria-selected="false">🧺 Organización</button>
+  <div class="module-btns" role="tablist" aria-label="Módulos de verano">
+    <button class="mod-btn active" type="button" onclick="showSeasonModule('summer','nutri',this)" role="tab">🥣 Nutrición</button>
+    <button class="mod-btn" type="button" onclick="showSeasonModule('summer','entren',this)" role="tab">🏋️ Entrenamiento</button>
   </div>
-
-  <section id="summer-tab-nutricion" class="summer-section visible">
-    <div class="card">
-      <h3>El plato de verano</h3>
-      <p>Una estructura visual y flexible; no hace falta pesar cada ingrediente.</p>
-      <div class="metric-grid">
-        <div class="metric"><div class="metric-label">½ plato</div><div class="metric-value">Vegetales</div><div class="metric-sub">Crudos o cocidos, varios colores</div></div>
-        <div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Proteína</div><div class="metric-sub">Huevos, pescado, pollo, legumbres o tofu</div></div>
+  <div id="summer-module-nutri" class="module visible">
+    <div class="tabs" role="tablist" aria-label="Nutrición de verano">
+      <button class="tab-btn active" onclick="showSeasonTab('summer','nutri','nutricion',this)" role="tab">Nutrición</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','menu',this)" role="tab">Menú semanal</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','batch',this)" role="tab">Batch cooking</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','compras',this)" role="tab">Lista de compras</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','energia',this)" role="tab">Días difíciles</button>
+    </div>
+    <div id="summer-nutri-tab-nutricion" class="section visible">
+      <div class="card"><h3>El plato de verano</h3><p>Una guía flexible: ajustá cantidades a tu hambre, actividad y objetivos.</p><div class="metric-grid">
+        <div class="metric"><div class="metric-label">½ plato</div><div class="metric-value">Vegetales</div><div class="metric-sub">Crudos o cocidos, variados</div></div>
+        <div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Proteína</div><div class="metric-sub">Huevos, pollo, pescado, legumbres o tofu</div></div>
         <div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Energía</div><div class="metric-sub">Arroz, papa, batata, choclo, quinoa o pan</div></div>
-        <div class="metric"><div class="metric-label">Complemento</div><div class="metric-value">Grasas</div><div class="metric-sub">Oliva, palta, nueces o semillas</div></div>
-      </div>
-      <div class="teal-box"><p>Las cantidades se ajustan al hambre, actividad, objetivos y contexto. Esta guía no fija calorías ni reemplaza una evaluación nutricional individual.</p></div>
+        <div class="metric"><div class="metric-label">Complemento</div><div class="metric-value">Grasas</div><div class="metric-sub">Oliva, palta, nueces o semillas</div></div></div></div>
+      <div class="card"><h3>Elegí productos de estación</h3><p><strong>Frutas:</strong> sandía, melón, durazno, ciruela, uva, cereza, damasco, higo y frutilla.</p><p><strong>Verduras:</strong> tomate, pepino, morrón, berenjena, zapallito, chauchas, choclo, calabaza y hojas verdes.</p><p class="metric-sub">La disponibilidad varía según región y mes. Priorizá lo fresco y accesible.</p></div>
+      <div class="card"><h3>Combinaciones que resuelven</h3><div class="table-scroll"><table><tr><th>Base</th><th>Proteína</th><th>Vegetales / extra</th></tr><tr><td>Arroz o quinoa</td><td>Atún, huevo o garbanzos</td><td>Tomate, pepino y oliva</td></tr><tr><td>Papa o batata</td><td>Pollo o porotos</td><td>Hojas verdes y morrón</td></tr><tr><td>Tortilla o pan</td><td>Huevo y queso</td><td>Tomate, rúcula y palta</td></tr><tr><td>Fideos</td><td>Lentejas o pollo</td><td>Berenjena y albahaca</td></tr></table></div></div>
+      <div class="warm-box"><p><strong>Inspiración ayurvédica:</strong> en días calurosos podés elegir preparaciones frescas y livianas; si preferís comidas cocidas o tibias, también está bien. Adaptá según gusto, tolerancia y contexto.</p></div>
+    
+      <div class="card"><h3>Porciones orientativas sin balanza</h3><p>Usá la mano como referencia flexible por comida principal: una palma de proteína, un puño de arroz/papa/pasta o legumbres, dos puños de vegetales y una porción pequeña de grasas. Ajustá según hambre, tamaño corporal, actividad y objetivos; no es una regla rígida.</p><p><strong>Si entrenás:</strong> incluí una fuente de carbohidratos en la comida previa o posterior. <strong>Si hace mucho calor:</strong> elegí preparaciones que puedas conservar y transportar de forma segura.</p></div>
+      <div class="card"><h3>Ideas para rotar durante la semana</h3><ul><li><strong>Desayunos:</strong> yogur con avena y fruta; tostadas con huevo; licuado de leche o yogur, banana y avena.</li><li><strong>Almuerzos:</strong> ensalada de arroz y atún; tarta de verduras con ensalada; bowl de legumbres y vegetales.</li><li><strong>Cenas:</strong> tortilla de zapallitos; pollo con verduras al horno; pescado con papa y ensalada.</li><li><strong>Colaciones opcionales:</strong> fruta, yogur, puñado de frutos secos o tostada con queso.</li></ul></div>
+      <div class="card"><h3>Combinaciones por objetivo práctico</h3><div class="table-scroll"><table><tr><th>Necesitás...</th><th>Combinación</th></tr><tr><td>Algo fresco y completo</td><td>Garbanzos + tomate + pepino + huevo + oliva.</td></tr><tr><td>Más saciedad</td><td>Pollo + papa + ensalada abundante.</td></tr><tr><td>Una opción económica</td><td>Tortilla de acelga + arroz + tomate.</td></tr><tr><td>Una comida para llevar</td><td>Wrap de pollo o hummus con vegetales, bien refrigerado.</td></tr></table></div></div></div>
+    <div id="summer-nutri-tab-menu" class="section"><div class="card"><h3>Menú orientativo de 7 días</h3><p>Intercambiá almuerzos y cenas según horarios, apetito y disponibilidad. Colaciones opcionales.</p><div class="table-scroll"><table><tr><th>Día</th><th>Desayuno</th><th>Almuerzo</th><th>Cena</th><th>Colación</th></tr>
+      <tr><td>Lunes</td><td>Yogur, avena y durazno</td><td>Arroz, atún, tomate y pepino</td><td>Tortilla de zapallito y ensalada</td><td>Sandía y nueces</td></tr>
+      <tr><td>Martes</td><td>Tostadas, huevo y fruta</td><td>Pollo, papa y hojas verdes</td><td>Wrap de hummus y vegetales</td><td>Yogur</td></tr>
+      <tr><td>Miércoles</td><td>Avena y banana</td><td>Lentejas, tomate, morrón y huevo</td><td>Pescado, calabaza y chauchas</td><td>Ciruelas y almendras</td></tr>
+      <tr><td>Jueves</td><td>Yogur, fruta y semillas</td><td>Quinoa, garbanzos y vegetales</td><td>Omelette, ensalada y pan</td><td>Fruta</td></tr>
+      <tr><td>Viernes</td><td>Tostadas con ricota</td><td>Fideos con berenjena y pollo</td><td>Ensalada completa con huevo y choclo</td><td>Licuado</td></tr>
+      <tr><td>Sábado</td><td>Huevos, pan y fruta</td><td>Sándwich de pollo, palta y tomate</td><td>Pizza casera con vegetales</td><td>Melón o uvas</td></tr>
+      <tr><td>Domingo</td><td>Panqueques de avena</td><td>Parrilla o legumbres con ensalada</td><td>Ensalada tibia de papa, chauchas y huevo</td><td>Yogur o fruta</td></tr></table></div></div>
+      <div class="card"><h3>Preparaciones clave del menú</h3><ul><li><strong>Ensalada completa:</strong> 1 taza de arroz cocido, 1 lata chica de atún o ¾ taza de garbanzos, tomate, pepino y limón.</li><li><strong>Tortilla de zapallito:</strong> 2 zapallitos, 3 huevos, cebolla y queso opcional. Acompañá con ensalada.</li><li><strong>Wrap:</strong> tortilla, hummus, pollo desmenuzado o legumbres, zanahoria y hojas verdes.</li><li><strong>Bowl de quinoa:</strong> ¾ taza cocida, garbanzos, vegetales asados y oliva.</li></ul><p class="metric-sub">Cantidades orientativas para una porción; duplicá o triplicá según comensales.</p></div>
+      <div class="card"><h3>Cómo adaptar el menú</h3><p>Vegetariano: reemplazá pollo, pescado o atún por lentejas, garbanzos, porotos, tofu, huevo o queso. Sin tiempo: usá legumbres en conserva enjuagadas, vegetales congelados y arroz ya cocido. Presupuesto ajustado: priorizá huevos, legumbres, frutas y verduras de estación, y elegí una proteína animal para varias preparaciones.</p></div></div>
+    <div id="summer-nutri-tab-batch" class="section"><div class="card"><h3>Batch cooking de verano</h3><p>Una sesión de 90–120 minutos puede dejar bases listas para combinar, sin cocinar todo el menú por adelantado.</p><div class="table-scroll"><table><tr><th>Preparación</th><th>Cómo aprovecharla</th></tr><tr><td>Arroz, quinoa o papas</td><td>Bases para bowls, ensaladas y guarniciones.</td></tr><tr><td>Huevos duros</td><td>Sumar a ensaladas, sándwiches y wraps.</td></tr><tr><td>Pollo al horno o plancha</td><td>Desmenuzar para wraps, bowls y tartas.</td></tr><tr><td>Garbanzos o lentejas</td><td>Ensaladas completas, hummus o salteados.</td></tr><tr><td>Vegetales lavados y cortados</td><td>Tomate, pepino, zanahoria, hojas y morrón listos para usar.</td></tr><tr><td>Fruta porcionada</td><td>Desayunos, yogur y colaciones.</td></tr></table></div><p>Guardá las preparaciones refrigeradas en recipientes cerrados, enfriá pronto lo cocido y consumí dentro de plazos seguros; congelá lo que no vayas a usar.</p></div><div class="teal-box"><p>Atajo: prepará 2 proteínas, 2 bases y vegetales variados. Combiná distinto cada día.</p></div>
+      <div class="card"><h3>Sesión de preparación: 90 minutos</h3><ol><li><strong>Min 0–10:</strong> precalentá horno, lavá vegetales y poné arroz/quinoa y huevos a cocinar.</li><li><strong>Min 10–35:</strong> horneá una bandeja de calabaza, berenjena, morrón y zapallito; cociná pollo o tofu.</li><li><strong>Min 35–55:</strong> prepará garbanzos/lentejas (o abrí y enjuagá conserva), aderezo de limón y oliva.</li><li><strong>Min 55–75:</strong> porcioná bases y proteínas; lavá y secá hojas.</li><li><strong>Min 75–90:</strong> rotulá recipientes, refrigerá lo que usarás pronto y congelá porciones futuras.</li></ol></div>
+      <div class="card"><h3>Armado rápido de 4 comidas</h3><div class="table-scroll"><table><tr><th>Comida</th><th>Armado</th></tr><tr><td>Bowl mediterráneo</td><td>Arroz + garbanzos + tomate + pepino + oliva.</td></tr><tr><td>Wrap</td><td>Pollo + vegetales asados + hojas + hummus.</td></tr><tr><td>Ensalada tibia</td><td>Papa + huevo + chauchas + mostaza y limón.</td></tr><tr><td>Tarta exprés</td><td>Vegetales asados + huevo/ricota en masa comprada.</td></tr></table></div><p><strong>Seguridad:</strong> no dejes preparaciones cocidas a temperatura ambiente por períodos prolongados. Enfriá y refrigerá pronto; llevá viandas con conservadora cuando haga falta.</p></div></div>
+    <div id="summer-nutri-tab-compras" class="section"><div class="card"><h3>Lista base para una semana</h3><p>Ajustá cantidades a cuántas personas comen y a lo que ya tenés en casa.</p><div class="table-scroll"><table><tr><th>Grupo</th><th>Opciones</th></tr><tr><td>Frutas</td><td>Sandía o melón, duraznos, bananas, cítricos y fruta a elección</td></tr><tr><td>Verduras</td><td>Tomate, pepino, morrón, zapallito, berenjena, hojas verdes, zanahoria y choclo</td></tr><tr><td>Proteínas</td><td>Huevos, pollo, atún, pescado, yogur, queso y legumbres</td></tr><tr><td>Almacén</td><td>Arroz, quinoa o fideos, avena, pan o tortillas, garbanzos y lentejas</td></tr><tr><td>Extras</td><td>Aceite de oliva, palta, nueces, semillas, limón y condimentos</td></tr></table></div></div>
+      <div class="card"><h3>Lista editable por prioridad</h3><ul><li><strong>Base semanal:</strong> huevos, arroz o papa, avena, legumbres, pollo o atún, yogur.</li><li><strong>Vegetales:</strong> elegí 4–6 según precio: tomate, pepino, zanahoria, zapallito, berenjena, hojas verdes, morrón.</li><li><strong>Frutas:</strong> elegí 3 variedades de estación y una opción rendidora como banana o manzana.</li><li><strong>Complementos:</strong> aceite, limón, queso, frutos secos o semillas si entran en el presupuesto.</li></ul><p>Antes de comprar, revisá heladera, freezer y alacena. Comprá primero lo que falta para completar comidas, no ingredientes sueltos que después no combinan.</p></div></div>
+    <div id="summer-nutri-tab-energia" class="section"><div class="card"><h3>Comidas para días difíciles</h3><p>Cuando no hay tiempo, ganas o energía: resolver primero, perfeccionar nunca.</p><div class="table-scroll"><table><tr><th>Si tenés...</th><th>Resolvé con...</th></tr><tr><td>5 minutos</td><td>Yogur + fruta + avena o tostadas + queso + tomate.</td></tr><tr><td>10 minutos</td><td>Huevos revueltos + pan + vegetales; o ensalada de garbanzos de lata, tomate y atún.</td></tr><tr><td>Algo congelado</td><td>Verduras + legumbres o pollo ya cocido, salteados con arroz.</td></tr><tr><td>Cero ganas de cocinar</td><td>Sándwich completo, wrap o rotisería: sumá una proteína y algún vegetal si está disponible.</td></tr></table></div></div><div class="warm-box"><p>Una comida simple también cuenta. No hace falta compensar ni “empezar de nuevo” mañana.</p></div></div>
+  </div>
+  <div id="summer-module-entren" class="module">
+    <div class="tabs" role="tablist" aria-label="Entrenamiento de verano">
+      <button class="tab-btn active" onclick="showSeasonTab('summer','entren','semana',this)" role="tab">Semana tipo</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','entren','doce',this)" role="tab">12 semanas</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','entren','rutinas',this)" role="tab">Rutinas detalladas</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','entren','energia',this)" role="tab">Por nivel de energía</button>
+    
+      <div class="card"><h3>Kit de emergencia para tener a mano</h3><p>En alacena: legumbres en conserva, atún, arroz, fideos, tomate triturado y frutos secos. En freezer: verduras, pan, porciones de pollo cocido y frutas para licuados. En heladera: huevos, yogur, queso y vegetales resistentes.</p><p><strong>Regla de rescate:</strong> elegí una proteína + una base + algo vegetal. No hace falta que sea una receta ni que quede digno de Instagram.</p></div></div>
+    <div id="summer-entren-tab-semana" class="section visible"><div class="card"><h3>Semana tipo</h3><p>Una distribución orientativa. Dejá al menos un día de recuperación y ajustá volumen a tu experiencia.</p><div class="table-scroll"><table><tr><th>Día</th><th>Sesión</th><th>Duración</th></tr><tr><td>Lunes</td><td>Fuerza A — tren inferior y core</td><td>30–40 min</td></tr><tr><td>Martes</td><td>Caminata, bici suave o movilidad</td><td>25–40 min</td></tr><tr><td>Miércoles</td><td>Fuerza B — tren superior y core</td><td>30–40 min</td></tr><tr><td>Jueves</td><td>Descanso o movilidad suave</td><td>10–20 min</td></tr><tr><td>Viernes</td><td>Fuerza C — cuerpo completo</td><td>25–35 min</td></tr><tr><td>Sábado</td><td>Bicicleta o actividad recreativa</td><td>Según comodidad</td></tr><tr><td>Domingo</td><td>Descanso</td><td>—</td></tr></table></div><div class="warm-box"><p>En días de mucho calor, entrená en horarios más frescos, bajá intensidad y elegí un lugar ventilado. Frená si aparece mareo, debilidad o malestar.</p></div></div>
+      <div class="card"><h3>Cómo distribuir el esfuerzo</h3><p>Las sesiones de fuerza deben dejarte con sensación de trabajo, no de agotamiento total. En caminatas y bicicleta, mantené un ritmo que permita hablar en frases. Si recién empezás, hacé dos sesiones de fuerza y dos aeróbicas; sumá frecuencia gradualmente.</p><p><strong>Calor:</strong> evitá las horas centrales, buscá sombra o interior ventilado y reducí duración/intensidad en días extremos. Interrumpí ante mareo, náuseas, debilidad o confusión.</p></div></div>
+    <div id="summer-entren-tab-doce" class="section"><div class="card"><h3>Progresión de 12 semanas</h3><div class="table-scroll"><table><tr><th>Etapa</th><th>Semanas</th><th>Enfoque</th><th>Progresión</th></tr><tr><td>Base</td><td>1–4</td><td>Aprender técnica y crear regularidad</td><td>2 series por ejercicio; esfuerzo cómodo. Semanas 1–2 priorizá técnica, 3–4 sumá repeticiones si mantenés buena forma.</td></tr><tr><td>Construcción</td><td>5–8</td><td>Desarrollar fuerza y resistencia</td><td>Pasá a 3 series cuando puedas completar el rango con control. Aumentá una variable por vez.</td></tr><tr><td>Consolidación</td><td>9–12</td><td>Afianzar y evaluar</td><td>Mantené 3 series o subí levemente la resistencia. Semana 12 revisá técnica, constancia y cómo te sentís.</td></tr></table></div><p>Dejá 1–3 repeticiones “en reserva” en la mayoría de las series. Si una semana se complica, repetí la etapa: no hay que recuperar sesiones perdidas.</p></div>
+      <div class="card"><h3>Guía de avance semana a semana</h3><div class="table-scroll"><table><tr><th>Semanas</th><th>Qué hacer</th><th>Señal para avanzar</th></tr><tr><td>1–2</td><td>2 sesiones, 2 series, aprender movimientos.</td><td>Terminás con técnica estable y sin dolor inusual.</td></tr><tr><td>3–4</td><td>2–3 sesiones, sumar repeticiones dentro del rango.</td><td>Completás el máximo de reps con control.</td></tr><tr><td>5–6</td><td>3 sesiones, 2 series; aumentar un poco la resistencia si corresponde.</td><td>La carga se siente desafiante pero manejable.</td></tr><tr><td>7–8</td><td>3 series en ejercicios principales si recuperás bien.</td><td>Mantenés técnica en todas las series.</td></tr><tr><td>9–10</td><td>Consolidar cargas y regularidad; no subir todo a la vez.</td><td>Podés repetir rendimiento sin compensaciones.</td></tr><tr><td>11–12</td><td>Mantener, evaluar y elegir próximo objetivo.</td><td>Comparás reps, resistencia, energía y adherencia.</td></tr></table></div><p>Dejá al menos un día entre sesiones exigentes de fuerza. Si aparece dolor agudo, mareo o malestar, detené el ejercicio y buscá orientación apropiada.</p></div></div>
+    <div id="summer-entren-tab-rutinas" class="section"><div class="card"><h3>Rutina A — Tren inferior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Clave técnica</th></tr><tr><td>Sentadilla a silla</td><td>2–3 × 8–12</td><td>Rodillas acompañan la dirección de los pies; controlá la bajada.</td></tr><tr><td>Puente de glúteos</td><td>2–3 × 10–15</td><td>Subí la cadera sin arquear la espalda.</td></tr><tr><td>Peso muerto rumano con mochila</td><td>2–3 × 8–12</td><td>Llevá la cadera atrás y mantené espalda neutra.</td></tr><tr><td>Estocada asistida</td><td>2 × 8 por lado</td><td>Usá una pared o silla para equilibrio.</td></tr><tr><td>Dead bug</td><td>2 × 8 por lado</td><td>Mové lento, sin despegar la zona lumbar.</td></tr></table></div></div><div class="card"><h3>Rutina B — Tren superior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Clave técnica</th></tr><tr><td>Flexiones contra pared o apoyo</td><td>2–3 × 8–12</td><td>Cuerpo alineado; elegí una inclinación controlable.</td></tr><tr><td>Remo con mochila o botella</td><td>2–3 × 10–12</td><td>Llevá codos hacia atrás sin girar el torso.</td></tr><tr><td>Press de hombros liviano</td><td>2 × 8–12</td><td>Evitá arquear la espalda.</td></tr><tr><td>Curl de bíceps</td><td>2 × 10–12</td><td>Codos cerca del cuerpo.</td></tr><tr><td>Bird dog</td><td>2 × 8 por lado</td><td>Extendé brazo y pierna opuestos sin rotar.</td></tr></table></div></div><div class="card"><h3>Rutina C — Cuerpo completo</h3><p>2–3 rondas, descansando lo necesario entre ejercicios.</p><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Repeticiones</th></tr><tr><td>Sentadilla a silla</td><td>10–12</td></tr><tr><td>Remo con mochila</td><td>10–12</td></tr><tr><td>Puente de glúteos</td><td>12–15</td></tr><tr><td>Flexiones inclinadas</td><td>8–10</td></tr><tr><td>Plancha elevada</td><td>15–30 segundos</td></tr></table></div></div>
+      <div class="card"><h3>Entrada en calor y vuelta a la calma</h3><p><strong>Antes (5–7 min):</strong> marcha en el lugar, círculos de hombros, movilidad de cadera, sentadillas cortas sin carga y 1 serie suave del primer ejercicio.</p><p><strong>Después (4–6 min):</strong> caminata lenta, movilidad suave de cadera/pecho y respiración tranquila. No fuerces estiramientos.</p></div>
+      <div class="card"><h3>Cómo elegir la carga</h3><p>Empezá con peso corporal o mochila liviana. La última repetición debe costar, pero poder hacerse sin perder postura. Descansá 60–120 segundos entre series; más si lo necesitás. Cuando completes el máximo de repeticiones en todas las series con buena técnica durante dos sesiones, aumentá apenas la carga o la dificultad.</p></div></div>
+    <div id="summer-entren-tab-energia" class="section"><div class="energy-btns"><button class="e-btn active" onclick="showSeasonEnergy('summer','alta',this)">Energía alta</button><button class="e-btn" onclick="showSeasonEnergy('summer','media',this)">Energía media</button><button class="e-btn" onclick="showSeasonEnergy('summer','baja',this)">Energía baja</button></div>
+      <div id="summer-energy-alta" class="e-section visible"><div class="card"><h3>Energía alta</h3><p>Hacé la sesión prevista con todas las series, manteniendo técnica y descansos. No conviertas cada día bueno en una prueba máxima.</p></div></div>
+      <div id="summer-energy-media" class="e-section"><div class="card"><h3>Energía media</h3><p>Reducí a 2 series por ejercicio o hacé los primeros 3 ejercicios de la rutina. En cardio, elegí un ritmo conversacional y acortá la duración.</p></div></div>
+      <div id="summer-energy-baja" class="e-section"><div class="card"><h3>Energía baja</h3><p>Elegí 5–10 minutos de movilidad o una caminata suave. Si necesitás descansar, descansá. La continuidad se construye también respetando la recuperación.</p></div></div>
     </div>
-    <div class="card">
-      <h3>La temporada en el mercado</h3>
-      <p><strong>Frutas:</strong> sandía, melón, durazno, ciruela, uva, cereza, damasco, higo, ananá y frutilla.</p>
-      <p><strong>Verduras:</strong> tomate, pepino, morrón, berenjena, zapallito, chauchas, choclo, calabaza, lechuga y hojas verdes.</p>
-      <p><strong>Todo el año:</strong> banana, manzana, naranja, zanahoria, acelga y espinaca.</p>
-      <p class="metric-sub">La disponibilidad y el precio varían según región y mes. Elegí lo que esté fresco y accesible.</p>
-    </div>
-    <div class="card">
-      <h3>Combinaciones que resuelven comidas</h3>
-      <div class="table-scroll"><table>
-        <tr><th>Base</th><th>Proteína</th><th>Vegetales y extras</th></tr>
-        <tr><td>Arroz o quinoa</td><td>Atún, huevo o garbanzos</td><td>Tomate, pepino, perejil y oliva</td></tr>
-        <tr><td>Papa o batata</td><td>Pollo o porotos</td><td>Hojas verdes, morrón y limón</td></tr>
-        <tr><td>Tortilla o pan integral</td><td>Huevo y queso</td><td>Tomate, rúcula y palta</td></tr>
-        <tr><td>Fideos</td><td>Lentejas o pollo</td><td>Berenjena, zucchini y albahaca</td></tr>
-        <tr><td>Yogur natural</td><td>Yogur o queso cottage</td><td>Fruta, avena y nueces</td></tr>
-      </table></div>
-    </div>
-    <div class="warm-box"><p><strong>En clave ayurvédica:</strong> podés priorizar comidas frescas, jugosas y de sabores suaves cuando el calor aprieta. Si te sientan mejor las comidas tibias o cocidas, mantenelas: no existe obligación de comer ensaladas ni de evitar alimentos por su temperatura. Ayurveda es un marco tradicional, no un diagnóstico médico.</p></div>
-  </section>
-
-  <section id="summer-tab-menu" class="summer-section">
-    <div class="card">
-      <h3>Menú orientativo de 7 días</h3>
-      <p>Combinaciones simples para inspirar. Intercambiá almuerzos y cenas según horarios, apetito y disponibilidad.</p>
-      <div class="table-scroll"><table>
-        <tr><th>Día</th><th>Desayuno</th><th>Almuerzo</th><th>Cena</th><th>Colación opcional</th></tr>
-        <tr><td>Lunes</td><td>Yogur, avena y durazno</td><td>Arroz, atún, tomate y pepino</td><td>Tortilla de zapallito con ensalada</td><td>Sandía y nueces</td></tr>
-        <tr><td>Martes</td><td>Tostadas, huevo y fruta</td><td>Pollo, papa y hojas verdes</td><td>Wrap de hummus y vegetales</td><td>Yogur natural</td></tr>
-        <tr><td>Miércoles</td><td>Avena con banana</td><td>Lentejas, tomate, morrón y huevo</td><td>Pescado con calabaza y chauchas</td><td>Ciruelas y almendras</td></tr>
-        <tr><td>Jueves</td><td>Yogur, fruta y semillas</td><td>Quinoa, garbanzos y vegetales</td><td>Omelette, ensalada y pan</td><td>Fruta de estación</td></tr>
-        <tr><td>Viernes</td><td>Tostadas con ricota y fruta</td><td>Fideos con berenjena y pollo</td><td>Ensalada completa con huevo y choclo</td><td>Licuado de fruta y leche</td></tr>
-        <tr><td>Sábado</td><td>Huevos, pan y fruta</td><td>Sándwich de pollo, palta y tomate</td><td>Pizza casera con vegetales</td><td>Melón o uvas</td></tr>
-        <tr><td>Domingo</td><td>Panqueques de avena y fruta</td><td>Parrilla o legumbres con ensaladas</td><td>Ensalada tibia de papa, chauchas y huevo</td><td>Yogur o fruta</td></tr>
-      </table></div>
-      <p class="metric-sub">Las colaciones son opcionales. Sumalas si hay hambre, muchas horas entre comidas o actividad física; no son una obligación.</p>
-    </div>
-    <div class="card"><h3>Fórmula para armar una comida</h3><p>Elegí 1 proteína + 1 fuente de carbohidratos + 2 vegetales o frutas + una grasa de calidad. Ejemplo: pollo + papa + tomate y rúcula + aceite de oliva.</p></div>
-  </section>
-
-  <section id="summer-tab-microbiota" class="summer-section">
-    <div class="card">
-      <h3>Alimentar la diversidad intestinal</h3>
-      <p>La microbiota responde a la variedad habitual de alimentos, especialmente a las fibras de distintos vegetales. La constancia importa más que buscar un alimento milagroso.</p>
-      <div class="table-scroll"><table>
-        <tr><th>Grupo</th><th>Opciones</th><th>Idea práctica</th></tr>
-        <tr><td>Fibras y prebióticos</td><td>Avena, legumbres, cebolla, ajo, banana, espárragos</td><td>Avena o legumbres varias veces por semana</td></tr>
-        <tr><td>Polifenoles</td><td>Uvas, frutos rojos, ciruelas, cacao amargo, oliva</td><td>Rotar frutas de distintos colores</td></tr>
-        <tr><td>Fermentados</td><td>Yogur natural, kéfir, vegetales fermentados seguros</td><td>Probar porciones pequeñas si se toleran</td></tr>
-        <tr><td>Almidón resistente</td><td>Porotos, lentejas, papa o arroz cocidos y enfriados</td><td>Enfriar en heladera y conservar de forma segura</td></tr>
-      </table></div>
-    </div>
-    <div class="teal-box"><p><strong>Progresión amable:</strong> aumentá la fibra gradualmente y acompañala con líquidos. Si aparecen molestias persistentes, dolor o cambios intestinales importantes, consultá. Los fermentados no son imprescindibles y pueden no sentar bien a todo el mundo.</p></div>
-    <div class="card"><h3>Desafío de variedad</h3><p>Durante la semana, rotá vegetales, frutas, legumbres, cereales integrales, frutos secos y semillas. No hace falta contar especies ni perseguir un número perfecto: buscá variedad realista.</p></div>
-  </section>
-
-  <section id="summer-tab-hidratacion" class="summer-section">
-    <div class="card">
-      <h3>Hidratación inteligente</h3>
-      <p>La necesidad de líquidos cambia con la temperatura, el tamaño corporal, la alimentación, la actividad y la sudoración. No hay una cifra única para todas las personas.</p>
-      <ul>
-        <li>Tené agua accesible y tomá regularmente; no esperes a tener mucha sed.</li>
-        <li>Aumentá la atención en días de calor, al aire libre y durante el ejercicio.</li>
-        <li>Frutas, verduras, leche y otras comidas también aportan agua.</li>
-        <li>En actividad prolongada con mucho sudor, consultá si necesitás reponer electrolitos; no uses suplementos por rutina.</li>
-        <li>Limitá el alcohol y no uses bebidas energéticas como estrategia de hidratación.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Señales para bajar el ritmo</h3>
-      <p>Debilidad, mareo, dolor de cabeza, náuseas, calambres o sensación de desmayo durante el calor requieren detener la actividad, ir a un lugar fresco y empezar a enfriarse. Confusión, desmayo o deterioro importante son señales de urgencia médica.</p>
-      <div class="coral-box"><p>No intentes terminar la rutina si aparecen síntomas de golpe de calor. La sesión se cancela; el cuerpo no negocia con el calendario.</p></div>
-    </div>
-  </section>
-
-  <section id="summer-tab-entrenamiento" class="summer-section">
-    <div class="card">
-      <h3>Movimiento en verano</h3>
-      <p>El objetivo es sostener fuerza, capacidad aeróbica, movilidad y recuperación, ajustando la sesión al clima y al estado del día.</p>
-      <div class="table-scroll"><table>
-        <tr><th>Día</th><th>Propuesta</th><th>Adaptación al calor</th></tr>
-        <tr><td>Lunes</td><td>Fuerza cuerpo completo, 30–40 min</td><td>Interior ventilado o primera hora</td></tr>
-        <tr><td>Martes</td><td>Caminata o bicicleta suave, 25–40 min</td><td>Ritmo conversacional, sombra</td></tr>
-        <tr><td>Miércoles</td><td>Fuerza, 30–40 min</td><td>Pausas más largas y agua disponible</td></tr>
-        <tr><td>Jueves</td><td>Movilidad, yoga o descanso activo, 15–25 min</td><td>Sesión suave</td></tr>
-        <tr><td>Viernes</td><td>Fuerza o circuito moderado, 25–35 min</td><td>Reducir volumen si hace mucho calor</td></tr>
-        <tr><td>Sábado</td><td>Bicicleta o actividad recreativa</td><td>Salir temprano o al atardecer</td></tr>
-        <tr><td>Domingo</td><td>Descanso y paseo opcional</td><td>Priorizar recuperación</td></tr>
-      </table></div>
-      <p class="metric-sub">Plantilla general, no prescripción individual. Ajustá volumen e intensidad a tu nivel actual, experiencia, salud y recuperación.</p>
-    </div>
-    <div class="card">
-      <h3>Reglas para entrenar con calor</h3>
-      <ul>
-        <li>Elegí las horas más frescas y evitá el esfuerzo intenso en las horas de mayor radiación.</li>
-        <li>Empezá más suave y aumentá el ritmo gradualmente.</li>
-        <li>Usá ropa liviana, protector solar y buscá sombra.</li>
-        <li>Acortá o suspendé la sesión ante calor extremo, malestar o síntomas inusuales.</li>
-        <li>Dejá que la recuperación también forme parte del entrenamiento.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="summer-tab-organizacion" class="summer-section">
-    <div class="card">
-      <h3>Preparación simple para 3–4 días</h3>
-      <ul>
-        <li>Cocinar una base de arroz, quinoa o papas.</li>
-        <li>Preparar huevos duros y una proteína principal.</li>
-        <li>Enjuagar y cocinar una tanda de lentejas o garbanzos.</li>
-        <li>Lavar y secar hojas; cortar vegetales para usar pronto.</li>
-        <li>Dejar fruta lavada y visible; congelar porciones maduras para licuados.</li>
-        <li>Preparar un aderezo simple de oliva, limón y hierbas.</li>
-      </ul>
-      <div class="warm-box"><p>Seguridad alimentaria en verano: enfriá pronto las preparaciones, guardalas tapadas en heladera y no dejes alimentos perecederos varias horas a temperatura ambiente. Transportá viandas con frío.</p></div>
-    </div>
-    <div class="card">
-      <h3>Lista de compras base</h3>
-      <div class="table-scroll"><table>
-        <tr><th>Grupo</th><th>Opciones</th></tr>
-        <tr><td>Proteínas</td><td>Huevos, pollo, pescado, atún, yogur natural, queso, lentejas, garbanzos</td></tr>
-        <tr><td>Carbohidratos</td><td>Avena, arroz, quinoa, papa, batata, choclo, pan integral</td></tr>
-        <tr><td>Vegetales</td><td>Tomate, pepino, morrón, berenjena, zapallito, chauchas, hojas verdes</td></tr>
-        <tr><td>Frutas</td><td>Sandía, melón, durazno, ciruela, uva, banana</td></tr>
-        <tr><td>Grasas y extras</td><td>Aceite de oliva, palta, nueces, semillas, limón, hierbas</td></tr>
-      </table></div>
-    </div>
-  </section>
-  <div class="card" style="margin-top:1rem">
-    <h3>Referencias</h3>
-    <p><a href="https://www.argentina.gob.ar/alimentarsaberes/alimentacionsaludable/frutasyverduras" target="_blank" rel="noopener">Argentina.gob.ar · Frutas y verduras de estación</a></p>
-    <p><a href="https://www.argentina.gob.ar/salud/alimentacion-saludable/grafico" target="_blank" rel="noopener">Guías Alimentarias para la Población Argentina</a></p>
-    <p><a href="https://www.cdc.gov/heat-health/risk-factors/heat-and-athletes.html" target="_blank" rel="noopener">CDC · Actividad física y calor</a></p>
   </div>
 </div>
 
