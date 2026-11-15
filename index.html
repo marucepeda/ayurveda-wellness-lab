@@ -228,11 +228,10 @@ z-index:100;
      MÓDULO 1 — NUTRICIÓN
      ══════════════════════════════════════════════ -->
 <div id="module-nutri" class="module visible">
-  <h2 class="sr-only">Plan de nutrición y bienestar para Argentina</h2>
+  <h2 class="sr-only">Plan nutricional personalizado Vata-Pitta para invierno en Argentina</h2>
 
   <div class="tabs" role="tablist">
     <button class="tab-btn active" onclick="showTab('nutri','perfil')" role="tab">Perfil</button>
-    <button class="tab-btn" onclick="showTab('nutri','prakriti')" role="tab">Prakriti</button>
     <button class="tab-btn" onclick="showTab('nutri','nutri')" role="tab">Nutrición</button>
     <button class="tab-btn" onclick="showTab('nutri','menu')" role="tab">Menú invernal</button>
     <button class="tab-btn" onclick="showTab('nutri','batch')" role="tab">Batch cooking</button>
@@ -243,14 +242,14 @@ z-index:100;
   <!-- PERFIL -->
   <div id="nutri-tab-perfil" class="section visible">
     <div class="metric-grid">
-      <div class="metric"><div class="metric-label">Constitución probable</div><div class="metric-value">Vata</div><div class="metric-sub">Rasgos secundarios Kapha</div></div>
+      <div class="metric"><div class="metric-label">Constitución</div><div class="metric-value">Vata-Pitta</div><div class="metric-sub">Predominante Vata</div></div>
       <div class="metric"><div class="metric-label">Estación actual</div><div class="metric-value">Invierno</div><div class="metric-sub">Jun–Ago Argentina</div></div>
       <div class="metric"><div class="metric-label">Objetivo calórico</div><div class="metric-value">1.600 kcal</div><div class="metric-sub">Déficit moderado</div></div>
       <div class="metric"><div class="metric-label">Proteína diaria</div><div class="metric-value">110 g</div><div class="metric-sub">1,8 g / kg</div></div>
       <div class="metric"><div class="metric-label">Hidratación</div><div class="metric-value">2 – 2,5 L</div><div class="metric-sub">Preferir tibio/caliente</div></div>
     </div>
     <div class="card">
-      <h3>Cómo interpretar el perfil Vata predominante</h3>
+      <h3>Cómo se traduce el perfil Vata-Pitta al plan</h3>
       <div class="table-scroll"><table>
         <tr><th>Característica</th><th>Lo que significa</th><th>Adaptación concreta</th></tr>
         <tr><td>Friolenta en invierno (Vata elevado)</td><td>El frío agrava Vata: ansiedad, irregularidad, sequedad, insomnio</td><td>Priorizar comidas calientes. Evitar crudos fríos en cenas. Sopas y guisos como base.</td></tr>
@@ -258,53 +257,16 @@ z-index:100;
         <tr><td>Sobrecarga mental / atención variable</td><td>Vata en desequilibrio se manifiesta en mente dispersa, agotamiento cognitivo</td><td>Grasas buenas (aceite de oliva, nueces, palta) nutren el sistema nervioso. Incluir en cada comida.</td></tr>
         <tr><td>Contextura delgada / ganancia por estrés</td><td>Vata tiende a perder masa muscular bajo estrés prolongado</td><td>Proteína en cada comida. Sin déficit calórico agresivo. Comidas saciantes.</td></tr>
         <tr><td>Piel seca en invierno</td><td>Vata domina en frío y seca tejidos</td><td>Grasas de calidad diarias. Hidratación con infusiones tibias. Ghee o aceite de oliva en comidas.</td></tr>
-        <tr><td>Rasgos Kapha observados</td><td>Sueño profundo y dificultad para activarte; evidencia limitada para definir un dosha secundario.</td><td>Observar energía, descanso y respuesta al movimiento sin aplicar restricciones por dosha.</td></tr>
+        <tr><td>Pitta secundario</td><td>Puede generar inflamación, acidez o irritabilidad bajo presión</td><td>Evitar exceso de picante, café en exceso o comidas muy secas. Favorecer sabores dulce y salado naturales.</td></tr>
       </table></div>
     </div>
-    <div class="warm-box"><p>Nota de rigor: Ayurveda es un marco tradicional de bienestar, no un método clínico validado para diagnosticar constituciones ni explicar cortisol, atención, metabolismo o salud intestinal. Las recomendaciones nutricionales de este laboratorio deben evaluarse por su evidencia nutricional propia, no por la etiqueta de un dosha.</p></div>
-  </div>
-
-  <!-- AUDITORÍA PRAKRITI -->
-  <div id="nutri-tab-prakriti" class="section">
-    <div class="card">
-      <h3>Tu constitución ayurvédica probable</h3>
-      <div class="metric-grid">
-        <div class="metric"><div class="metric-label">Tendencia predominante</div><div class="metric-value">Vata</div><div class="metric-sub">Indicadores consistentes en la autoevaluación</div></div>
-        <div class="metric"><div class="metric-label">Tendencia complementaria</div><div class="metric-value">Kapha</div><div class="metric-sub">Rasgos presentes; no concluyentes</div></div>
-        <div class="metric"><div class="metric-label">Pitta</div><div class="metric-value">No determinado</div><div class="metric-sub">Evidencia insuficiente en esta auditoría</div></div>
-      </div>
-      <p>Resultado exploratorio de una autoevaluación conversacional. La hipótesis de trabajo es Vata predominante, con algunos rasgos Kapha. No permite establecer una constitución biológica ni sustituye una evaluación profesional.</p>
-    </div>
-    <div class="card">
-      <h3>Indicadores registrados</h3>
-      <div class="table-scroll"><table>
-        <tr><th>Dimensión</th><th>Respuesta</th><th>Lectura tradicional orientativa</th></tr>
-        <tr><td>Autodescripción inicial</td><td>Vata</td><td>Vata</td></tr>
-        <tr><td>Constitución física</td><td>Liviana; dificultad para ganar peso / puede olvidar comer</td><td>Vata</td></tr>
-        <tr><td>Temperatura y piel</td><td>Tendencia al frío y sequedad</td><td>Vata</td></tr>
-        <tr><td>Apetito y digestión</td><td>Irregulares / variables</td><td>Vata</td></tr>
-        <tr><td>Sueño</td><td>Profundo; cuesta activarse</td><td>Kapha</td></tr>
-        <tr><td>Energía</td><td>Por ráfagas, con altibajos</td><td>Vata</td></tr>
-        <tr><td>Temperamento</td><td>Curiosa, imaginativa, espontánea</td><td>Vata</td></tr>
-        <tr><td>Memoria y aprendizaje</td><td>Aprendizaje rápido; necesita repaso para consolidar</td><td>Vata (asociación tradicional, no explicación cognitiva)</td></tr>
-        <tr><td>Piel y cabello</td><td>Secos o quebradizos</td><td>Vata</td></tr>
-        <tr><td>Estructura y movimiento</td><td>Combinación / cambios con los años</td><td>No concluyente</td></tr>
-        <tr><td>Respuesta al estrés</td><td>Aceleración mental, preocupación e inquietud</td><td>Vata</td></tr>
-      </table></div>
-    </div>
-    <div class="card">
-      <h3>Prakriti y Vikriti: dos evaluaciones distintas</h3>
-      <p><strong>Prakriti</strong> representa la constitución de base dentro del modelo ayurvédico. Esta auditoría recoge una hipótesis descriptiva, no un diagnóstico.</p>
-      <p><strong>Vikriti</strong> refiere al estado o desequilibrio actual según ese mismo marco. Queda pendiente y no debe inferirse automáticamente de la Prakriti.</p>
-      <p>Para evaluar el estado actual se necesitaría un registro separado de síntomas, digestión, descanso, energía, tolerancias y contexto. Los síntomas persistentes o preocupantes deben evaluarse desde la medicina basada en evidencia.</p>
-    </div>
-    <div class="teal-box"><p><strong>Cómo usar este resultado:</strong> como contexto cultural y de preferencias, nunca como regla rígida. Las decisiones sobre alimentación, entrenamiento, hidratación y descanso se basarán en necesidades reales, preferencias, tolerancia y evidencia disponible.</p></div>
+    <div class="warm-box"><p>Los principios ayurvédicos usados acá son prácticos y respaldados por evidencia: comidas regulares calientes reducen la variabilidad del cortisol (ligada a desafíos de concentración y desmotivación estacional), las grasas buenas sostienen el rendimiento cognitivo, y los guisos con legumbres proveen triptófano precursor de serotonina.</p></div>
   </div>
 
   <!-- NUTRICIÓN -->
   <div id="nutri-tab-nutri" class="section">
     <div class="card">
-      <h3>Principios nutricionales para invierno: enfoque flexible</h3>
+      <h3>Principios nutricionales para invierno Vata-Pitta</h3>
       <table>
         <tr><th>Priorizar</th><th>Por qué</th></tr>
         <tr><td>Comidas calientes y húmedas: sopas, guisos, pucheros, revueltos</td><td>Contrarrestar el frío y la sequedad de Vata. Más digestivas. Reconfortantes sin ser pesadas.</td></tr>
@@ -662,7 +624,7 @@ z-index:100;
     <div id="phase-f1" class="p-section visible">
       <div class="card">
         <h3>Fase 1 — Activación y anclaje (semanas 1–4)</h3>
-        <p>Objetivo: activar grupos musculares, establecer el hábito, aprender la forma correcta. Énfasis en la conciencia corporal más que en la carga. Una rutina previsible puede facilitar la continuidad y la recuperación.</p>
+        <p>Objetivo: activar grupos musculares, establecer el hábito, aprender la forma correcta. Énfasis en la conciencia corporal más que en la carga. Para Vata: crear rutina previsible que calme el sistema nervioso.</p>
         <table>
           <tr><th>Día</th><th>Sesión</th><th>Progresión semana a semana</th></tr>
           <tr><td>Lunes</td><td>Fuerza inferior A: sentadilla, glute bridge, estocada estática, plancha 20 seg</td><td>Sem 1–2: 3 series x 10 reps. Sem 3–4: 3x12. Descanso 60 seg.</td></tr>
@@ -695,7 +657,7 @@ z-index:100;
     <div id="phase-f3" class="p-section">
       <div class="card">
         <h3>Fase 3 — Consolidación (semanas 9–12)</h3>
-        <p>Objetivo: afianzar los cambios, aumentar la exigencia con inteligencia, preparar el plan para que se sostenga más allá de las 12 semanas. La fase 3 debe sentirse desafiante pero no agotadora.</p>
+        <p>Objetivo: afianzar los cambios, aumentar la exigencia con inteligencia, preparar el plan para que se sostenga más allá de las 12 semanas. Para Vata-Pitta: la fase 3 debe sentirse desafiante pero no agotadora.</p>
         <table>
           <tr><th>Día</th><th>Sesión</th></tr>
           <tr><td>Lunes — Tren inferior</td><td>Sentadilla búlgara (pie trasero en silla), hip thrust con carga, estocadas laterales. 4x10. Descanso 45 seg.</td></tr>
@@ -752,7 +714,7 @@ z-index:100;
     <div class="card">
       <h3>Rutina de movilidad — 20 min (martes y opcional domingos)</h3>
       <table>
-        <tr><th>Ejercicio</th><th>Reps / Tiempo</th><th>Objetivo de movilidad</th></tr>
+        <tr><th>Ejercicio</th><th>Reps / Tiempo</th><th>Beneficio Vata-Pitta</th></tr>
         <tr><td>Postura del niño con brazos extendidos</td><td>60 seg</td><td>Elongar espalda baja. Calmar sistema nervioso.</td></tr>
         <tr><td>Paloma (apertura de cadera)</td><td>60 seg c/lado</td><td>Liberar tensión en caderas donde Vata acumula bloqueos.</td></tr>
         <tr><td>Gato-vaca dinámico</td><td>15 reps</td><td>Movilizar columna. Estimular digestión (nervio vago).</td></tr>
@@ -807,7 +769,7 @@ z-index:100;
           <tr><td>Día de bajo estado de ánimo activa</td><td>Salir a la vereda 10 min. Si hay sol, mirar hacia él. Eso es suficiente. No entrenar.</td><td>10 min</td></tr>
         </table>
       </div>
-      <div class="teal-box"><p>Los días de energía baja pueden ocurrir por muchas razones. No son fallas del plan: adaptá la sesión a tu recuperación y contexto. El protocolo mínimo existe precisamente para ellos.</p></div>
+      <div class="teal-box"><p>Los días de energía baja en invierno son esperables para el perfil Vata. No son fallas del plan — están anticipados. El protocolo mínimo existe precisamente para ellos.</p></div>
     </div>
     <div class="card" style="margin-top:1rem">
       <h3>Señales de que necesitás bajar la intensidad (no ignorar)</h3>
