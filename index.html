@@ -244,777 +244,86 @@ z-index:100;
   <button class="season-btn" id="season-winter-btn" type="button" aria-pressed="false" onclick="setSeason('winter')">🍂 Invierno</button>
 </div>
 
+
 <div id="season-summer" class="season-panel visible" aria-live="polite">
-  <div class="season-intro">
-    <h2>☀️ Verano argentino</h2>
-    <p>Frescura, variedad y alimentos de estación. Una propuesta flexible para sostener energía, fuerza, digestión y recuperación durante los meses de calor.</p>
+  <div class="season-intro"><h2>☀️ Verano argentino</h2><p>Comidas frescas, movimiento adaptable y organización simple para los meses de calor.</p></div>
+  <div class="module-btns" role="tablist" aria-label="Módulos de verano">
+    <button class="mod-btn active" type="button" onclick="showSeasonModule('summer','nutri',this)" role="tab">🥣 Nutrición</button>
+    <button class="mod-btn" type="button" onclick="showSeasonModule('summer','entren',this)" role="tab">🏋️ Entrenamiento</button>
   </div>
-  <div class="summer-tabs" role="tablist" aria-label="Contenido de verano">
-    <button class="tab-btn active" type="button" onclick="showSummerTab('nutricion',this)" role="tab" aria-selected="true">🥗 Nutrición</button>
-    <button class="tab-btn" type="button" onclick="showSummerTab('menu',this)" role="tab" aria-selected="false">🍑 Menú semanal</button>
-    <button class="tab-btn" type="button" onclick="showSummerTab('microbiota',this)" role="tab" aria-selected="false">🦠 Microbiota</button>
-    <button class="tab-btn" type="button" onclick="showSummerTab('hidratacion',this)" role="tab" aria-selected="false">💧 Hidratación</button>
-    <button class="tab-btn" type="button" onclick="showSummerTab('entrenamiento',this)" role="tab" aria-selected="false">🏋️ Movimiento</button>
-    <button class="tab-btn" type="button" onclick="showSummerTab('organizacion',this)" role="tab" aria-selected="false">🧺 Organización</button>
-  </div>
-
-  <section id="summer-tab-nutricion" class="summer-section visible">
-    <div class="card">
-      <h3>El plato de verano</h3>
-      <p>Una estructura visual y flexible; no hace falta pesar cada ingrediente.</p>
-      <div class="metric-grid">
-        <div class="metric"><div class="metric-label">½ plato</div><div class="metric-value">Vegetales</div><div class="metric-sub">Crudos o cocidos, varios colores</div></div>
-        <div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Proteína</div><div class="metric-sub">Huevos, pescado, pollo, legumbres o tofu</div></div>
+  <div id="summer-module-nutri" class="module visible">
+    <div class="tabs" role="tablist" aria-label="Nutrición de verano">
+      <button class="tab-btn active" onclick="showSeasonTab('summer','nutri','nutricion',this)" role="tab">Nutrición</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','menu',this)" role="tab">Menú semanal</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','batch',this)" role="tab">Batch cooking</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','compras',this)" role="tab">Lista de compras</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','nutri','energia',this)" role="tab">Días difíciles</button>
+    </div>
+    <div id="summer-nutri-tab-nutricion" class="section visible">
+      <div class="card"><h3>El plato de verano</h3><p>Una guía flexible: ajustá cantidades a tu hambre, actividad y objetivos.</p><div class="metric-grid">
+        <div class="metric"><div class="metric-label">½ plato</div><div class="metric-value">Vegetales</div><div class="metric-sub">Crudos o cocidos, variados</div></div>
+        <div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Proteína</div><div class="metric-sub">Huevos, pollo, pescado, legumbres o tofu</div></div>
         <div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Energía</div><div class="metric-sub">Arroz, papa, batata, choclo, quinoa o pan</div></div>
-        <div class="metric"><div class="metric-label">Complemento</div><div class="metric-value">Grasas</div><div class="metric-sub">Oliva, palta, nueces o semillas</div></div>
-      </div>
-      <div class="teal-box"><p>Las cantidades se ajustan al hambre, actividad, objetivos y contexto. Esta guía no fija calorías ni reemplaza una evaluación nutricional individual.</p></div>
+        <div class="metric"><div class="metric-label">Complemento</div><div class="metric-value">Grasas</div><div class="metric-sub">Oliva, palta, nueces o semillas</div></div></div></div>
+      <div class="card"><h3>Elegí productos de estación</h3><p><strong>Frutas:</strong> sandía, melón, durazno, ciruela, uva, cereza, damasco, higo y frutilla.</p><p><strong>Verduras:</strong> tomate, pepino, morrón, berenjena, zapallito, chauchas, choclo, calabaza y hojas verdes.</p><p class="metric-sub">La disponibilidad varía según región y mes. Priorizá lo fresco y accesible.</p></div>
+      <div class="card"><h3>Combinaciones que resuelven</h3><div class="table-scroll"><table><tr><th>Base</th><th>Proteína</th><th>Vegetales / extra</th></tr><tr><td>Arroz o quinoa</td><td>Atún, huevo o garbanzos</td><td>Tomate, pepino y oliva</td></tr><tr><td>Papa o batata</td><td>Pollo o porotos</td><td>Hojas verdes y morrón</td></tr><tr><td>Tortilla o pan</td><td>Huevo y queso</td><td>Tomate, rúcula y palta</td></tr><tr><td>Fideos</td><td>Lentejas o pollo</td><td>Berenjena y albahaca</td></tr></table></div></div>
+      <div class="warm-box"><p><strong>Inspiración ayurvédica:</strong> en días calurosos podés elegir preparaciones frescas y livianas; si preferís comidas cocidas o tibias, también está bien. Adaptá según gusto, tolerancia y contexto.</p></div>
     </div>
-    <div class="card">
-      <h3>La temporada en el mercado</h3>
-      <p><strong>Frutas:</strong> sandía, melón, durazno, ciruela, uva, cereza, damasco, higo, ananá y frutilla.</p>
-      <p><strong>Verduras:</strong> tomate, pepino, morrón, berenjena, zapallito, chauchas, choclo, calabaza, lechuga y hojas verdes.</p>
-      <p><strong>Todo el año:</strong> banana, manzana, naranja, zanahoria, acelga y espinaca.</p>
-      <p class="metric-sub">La disponibilidad y el precio varían según región y mes. Elegí lo que esté fresco y accesible.</p>
+    <div id="summer-nutri-tab-menu" class="section"><div class="card"><h3>Menú orientativo de 7 días</h3><p>Intercambiá almuerzos y cenas según horarios, apetito y disponibilidad. Colaciones opcionales.</p><div class="table-scroll"><table><tr><th>Día</th><th>Desayuno</th><th>Almuerzo</th><th>Cena</th><th>Colación</th></tr>
+      <tr><td>Lunes</td><td>Yogur, avena y durazno</td><td>Arroz, atún, tomate y pepino</td><td>Tortilla de zapallito y ensalada</td><td>Sandía y nueces</td></tr>
+      <tr><td>Martes</td><td>Tostadas, huevo y fruta</td><td>Pollo, papa y hojas verdes</td><td>Wrap de hummus y vegetales</td><td>Yogur</td></tr>
+      <tr><td>Miércoles</td><td>Avena y banana</td><td>Lentejas, tomate, morrón y huevo</td><td>Pescado, calabaza y chauchas</td><td>Ciruelas y almendras</td></tr>
+      <tr><td>Jueves</td><td>Yogur, fruta y semillas</td><td>Quinoa, garbanzos y vegetales</td><td>Omelette, ensalada y pan</td><td>Fruta</td></tr>
+      <tr><td>Viernes</td><td>Tostadas con ricota</td><td>Fideos con berenjena y pollo</td><td>Ensalada completa con huevo y choclo</td><td>Licuado</td></tr>
+      <tr><td>Sábado</td><td>Huevos, pan y fruta</td><td>Sándwich de pollo, palta y tomate</td><td>Pizza casera con vegetales</td><td>Melón o uvas</td></tr>
+      <tr><td>Domingo</td><td>Panqueques de avena</td><td>Parrilla o legumbres con ensalada</td><td>Ensalada tibia de papa, chauchas y huevo</td><td>Yogur o fruta</td></tr></table></div></div></div>
+    <div id="summer-nutri-tab-batch" class="section"><div class="card"><h3>Batch cooking de verano</h3><p>Una sesión de 90–120 minutos puede dejar bases listas para combinar, sin cocinar todo el menú por adelantado.</p><div class="table-scroll"><table><tr><th>Preparación</th><th>Cómo aprovecharla</th></tr><tr><td>Arroz, quinoa o papas</td><td>Bases para bowls, ensaladas y guarniciones.</td></tr><tr><td>Huevos duros</td><td>Sumar a ensaladas, sándwiches y wraps.</td></tr><tr><td>Pollo al horno o plancha</td><td>Desmenuzar para wraps, bowls y tartas.</td></tr><tr><td>Garbanzos o lentejas</td><td>Ensaladas completas, hummus o salteados.</td></tr><tr><td>Vegetales lavados y cortados</td><td>Tomate, pepino, zanahoria, hojas y morrón listos para usar.</td></tr><tr><td>Fruta porcionada</td><td>Desayunos, yogur y colaciones.</td></tr></table></div><p>Guardá las preparaciones refrigeradas en recipientes cerrados, enfriá pronto lo cocido y consumí dentro de plazos seguros; congelá lo que no vayas a usar.</p></div><div class="teal-box"><p>Atajo: prepará 2 proteínas, 2 bases y vegetales variados. Combiná distinto cada día.</p></div></div>
+    <div id="summer-nutri-tab-compras" class="section"><div class="card"><h3>Lista base para una semana</h3><p>Ajustá cantidades a cuántas personas comen y a lo que ya tenés en casa.</p><div class="table-scroll"><table><tr><th>Grupo</th><th>Opciones</th></tr><tr><td>Frutas</td><td>Sandía o melón, duraznos, bananas, cítricos y fruta a elección</td></tr><tr><td>Verduras</td><td>Tomate, pepino, morrón, zapallito, berenjena, hojas verdes, zanahoria y choclo</td></tr><tr><td>Proteínas</td><td>Huevos, pollo, atún, pescado, yogur, queso y legumbres</td></tr><tr><td>Almacén</td><td>Arroz, quinoa o fideos, avena, pan o tortillas, garbanzos y lentejas</td></tr><tr><td>Extras</td><td>Aceite de oliva, palta, nueces, semillas, limón y condimentos</td></tr></table></div></div></div>
+    <div id="summer-nutri-tab-energia" class="section"><div class="card"><h3>Comidas para días difíciles</h3><p>Cuando no hay tiempo, ganas o energía: resolver primero, perfeccionar nunca.</p><div class="table-scroll"><table><tr><th>Si tenés...</th><th>Resolvé con...</th></tr><tr><td>5 minutos</td><td>Yogur + fruta + avena o tostadas + queso + tomate.</td></tr><tr><td>10 minutos</td><td>Huevos revueltos + pan + vegetales; o ensalada de garbanzos de lata, tomate y atún.</td></tr><tr><td>Algo congelado</td><td>Verduras + legumbres o pollo ya cocido, salteados con arroz.</td></tr><tr><td>Cero ganas de cocinar</td><td>Sándwich completo, wrap o rotisería: sumá una proteína y algún vegetal si está disponible.</td></tr></table></div></div><div class="warm-box"><p>Una comida simple también cuenta. No hace falta compensar ni “empezar de nuevo” mañana.</p></div></div>
+  </div>
+  <div id="summer-module-entren" class="module">
+    <div class="tabs" role="tablist" aria-label="Entrenamiento de verano">
+      <button class="tab-btn active" onclick="showSeasonTab('summer','entren','semana',this)" role="tab">Semana tipo</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','entren','doce',this)" role="tab">12 semanas</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','entren','rutinas',this)" role="tab">Rutinas detalladas</button>
+      <button class="tab-btn" onclick="showSeasonTab('summer','entren','energia',this)" role="tab">Por nivel de energía</button>
     </div>
-    <div class="card">
-      <h3>Combinaciones que resuelven comidas</h3>
-      <div class="table-scroll"><table>
-        <tr><th>Base</th><th>Proteína</th><th>Vegetales y extras</th></tr>
-        <tr><td>Arroz o quinoa</td><td>Atún, huevo o garbanzos</td><td>Tomate, pepino, perejil y oliva</td></tr>
-        <tr><td>Papa o batata</td><td>Pollo o porotos</td><td>Hojas verdes, morrón y limón</td></tr>
-        <tr><td>Tortilla o pan integral</td><td>Huevo y queso</td><td>Tomate, rúcula y palta</td></tr>
-        <tr><td>Fideos</td><td>Lentejas o pollo</td><td>Berenjena, zucchini y albahaca</td></tr>
-        <tr><td>Yogur natural</td><td>Yogur o queso cottage</td><td>Fruta, avena y nueces</td></tr>
-      </table></div>
+    <div id="summer-entren-tab-semana" class="section visible"><div class="card"><h3>Semana tipo</h3><p>Una distribución orientativa. Dejá al menos un día de recuperación y ajustá volumen a tu experiencia.</p><div class="table-scroll"><table><tr><th>Día</th><th>Sesión</th><th>Duración</th></tr><tr><td>Lunes</td><td>Fuerza A — tren inferior y core</td><td>30–40 min</td></tr><tr><td>Martes</td><td>Caminata, bici suave o movilidad</td><td>25–40 min</td></tr><tr><td>Miércoles</td><td>Fuerza B — tren superior y core</td><td>30–40 min</td></tr><tr><td>Jueves</td><td>Descanso o movilidad suave</td><td>10–20 min</td></tr><tr><td>Viernes</td><td>Fuerza C — cuerpo completo</td><td>25–35 min</td></tr><tr><td>Sábado</td><td>Bicicleta o actividad recreativa</td><td>Según comodidad</td></tr><tr><td>Domingo</td><td>Descanso</td><td>—</td></tr></table></div><div class="warm-box"><p>En días de mucho calor, entrená en horarios más frescos, bajá intensidad y elegí un lugar ventilado. Frená si aparece mareo, debilidad o malestar.</p></div></div></div>
+    <div id="summer-entren-tab-doce" class="section"><div class="card"><h3>Progresión de 12 semanas</h3><div class="table-scroll"><table><tr><th>Etapa</th><th>Semanas</th><th>Enfoque</th><th>Progresión</th></tr><tr><td>Base</td><td>1–4</td><td>Aprender técnica y crear regularidad</td><td>2 series por ejercicio; esfuerzo cómodo. Semanas 1–2 priorizá técnica, 3–4 sumá repeticiones si mantenés buena forma.</td></tr><tr><td>Construcción</td><td>5–8</td><td>Desarrollar fuerza y resistencia</td><td>Pasá a 3 series cuando puedas completar el rango con control. Aumentá una variable por vez.</td></tr><tr><td>Consolidación</td><td>9–12</td><td>Afianzar y evaluar</td><td>Mantené 3 series o subí levemente la resistencia. Semana 12 revisá técnica, constancia y cómo te sentís.</td></tr></table></div><p>Dejá 1–3 repeticiones “en reserva” en la mayoría de las series. Si una semana se complica, repetí la etapa: no hay que recuperar sesiones perdidas.</p></div></div>
+    <div id="summer-entren-tab-rutinas" class="section"><div class="card"><h3>Rutina A — Tren inferior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Clave técnica</th></tr><tr><td>Sentadilla a silla</td><td>2–3 × 8–12</td><td>Rodillas acompañan la dirección de los pies; controlá la bajada.</td></tr><tr><td>Puente de glúteos</td><td>2–3 × 10–15</td><td>Subí la cadera sin arquear la espalda.</td></tr><tr><td>Peso muerto rumano con mochila</td><td>2–3 × 8–12</td><td>Llevá la cadera atrás y mantené espalda neutra.</td></tr><tr><td>Estocada asistida</td><td>2 × 8 por lado</td><td>Usá una pared o silla para equilibrio.</td></tr><tr><td>Dead bug</td><td>2 × 8 por lado</td><td>Mové lento, sin despegar la zona lumbar.</td></tr></table></div></div><div class="card"><h3>Rutina B — Tren superior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Clave técnica</th></tr><tr><td>Flexiones contra pared o apoyo</td><td>2–3 × 8–12</td><td>Cuerpo alineado; elegí una inclinación controlable.</td></tr><tr><td>Remo con mochila o botella</td><td>2–3 × 10–12</td><td>Llevá codos hacia atrás sin girar el torso.</td></tr><tr><td>Press de hombros liviano</td><td>2 × 8–12</td><td>Evitá arquear la espalda.</td></tr><tr><td>Curl de bíceps</td><td>2 × 10–12</td><td>Codos cerca del cuerpo.</td></tr><tr><td>Bird dog</td><td>2 × 8 por lado</td><td>Extendé brazo y pierna opuestos sin rotar.</td></tr></table></div></div><div class="card"><h3>Rutina C — Cuerpo completo</h3><p>2–3 rondas, descansando lo necesario entre ejercicios.</p><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Repeticiones</th></tr><tr><td>Sentadilla a silla</td><td>10–12</td></tr><tr><td>Remo con mochila</td><td>10–12</td></tr><tr><td>Puente de glúteos</td><td>12–15</td></tr><tr><td>Flexiones inclinadas</td><td>8–10</td></tr><tr><td>Plancha elevada</td><td>15–30 segundos</td></tr></table></div></div></div>
+    <div id="summer-entren-tab-energia" class="section"><div class="energy-btns"><button class="e-btn active" onclick="showSeasonEnergy('summer','alta',this)">Energía alta</button><button class="e-btn" onclick="showSeasonEnergy('summer','media',this)">Energía media</button><button class="e-btn" onclick="showSeasonEnergy('summer','baja',this)">Energía baja</button></div>
+      <div id="summer-energy-alta" class="e-section visible"><div class="card"><h3>Energía alta</h3><p>Hacé la sesión prevista con todas las series, manteniendo técnica y descansos. No conviertas cada día bueno en una prueba máxima.</p></div></div>
+      <div id="summer-energy-media" class="e-section"><div class="card"><h3>Energía media</h3><p>Reducí a 2 series por ejercicio o hacé los primeros 3 ejercicios de la rutina. En cardio, elegí un ritmo conversacional y acortá la duración.</p></div></div>
+      <div id="summer-energy-baja" class="e-section"><div class="card"><h3>Energía baja</h3><p>Elegí 5–10 minutos de movilidad o una caminata suave. Si necesitás descansar, descansá. La continuidad se construye también respetando la recuperación.</p></div></div>
     </div>
-    <div class="warm-box"><p><strong>En clave ayurvédica:</strong> podés priorizar comidas frescas, jugosas y de sabores suaves cuando el calor aprieta. Si te sientan mejor las comidas tibias o cocidas, mantenelas: no existe obligación de comer ensaladas ni de evitar alimentos por su temperatura. Ayurveda es un marco tradicional, no un diagnóstico médico.</p></div>
-  </section>
-
-  <section id="summer-tab-menu" class="summer-section">
-    <div class="card">
-      <h3>Menú orientativo de 7 días</h3>
-      <p>Combinaciones simples para inspirar. Intercambiá almuerzos y cenas según horarios, apetito y disponibilidad.</p>
-      <div class="table-scroll"><table>
-        <tr><th>Día</th><th>Desayuno</th><th>Almuerzo</th><th>Cena</th><th>Colación opcional</th></tr>
-        <tr><td>Lunes</td><td>Yogur, avena y durazno</td><td>Arroz, atún, tomate y pepino</td><td>Tortilla de zapallito con ensalada</td><td>Sandía y nueces</td></tr>
-        <tr><td>Martes</td><td>Tostadas, huevo y fruta</td><td>Pollo, papa y hojas verdes</td><td>Wrap de hummus y vegetales</td><td>Yogur natural</td></tr>
-        <tr><td>Miércoles</td><td>Avena con banana</td><td>Lentejas, tomate, morrón y huevo</td><td>Pescado con calabaza y chauchas</td><td>Ciruelas y almendras</td></tr>
-        <tr><td>Jueves</td><td>Yogur, fruta y semillas</td><td>Quinoa, garbanzos y vegetales</td><td>Omelette, ensalada y pan</td><td>Fruta de estación</td></tr>
-        <tr><td>Viernes</td><td>Tostadas con ricota y fruta</td><td>Fideos con berenjena y pollo</td><td>Ensalada completa con huevo y choclo</td><td>Licuado de fruta y leche</td></tr>
-        <tr><td>Sábado</td><td>Huevos, pan y fruta</td><td>Sándwich de pollo, palta y tomate</td><td>Pizza casera con vegetales</td><td>Melón o uvas</td></tr>
-        <tr><td>Domingo</td><td>Panqueques de avena y fruta</td><td>Parrilla o legumbres con ensaladas</td><td>Ensalada tibia de papa, chauchas y huevo</td><td>Yogur o fruta</td></tr>
-      </table></div>
-      <p class="metric-sub">Las colaciones son opcionales. Sumalas si hay hambre, muchas horas entre comidas o actividad física; no son una obligación.</p>
-    </div>
-    <div class="card"><h3>Fórmula para armar una comida</h3><p>Elegí 1 proteína + 1 fuente de carbohidratos + 2 vegetales o frutas + una grasa de calidad. Ejemplo: pollo + papa + tomate y rúcula + aceite de oliva.</p></div>
-  </section>
-
-  <section id="summer-tab-microbiota" class="summer-section">
-    <div class="card">
-      <h3>Alimentar la diversidad intestinal</h3>
-      <p>La microbiota responde a la variedad habitual de alimentos, especialmente a las fibras de distintos vegetales. La constancia importa más que buscar un alimento milagroso.</p>
-      <div class="table-scroll"><table>
-        <tr><th>Grupo</th><th>Opciones</th><th>Idea práctica</th></tr>
-        <tr><td>Fibras y prebióticos</td><td>Avena, legumbres, cebolla, ajo, banana, espárragos</td><td>Avena o legumbres varias veces por semana</td></tr>
-        <tr><td>Polifenoles</td><td>Uvas, frutos rojos, ciruelas, cacao amargo, oliva</td><td>Rotar frutas de distintos colores</td></tr>
-        <tr><td>Fermentados</td><td>Yogur natural, kéfir, vegetales fermentados seguros</td><td>Probar porciones pequeñas si se toleran</td></tr>
-        <tr><td>Almidón resistente</td><td>Porotos, lentejas, papa o arroz cocidos y enfriados</td><td>Enfriar en heladera y conservar de forma segura</td></tr>
-      </table></div>
-    </div>
-    <div class="teal-box"><p><strong>Progresión amable:</strong> aumentá la fibra gradualmente y acompañala con líquidos. Si aparecen molestias persistentes, dolor o cambios intestinales importantes, consultá. Los fermentados no son imprescindibles y pueden no sentar bien a todo el mundo.</p></div>
-    <div class="card"><h3>Desafío de variedad</h3><p>Durante la semana, rotá vegetales, frutas, legumbres, cereales integrales, frutos secos y semillas. No hace falta contar especies ni perseguir un número perfecto: buscá variedad realista.</p></div>
-  </section>
-
-  <section id="summer-tab-hidratacion" class="summer-section">
-    <div class="card">
-      <h3>Hidratación inteligente</h3>
-      <p>La necesidad de líquidos cambia con la temperatura, el tamaño corporal, la alimentación, la actividad y la sudoración. No hay una cifra única para todas las personas.</p>
-      <ul>
-        <li>Tené agua accesible y tomá regularmente; no esperes a tener mucha sed.</li>
-        <li>Aumentá la atención en días de calor, al aire libre y durante el ejercicio.</li>
-        <li>Frutas, verduras, leche y otras comidas también aportan agua.</li>
-        <li>En actividad prolongada con mucho sudor, consultá si necesitás reponer electrolitos; no uses suplementos por rutina.</li>
-        <li>Limitá el alcohol y no uses bebidas energéticas como estrategia de hidratación.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Señales para bajar el ritmo</h3>
-      <p>Debilidad, mareo, dolor de cabeza, náuseas, calambres o sensación de desmayo durante el calor requieren detener la actividad, ir a un lugar fresco y empezar a enfriarse. Confusión, desmayo o deterioro importante son señales de urgencia médica.</p>
-      <div class="coral-box"><p>No intentes terminar la rutina si aparecen síntomas de golpe de calor. La sesión se cancela; el cuerpo no negocia con el calendario.</p></div>
-    </div>
-  </section>
-
-  <section id="summer-tab-entrenamiento" class="summer-section">
-    <div class="card">
-      <h3>Movimiento en verano</h3>
-      <p>El objetivo es sostener fuerza, capacidad aeróbica, movilidad y recuperación, ajustando la sesión al clima y al estado del día.</p>
-      <div class="table-scroll"><table>
-        <tr><th>Día</th><th>Propuesta</th><th>Adaptación al calor</th></tr>
-        <tr><td>Lunes</td><td>Fuerza cuerpo completo, 30–40 min</td><td>Interior ventilado o primera hora</td></tr>
-        <tr><td>Martes</td><td>Caminata o bicicleta suave, 25–40 min</td><td>Ritmo conversacional, sombra</td></tr>
-        <tr><td>Miércoles</td><td>Fuerza, 30–40 min</td><td>Pausas más largas y agua disponible</td></tr>
-        <tr><td>Jueves</td><td>Movilidad, yoga o descanso activo, 15–25 min</td><td>Sesión suave</td></tr>
-        <tr><td>Viernes</td><td>Fuerza o circuito moderado, 25–35 min</td><td>Reducir volumen si hace mucho calor</td></tr>
-        <tr><td>Sábado</td><td>Bicicleta o actividad recreativa</td><td>Salir temprano o al atardecer</td></tr>
-        <tr><td>Domingo</td><td>Descanso y paseo opcional</td><td>Priorizar recuperación</td></tr>
-      </table></div>
-      <p class="metric-sub">Plantilla general, no prescripción individual. Ajustá volumen e intensidad a tu nivel actual, experiencia, salud y recuperación.</p>
-    </div>
-    <div class="card">
-      <h3>Reglas para entrenar con calor</h3>
-      <ul>
-        <li>Elegí las horas más frescas y evitá el esfuerzo intenso en las horas de mayor radiación.</li>
-        <li>Empezá más suave y aumentá el ritmo gradualmente.</li>
-        <li>Usá ropa liviana, protector solar y buscá sombra.</li>
-        <li>Acortá o suspendé la sesión ante calor extremo, malestar o síntomas inusuales.</li>
-        <li>Dejá que la recuperación también forme parte del entrenamiento.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="summer-tab-organizacion" class="summer-section">
-    <div class="card">
-      <h3>Preparación simple para 3–4 días</h3>
-      <ul>
-        <li>Cocinar una base de arroz, quinoa o papas.</li>
-        <li>Preparar huevos duros y una proteína principal.</li>
-        <li>Enjuagar y cocinar una tanda de lentejas o garbanzos.</li>
-        <li>Lavar y secar hojas; cortar vegetales para usar pronto.</li>
-        <li>Dejar fruta lavada y visible; congelar porciones maduras para licuados.</li>
-        <li>Preparar un aderezo simple de oliva, limón y hierbas.</li>
-      </ul>
-      <div class="warm-box"><p>Seguridad alimentaria en verano: enfriá pronto las preparaciones, guardalas tapadas en heladera y no dejes alimentos perecederos varias horas a temperatura ambiente. Transportá viandas con frío.</p></div>
-    </div>
-    <div class="card">
-      <h3>Lista de compras base</h3>
-      <div class="table-scroll"><table>
-        <tr><th>Grupo</th><th>Opciones</th></tr>
-        <tr><td>Proteínas</td><td>Huevos, pollo, pescado, atún, yogur natural, queso, lentejas, garbanzos</td></tr>
-        <tr><td>Carbohidratos</td><td>Avena, arroz, quinoa, papa, batata, choclo, pan integral</td></tr>
-        <tr><td>Vegetales</td><td>Tomate, pepino, morrón, berenjena, zapallito, chauchas, hojas verdes</td></tr>
-        <tr><td>Frutas</td><td>Sandía, melón, durazno, ciruela, uva, banana</td></tr>
-        <tr><td>Grasas y extras</td><td>Aceite de oliva, palta, nueces, semillas, limón, hierbas</td></tr>
-      </table></div>
-    </div>
-  </section>
-  <div class="card" style="margin-top:1rem">
-    <h3>Referencias</h3>
-    <p><a href="https://www.argentina.gob.ar/alimentarsaberes/alimentacionsaludable/frutasyverduras" target="_blank" rel="noopener">Argentina.gob.ar · Frutas y verduras de estación</a></p>
-    <p><a href="https://www.argentina.gob.ar/salud/alimentacion-saludable/grafico" target="_blank" rel="noopener">Guías Alimentarias para la Población Argentina</a></p>
-    <p><a href="https://www.cdc.gov/heat-health/risk-factors/heat-and-athletes.html" target="_blank" rel="noopener">CDC · Actividad física y calor</a></p>
   </div>
 </div>
 
-<div id="season-winter" class="season-panel">
-  <div class="season-intro">
-    <h2>🍂 Invierno</h2>
-    <p>Contenido invernal del laboratorio.</p>
+<div id="season-winter" class="season-panel" aria-live="polite">
+  <div class="season-intro"><h2>🍂 Invierno argentino</h2><p>Comidas reconfortantes, fuerza progresiva y una rutina flexible para los meses fríos.</p></div>
+  <div class="module-btns" role="tablist" aria-label="Módulos de invierno">
+    <button class="mod-btn active" type="button" onclick="showSeasonModule('winter','nutri',this)" role="tab">🥣 Nutrición</button>
+    <button class="mod-btn" type="button" onclick="showSeasonModule('winter','entren',this)" role="tab">🏋️ Entrenamiento</button>
   </div>
-  <div class="module-btns" role="tablist" aria-label="Módulo">
-  <button class="mod-btn active" onclick="showModule('nutri')" role="tab">🥣 Nutrición</button>
-  <button class="mod-btn" onclick="showModule('entren')" role="tab">🏋️ Entrenamiento</button>
+  <div id="winter-module-nutri" class="module visible">
+    <div class="tabs" role="tablist" aria-label="Nutrición de invierno">
+      <button class="tab-btn active" onclick="showSeasonTab('winter','nutri','nutricion',this)" role="tab">Nutrición</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','menu',this)" role="tab">Menú semanal</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','batch',this)" role="tab">Batch cooking</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','compras',this)" role="tab">Lista de compras</button><button class="tab-btn" onclick="showSeasonTab('winter','nutri','energia',this)" role="tab">Días difíciles</button>
+    </div>
+    <div id="winter-nutri-tab-nutricion" class="section visible"><div class="card"><h3>El plato de invierno</h3><p>Una estructura flexible para comidas completas, con preparaciones calientes o frías según preferencia.</p><div class="metric-grid"><div class="metric"><div class="metric-label">½ plato</div><div class="metric-value">Vegetales</div><div class="metric-sub">Calabaza, zanahoria, acelga, espinaca</div></div><div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Proteína</div><div class="metric-sub">Huevos, pollo, pescado, carne o legumbres</div></div><div class="metric"><div class="metric-label">¼ plato</div><div class="metric-value">Energía</div><div class="metric-sub">Papa, batata, arroz, avena o pasta</div></div><div class="metric"><div class="metric-label">Complemento</div><div class="metric-value">Grasas</div><div class="metric-sub">Oliva, nueces y semillas</div></div></div></div><div class="card"><h3>Productos de estación</h3><p><strong>Verduras:</strong> zapallo, calabaza, zanahoria, remolacha, papa, batata, acelga, espinaca, brócoli y repollo.</p><p><strong>Frutas:</strong> naranja, mandarina, pomelo, limón, manzana y pera.</p><p><strong>Proteínas y bases:</strong> huevos, pollo, pescado, legumbres, avena, arroz y pastas.</p></div><div class="card"><h3>Combinaciones que resuelven</h3><div class="table-scroll"><table><tr><th>Base</th><th>Proteína</th><th>Complemento</th></tr><tr><td>Puré de calabaza</td><td>Pollo al horno</td><td>Espinaca salteada</td></tr><tr><td>Guiso de lentejas</td><td>Lentejas y huevo</td><td>Zanahoria y tomate</td></tr><tr><td>Arroz</td><td>Atún o garbanzos</td><td>Brócoli y oliva</td></tr><tr><td>Tarta</td><td>Huevo y ricota</td><td>Acelga y cebolla</td></tr></table></div></div><div class="warm-box"><p><strong>Inspiración ayurvédica:</strong> podés elegir platos tibios, cocidos y especiados si te resultan reconfortantes. No hay obligación de evitar alimentos crudos o fríos.</p></div></div>
+    <div id="winter-nutri-tab-menu" class="section"><div class="card"><h3>Menú orientativo de 7 días</h3><div class="table-scroll"><table><tr><th>Día</th><th>Desayuno</th><th>Almuerzo</th><th>Cena</th><th>Colación</th></tr><tr><td>Lunes</td><td>Avena con leche y banana</td><td>Pollo al horno, calabaza y arroz</td><td>Tortilla de espinaca</td><td>Yogur y fruta</td></tr><tr><td>Martes</td><td>Tostadas, huevo y fruta</td><td>Guiso de lentejas y verduras</td><td>Sopa de verduras con queso y pan</td><td>Mandarina y nueces</td></tr><tr><td>Miércoles</td><td>Yogur, avena y manzana</td><td>Tarta de acelga y ensalada</td><td>Pescado con papa y brócoli</td><td>Ricota con fruta</td></tr><tr><td>Jueves</td><td>Huevos revueltos y tostadas</td><td>Garbanzos con calabaza y arroz</td><td>Pollo salteado con vegetales</td><td>Fruta y semillas</td></tr><tr><td>Viernes</td><td>Avena con pera y canela</td><td>Carne magra, puré y zanahoria</td><td>Omelette de verduras</td><td>Yogur</td></tr><tr><td>Sábado</td><td>Tostadas con ricota</td><td>Guiso de porotos y verduras</td><td>Milanesa al horno con calabaza</td><td>Fruta</td></tr><tr><td>Domingo</td><td>Panqueques de avena</td><td>Puchero de verduras, carne o pollo</td><td>Sopa con lo que quedó</td><td>Yogur o fruta</td></tr></table></div><p class="metric-sub">Colaciones opcionales. Ajustá por hambre, actividad y preferencias.</p></div></div>
+    <div id="winter-nutri-tab-batch" class="section"><div class="card"><h3>Batch cooking de invierno</h3><p>Prepará bases que se puedan combinar durante varios días.</p><div class="table-scroll"><table><tr><th>Preparación</th><th>Uso</th></tr><tr><td>Lentejas o garbanzos cocidos</td><td>Guisos, ensaladas tibias y salteados.</td></tr><tr><td>Arroz o quinoa</td><td>Guarniciones y bowls.</td></tr><tr><td>Pollo al horno o hervido</td><td>Sopas, tartas y platos principales.</td></tr><tr><td>Bandeja de verduras asadas</td><td>Guarnición, relleno o crema.</td></tr><tr><td>Sopa o caldo base</td><td>Cenas rápidas y guisos.</td></tr><tr><td>Huevos duros</td><td>Ensaladas y comidas rápidas.</td></tr></table></div><p>Refrigerá pronto en recipientes cerrados y congelá porciones que no vayas a consumir dentro de pocos días.</p></div></div>
+    <div id="winter-nutri-tab-compras" class="section"><div class="card"><h3>Lista base para una semana</h3><div class="table-scroll"><table><tr><th>Grupo</th><th>Opciones</th></tr><tr><td>Verdulería</td><td>Calabaza, zanahoria, papa, batata, acelga o espinaca, cebolla, ajo, brócoli y remolacha.</td></tr><tr><td>Frutas</td><td>Manzana, pera, naranja y mandarina.</td></tr><tr><td>Proteínas</td><td>Huevos, pollo, carne magra, pescado, yogur y queso.</td></tr><tr><td>Legumbres y cereales</td><td>Lentejas, garbanzos, porotos, arroz, avena y pasta.</td></tr><tr><td>Almacén</td><td>Tomate triturado, aceite de oliva, nueces, semillas y condimentos.</td></tr></table></div></div></div>
+    <div id="winter-nutri-tab-energia" class="section"><div class="card"><h3>Comidas para días difíciles</h3><div class="table-scroll"><table><tr><th>Tiempo</th><th>Solución simple</th></tr><tr><td>5 minutos</td><td>Yogur con avena y fruta; tostadas con queso y huevo.</td></tr><tr><td>10 minutos</td><td>Omelette con vegetales congelados; sopa lista mejorada con legumbres.</td></tr><tr><td>15 minutos</td><td>Lentejas en conserva salteadas con tomate y huevo; arroz con pollo ya cocido.</td></tr><tr><td>Sin cocinar</td><td>Sándwich completo, tarta comprada con ensalada o comida preparada con una fuente de proteína.</td></tr></table></div></div><div class="warm-box"><p>La opción sencilla y suficiente es mejor que saltear una comida esperando tener el día perfecto.</p></div></div>
+  </div>
+  <div id="winter-module-entren" class="module"><div class="tabs" role="tablist" aria-label="Entrenamiento de invierno"><button class="tab-btn active" onclick="showSeasonTab('winter','entren','semana',this)" role="tab">Semana tipo</button><button class="tab-btn" onclick="showSeasonTab('winter','entren','doce',this)" role="tab">12 semanas</button><button class="tab-btn" onclick="showSeasonTab('winter','entren','rutinas',this)" role="tab">Rutinas detalladas</button><button class="tab-btn" onclick="showSeasonTab('winter','entren','energia',this)" role="tab">Por nivel de energía</button></div>
+    <div id="winter-entren-tab-semana" class="section visible"><div class="card"><h3>Semana tipo</h3><div class="table-scroll"><table><tr><th>Día</th><th>Sesión</th><th>Duración</th></tr><tr><td>Lunes</td><td>Fuerza A — tren inferior</td><td>30–40 min</td></tr><tr><td>Martes</td><td>Caminata, bici o movilidad</td><td>25–40 min</td></tr><tr><td>Miércoles</td><td>Fuerza B — tren superior</td><td>30–40 min</td></tr><tr><td>Jueves</td><td>Descanso o movilidad</td><td>10–20 min</td></tr><tr><td>Viernes</td><td>Fuerza C — cuerpo completo</td><td>25–35 min</td></tr><tr><td>Sábado</td><td>Bicicleta o paseo si el clima acompaña</td><td>Flexible</td></tr><tr><td>Domingo</td><td>Descanso</td><td>—</td></tr></table></div></div></div>
+    <div id="winter-entren-tab-doce" class="section"><div class="card"><h3>Progresión de 12 semanas</h3><div class="table-scroll"><table><tr><th>Etapa</th><th>Semanas</th><th>Enfoque</th><th>Progresión</th></tr><tr><td>Base</td><td>1–4</td><td>Técnica y regularidad</td><td>2 series por ejercicio; esfuerzo cómodo. Sumá repeticiones solo si mantenés control.</td></tr><tr><td>Construcción</td><td>5–8</td><td>Fuerza y resistencia</td><td>Pasá a 3 series cuando completes el rango con buena técnica. Aumentá una variable por vez.</td></tr><tr><td>Consolidación</td><td>9–12</td><td>Afianzar hábitos</td><td>Mantené 3 series o subí levemente la resistencia. Revisá constancia, técnica y recuperación.</td></tr></table></div><p>Si una semana se complica, repetí la etapa. No hace falta recuperar sesiones perdidas.</p></div></div>
+    <div id="winter-entren-tab-rutinas" class="section"><div class="card"><h3>Rutina A — Tren inferior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Clave</th></tr><tr><td>Sentadilla a silla</td><td>2–3 × 8–12</td><td>Controlá la bajada y mantené apoyo estable.</td></tr><tr><td>Puente de glúteos</td><td>2–3 × 10–15</td><td>Subí cadera sin arquear la espalda.</td></tr><tr><td>Peso muerto rumano con mochila</td><td>2–3 × 8–12</td><td>Cadera atrás, espalda neutra.</td></tr><tr><td>Estocada asistida</td><td>2 × 8 por lado</td><td>Usá apoyo si lo necesitás.</td></tr><tr><td>Dead bug</td><td>2 × 8 por lado</td><td>Movimiento lento y controlado.</td></tr></table></div></div><div class="card"><h3>Rutina B — Tren superior + core</h3><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Series × reps</th><th>Clave</th></tr><tr><td>Flexiones inclinadas</td><td>2–3 × 8–12</td><td>Elegí un apoyo que puedas controlar.</td></tr><tr><td>Remo con mochila o botella</td><td>2–3 × 10–12</td><td>Codos atrás, torso estable.</td></tr><tr><td>Press de hombros liviano</td><td>2 × 8–12</td><td>Sin arquear la espalda.</td></tr><tr><td>Curl de bíceps</td><td>2 × 10–12</td><td>Codos cerca del cuerpo.</td></tr><tr><td>Bird dog</td><td>2 × 8 por lado</td><td>Sin rotar el torso.</td></tr></table></div><div class="card"><h3>Rutina C — Cuerpo completo</h3><p>2–3 rondas con descansos cómodos.</p><div class="table-scroll"><table><tr><th>Ejercicio</th><th>Repeticiones</th></tr><tr><td>Sentadilla a silla</td><td>10–12</td></tr><tr><td>Remo con mochila</td><td>10–12</td></tr><tr><td>Puente de glúteos</td><td>12–15</td></tr><tr><td>Flexiones inclinadas</td><td>8–10</td></tr><tr><td>Plancha elevada</td><td>15–30 segundos</td></tr></table></div></div><div class="card"><h3>Movilidad — 10 a 15 minutos</h3><p>Gato-vaca, movilidad de cadera, rotaciones torácicas, estiramiento suave de piernas y respiración tranquila. Mové dentro de un rango cómodo, sin forzar.</p></div></div>
+    <div id="winter-entren-tab-energia" class="section"><div class="energy-btns"><button class="e-btn active" onclick="showSeasonEnergy('winter','alta',this)">Energía alta</button><button class="e-btn" onclick="showSeasonEnergy('winter','media',this)">Energía media</button><button class="e-btn" onclick="showSeasonEnergy('winter','baja',this)">Energía baja</button></div><div id="winter-energy-alta" class="e-section visible"><div class="card"><h3>Energía alta</h3><p>Realizá la sesión completa, respetando descansos y técnica. Podés sumar una pequeña carga si terminás con margen.</p></div></div><div id="winter-energy-media" class="e-section"><div class="card"><h3>Energía media</h3><p>Hacé 2 series por ejercicio o elegí los primeros 3 movimientos. Cambiá el cardio intenso por caminata cómoda.</p></div></div><div id="winter-energy-baja" class="e-section"><div class="card"><h3>Energía baja</h3><p>Probá 5–10 minutos de movilidad o una caminata breve. Si el cuerpo necesita descanso, descansá sin culpa.</p></div></div></div>
+  </div></div>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     MÓDULO 1 — NUTRICIÓN
-     ══════════════════════════════════════════════ -->
-<div id="module-nutri" class="module visible">
-  <h2 class="sr-only">Plan nutricional personalizado Vata-Pitta para invierno en Argentina</h2>
 
-  <div class="tabs" role="tablist">
-    <button class="tab-btn active" onclick="showTab('nutri','perfil')" role="tab">Perfil</button>
-    <button class="tab-btn" onclick="showTab('nutri','nutri')" role="tab">Nutrición</button>
-    <button class="tab-btn" onclick="showTab('nutri','menu')" role="tab">Menú invernal</button>
-    <button class="tab-btn" onclick="showTab('nutri','batch')" role="tab">Batch cooking</button>
-    <button class="tab-btn" onclick="showTab('nutri','compras')" role="tab">Lista de compras</button>
-    <button class="tab-btn" onclick="showTab('nutri','energia')" role="tab">Días difíciles</button>
-  </div>
-
-  <!-- PERFIL -->
-  <div id="nutri-tab-perfil" class="section visible">
-    <div class="metric-grid">
-      <div class="metric"><div class="metric-label">Constitución</div><div class="metric-value">Vata-Pitta</div><div class="metric-sub">Predominante Vata</div></div>
-      <div class="metric"><div class="metric-label">Estación actual</div><div class="metric-value">Invierno</div><div class="metric-sub">Jun–Ago Argentina</div></div>
-      <div class="metric"><div class="metric-label">Objetivo calórico</div><div class="metric-value">1.600 kcal</div><div class="metric-sub">Déficit moderado</div></div>
-      <div class="metric"><div class="metric-label">Proteína diaria</div><div class="metric-value">110 g</div><div class="metric-sub">1,8 g / kg</div></div>
-      <div class="metric"><div class="metric-label">Hidratación</div><div class="metric-value">2 – 2,5 L</div><div class="metric-sub">Preferir tibio/caliente</div></div>
-    </div>
-    <div class="card">
-      <h3>Cómo se traduce el perfil Vata-Pitta al plan</h3>
-      <div class="table-scroll"><table>
-        <tr><th>Característica</th><th>Lo que significa</th><th>Adaptación concreta</th></tr>
-        <tr><td>Friolenta en invierno (Vata elevado)</td><td>El frío agrava Vata: ansiedad, irregularidad, sequedad, insomnio</td><td>Priorizar comidas calientes. Evitar crudos fríos en cenas. Sopas y guisos como base.</td></tr>
-        <tr><td>Apetito variable</td><td>Característico de Vata: hambre ansiosa o ausente según el estado</td><td>3–4 comidas regulares y calientes «anclan» el sistema nervioso. No saltear.</td></tr>
-        <tr><td>Sobrecarga mental / atención variable</td><td>Vata en desequilibrio se manifiesta en mente dispersa, agotamiento cognitivo</td><td>Grasas buenas (aceite de oliva, nueces, palta) nutren el sistema nervioso. Incluir en cada comida.</td></tr>
-        <tr><td>Contextura delgada / ganancia por estrés</td><td>Vata tiende a perder masa muscular bajo estrés prolongado</td><td>Proteína en cada comida. Sin déficit calórico agresivo. Comidas saciantes.</td></tr>
-        <tr><td>Piel seca en invierno</td><td>Vata domina en frío y seca tejidos</td><td>Grasas de calidad diarias. Hidratación con infusiones tibias. Ghee o aceite de oliva en comidas.</td></tr>
-        <tr><td>Pitta secundario</td><td>Puede generar inflamación, acidez o irritabilidad bajo presión</td><td>Evitar exceso de picante, café en exceso o comidas muy secas. Favorecer sabores dulce y salado naturales.</td></tr>
-      </table></div>
-    </div>
-    <div class="warm-box"><p>Los principios ayurvédicos usados acá son prácticos y respaldados por evidencia: comidas regulares calientes reducen la variabilidad del cortisol (ligada a desafíos de concentración y desmotivación estacional), las grasas buenas sostienen el rendimiento cognitivo, y los guisos con legumbres proveen triptófano precursor de serotonina.</p></div>
-  </div>
-
-  <!-- NUTRICIÓN -->
-  <div id="nutri-tab-nutri" class="section">
-    <div class="card">
-      <h3>Principios nutricionales para invierno Vata-Pitta</h3>
-      <table>
-        <tr><th>Priorizar</th><th>Por qué</th></tr>
-        <tr><td>Comidas calientes y húmedas: sopas, guisos, pucheros, revueltos</td><td>Contrarrestar el frío y la sequedad de Vata. Más digestivas. Reconfortantes sin ser pesadas.</td></tr>
-        <tr><td>Grasas de calidad: aceite de oliva, nueces, semillas de lino, palta</td><td>Nutren sistema nervioso, mejoran concentración, hidratan piel desde adentro.</td></tr>
-        <tr><td>Legumbres bien cocidas (lentejas, garbanzos, porotos)</td><td>Proteína + fibra + hierro + triptófano. Saciantes. Económicas. Digestivas si se cocinan bien.</td></tr>
-        <tr><td>Raíces y tubérculos de estación: zanahoria, remolacha, papa, batata, nabo</td><td>Dulces naturales que equilibran Vata. Energía sostenida. Disponibles y económicos en invierno.</td></tr>
-        <tr><td>Especias tibias: jengibre, cúrcuma, comino, canela</td><td>Activan digestión, antiinflamatorias, calientan desde adentro sin irritar Pitta.</td></tr>
-        <tr><td>Infusiones calientes: jengibre + limón, té de manzanilla, té verde con canela</td><td>Hidratación aceptable para Vata (mejor que agua fría). Efecto calmante.</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Alimentos a moderar en invierno</h3>
-      <table>
-        <tr><th>Evitar o reducir</th><th>Alternativa</th></tr>
-        <tr><td>Ensaladas crudas frías (lechuga, pepino crudo)</td><td>Verduras asadas, salteadas o al vapor con aceite de oliva</td></tr>
-        <tr><td>Yogur frío directo de heladera</td><td>Yogur a temperatura ambiente, o kéfir tibio</td></tr>
-        <tr><td>Batidos fríos / smoothies helados</td><td>Licuado a temperatura ambiente o porridge caliente</td></tr>
-        <tr><td>Exceso de café (más de 1–2 al día)</td><td>Té verde, infusión de jengibre, achicoria</td></tr>
-        <tr><td>Ayuno prolongado o salteo de comidas</td><td>4 comidas fijas. El ayuno agrava Vata y empeora la atención variable.</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Distribución de macros adaptada</h3>
-      <table>
-        <tr><th>Macro</th><th>Gramos</th><th>%</th><th>Nota invernal</th></tr>
-        <tr><td>Proteína</td><td>110 g</td><td>27%</td><td>Prioridad para preservar músculo y sostener ánimo</td></tr>
-        <tr><td>Carbohidratos</td><td>190 g</td><td>47%</td><td>De raíces, legumbres y cereales. No restringir en invierno.</td></tr>
-        <tr><td>Grasas</td><td>45 g</td><td>26%</td><td>Subir ligeramente vs verano: sistema nervioso + piel seca</td></tr>
-      </table>
-    </div>
-    <div class="teal-box"><p>En días de salida en bicicleta: sumar 200–300 kcal antes de salir. Ideal: taza de avena caliente con banana y canela + té de jengibre. En ruta llevar dátiles o fruta seca, no barras frías.</p></div>
-  </div>
-
-  <!-- MENÚ -->
-  <div id="nutri-tab-menu" class="section">
-    <div class="purple-box"><p>Menú diseñado para invierno argentino (jun–ago). Todas las comidas son calientes o tibias. Puede repetirse semana a semana sin cambios si eso reduce decisiones.</p></div>
-    <div class="card">
-      <h3>Menú semanal completo — invierno</h3>
-      <div class="table-scroll"><table style="min-width:560px">
-        <tr><th style="width:60px">Día</th><th>Desayuno</th><th>Almuerzo</th><th>Merienda</th><th>Cena</th></tr>
-        <tr><td><strong>Lunes</strong></td><td>Porridge de avena con leche + canela + banana pisada</td><td>Sopa crema de zanahoria y jengibre + pechuga de pollo desmenuzada + 1 tostada integral</td><td>Té caliente + 2 tostadas con ricota y miel</td><td>Revuelto de huevos + espinaca salteada con ajo + 1 tostada</td></tr>
-        <tr><td><strong>Martes</strong></td><td>2 tostadas integrales + huevo pasado por agua o pochado + té con canela</td><td>Lentejas guisadas con zanahoria, papa y comino + arroz integral ¼ taza</td><td>Yogur (temp. ambiente) + 1 fruta de estación cocida o manzana al horno</td><td>Sopa de verduras con huevo duro + 1 tostada</td></tr>
-        <tr><td><strong>Miércoles</strong></td><td>Porridge de avena + 1 cda de mantequilla de maní + canela + té</td><td>Guiso de garbanzos con calabaza y cúrcuma + arroz integral</td><td>Leche caliente con cacao amargo + 2 galletas de arroz</td><td>Tortilla de verduras (cebolla, zanahoria, 2 huevos) al horno</td></tr>
-        <tr><td><strong>Jueves</strong></td><td>Huevos revueltos con cúrcuma + 1 tostada + infusión</td><td>Caldo de pollo casero con fideos finos + verduras + carne desmenuzada</td><td>Ricota con nueces y 1 cda de miel + té caliente</td><td>Pollo al horno con batata y zanahoria asadas + aceite de oliva</td></tr>
-        <tr><td><strong>Viernes</strong></td><td>Porridge de avena + fruta cocida + jengibre rallado + té</td><td>Locro liviano: porotos, maíz, papa, carne magra (sin embutidos)</td><td>Yogur + semillas de lino + banana</td><td>Revuelto de atún + tomate asado + espinaca + 1 tostada</td></tr>
-        <tr><td><strong>Sábado</strong> <span class="badge bc">Bici</span></td><td>PRE: Avena caliente + banana + mantequilla de maní + té de jengibre</td><td>POST: Arroz blanco + pollo + zapallo asado + aceite de oliva</td><td>Yogur + banana + nueces</td><td>Milanesa de pollo al horno + puré de batata + ensalada cocida</td></tr>
-        <tr><td><strong>Domingo</strong></td><td>Tostadas + huevos + mate o té tranquilo</td><td>Puchero light: carne magra, papa, zanahoria, choclo, zapallo</td><td>Manzana al horno con canela + yogur</td><td>Sopa de lo que sobre del puchero + 1 tostada</td></tr>
-      </table></div>
-    </div>
-    <div class="card">
-      <h3>Objetivo nutricional de cada tiempo de comida</h3>
-      <table>
-        <tr><th>Comida</th><th>Objetivo principal</th></tr>
-        <tr><td>Desayuno (porridge o huevos)</td><td>Activar digestión lentamente. La avena caliente es ideal para Vata: grounding, calmante, sostenida en energía. Romper el ayuno nocturno sin picos de glucosa.</td></tr>
-        <tr><td>Almuerzo (guiso / sopa / caldo)</td><td>Comida más nutritiva y calórica del día. Proteína + carbohidrato + grasa + vegetal. Sostener energía mental para el trabajo y estudio de la tarde.</td></tr>
-        <tr><td>Merienda</td><td>Evitar el bajón de las 16–17 hs (clásico en desafíos de concentración y Vata). Proteína liviana + algo dulce natural. Previene ansiedad alimentaria nocturna.</td></tr>
-        <tr><td>Cena (liviana y caliente)</td><td>No sobrecargar la digestión. Proteína moderada + verduras. Facilita el sueño: el GABA y la melatonina se sintetizan mejor sin digestiones pesadas.</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Infusiones recomendadas para invierno Vata-Pitta</h3>
-      <table>
-        <tr><th>Infusión</th><th>Momento ideal</th><th>Beneficio</th></tr>
-        <tr><td>Jengibre + limón + miel</td><td>Mañana en ayunas o con desayuno</td><td>Activa digestión, calienta, inmunidad. Ideal para el frío.</td></tr>
-        <tr><td>Té verde + canela</td><td>Media mañana</td><td>Cafeína moderada + termogénico suave. Mejor que café para Vata.</td></tr>
-        <tr><td>Manzanilla o tilo</td><td>Tarde / noche</td><td>Calma sistema nervioso, reduce ansiedad, facilita sueño.</td></tr>
-        <tr><td>Cúrcuma + leche caliente + pimienta</td><td>Noche</td><td>Antiinflamatorio, reconfortante, ayuda al descanso.</td></tr>
-        <tr><td>Mate (con moderación)</td><td>Mañana o mediodía</td><td>Cultural, aceptable. Limitar a 1–2 rondas. No en ayunas estricto.</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- BATCH COOKING -->
-  <div id="nutri-tab-batch" class="section">
-    <div class="teal-box"><p>La idea es cocinar el domingo 2–3 horas y tener la semana resuelta. Menos decisiones diarias = más energía para lo que importa.</p></div>
-    <div class="card">
-      <h3>Plan de batch cooking dominical</h3>
-      <table>
-        <tr><th>Preparación</th><th>Tiempo aprox.</th><th>Rinde para</th><th>Cómo usar</th></tr>
-        <tr><td>Arroz integral cocido</td><td>35 min</td><td>4–5 días</td><td>Porcionar en recipientes. Recalentar en sartén o microondas con un chorro de aceite.</td></tr>
-        <tr><td>Legumbres base (lentejas o garbanzos)</td><td>40 min</td><td>3–4 días</td><td>Freezar en 2 partes. Una para guiso de semana, otra para sopa o ensalada caliente.</td></tr>
-        <tr><td>Caldo casero de pollo o vegetales</td><td>45 min</td><td>Toda la semana</td><td>Base de sopas, guisos y caldos rápidos. Freezar en frascos o cubetera.</td></tr>
-        <tr><td>Pechuga de pollo hervida o al horno</td><td>30 min</td><td>3–4 días</td><td>Desmenuzada, lista para agregar a sopas, revueltos o ensaladas calientes.</td></tr>
-        <tr><td>Verduras asadas (zanahoria, batata, calabaza)</td><td>40 min al horno</td><td>4–5 días</td><td>Acompañamiento de cualquier comida. Recalentar en sartén u horno.</td></tr>
-        <tr><td>Puré de batata (opcional)</td><td>20 min</td><td>3 días</td><td>Porcionar. Recalentar con leche y aceite de oliva.</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Cronograma sugerido del domingo</h3>
-      <table>
-        <tr><th>Hora</th><th>Qué hacer</th></tr>
-        <tr><td>10:00</td><td>Poner el caldo a fuego lento + remojar legumbres si no lo hiciste el sábado</td></tr>
-        <tr><td>10:15</td><td>Poner el arroz integral y las legumbres a cocinar (pueden ir simultáneos)</td></tr>
-        <tr><td>10:30</td><td>Meter las verduras al horno (zanahoria, batata, calabaza cortadas)</td></tr>
-        <tr><td>11:00</td><td>Cocinar el pollo (horno o hervido en el caldo)</td></tr>
-        <tr><td>11:30</td><td>Controlar todo, desmenuzar el pollo, empacar legumbres</td></tr>
-        <tr><td>12:00</td><td>Etiquetar y guardar. Todo listo. Limpieza única.</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Ensamblado rápido de comidas (días de semana)</h3>
-      <table>
-        <tr><th>Comida</th><th>Tiempo real</th><th>Cómo se arma</th></tr>
-        <tr><td>Almuerzo «sopa express»</td><td>5 min</td><td>Caldo del batch + pollo desmenuzado + arroz cocido + cúrcuma. Recalentar y servir.</td></tr>
-        <tr><td>Almuerzo «guiso rápido»</td><td>5 min</td><td>Legumbres del batch + zanahoria asada + comino. Recalentar.</td></tr>
-        <tr><td>Cena «tortilla express»</td><td>8 min</td><td>2 huevos + verduras asadas del batch a la sartén.</td></tr>
-        <tr><td>Desayuno porridge</td><td>5 min</td><td>Avena + leche o agua en olla o microondas. No necesita batch.</td></tr>
-      </table>
-    </div>
-    <div class="warm-box"><p>Tip: etiquetar cada recipiente con el día que es para comerlo. «Martes almuerzo», «Miércoles cena». Sin pensar, solo calentar y comer.</p></div>
-
-    <div class="card">
-      <h3>Preparaciones que se pueden adelantar el fin de semana</h3>
-      <table>
-        <tr><th>Preparación</th><th>Cuándo</th><th>Dura</th><th>Cómo guardar</th></tr>
-        <tr><td>Caldo casero</td><td>Sábado o domingo</td><td>5–7 días en heladera / 3 meses freezer</td><td>Frasco de vidrio o cubetera de hielo</td></tr>
-        <tr><td>Arroz integral cocido</td><td>Domingo</td><td>5 días en heladera</td><td>Tupper hermético</td></tr>
-        <tr><td>Lentejas guisadas (base sin sal)</td><td>Domingo</td><td>4 días heladera / freeze</td><td>2 tuppers divididos</td></tr>
-        <tr><td>Garbanzos cocidos</td><td>Domingo</td><td>4 días heladera</td><td>Tupper con un poco de agua</td></tr>
-        <tr><td>Pollo hervido y desmenuzado</td><td>Domingo</td><td>4–5 días heladera</td><td>Tupper hermético</td></tr>
-        <tr><td>Verduras asadas (batata, zanahoria, zapallo)</td><td>Domingo</td><td>5 días heladera</td><td>Bandeja o tupper</td></tr>
-        <tr><td>Avena porcionada (seca)</td><td>Cuando querés</td><td>Indefinida</td><td>Vasitos de vidrio con tapa (una por día)</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- LISTA DE COMPRAS -->
-  <div id="nutri-tab-compras" class="section">
-    <div class="teal-box"><p>Lista para una semana completa. Priorizando productos de estación de invierno en Argentina, económicos y con mínimo desperdicio.</p></div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:1rem">
-      <div class="card" style="margin-bottom:0">
-        <h4>🌿 Verdulería — de estación</h4>
-        <table>
-          <tr><th>Producto</th><th>Cantidad</th></tr>
-          <tr><td>Zanahoria</td><td>1 kg</td></tr>
-          <tr><td>Papa</td><td>½ kg</td></tr>
-          <tr><td>Batata</td><td>½ kg</td></tr>
-          <tr><td>Calabaza / zapallo</td><td>½ kg</td></tr>
-          <tr><td>Espinaca o acelga</td><td>1 atado grande</td></tr>
-          <tr><td>Cebolla</td><td>½ kg</td></tr>
-          <tr><td>Ajo</td><td>1 cabeza</td></tr>
-          <tr><td>Tomate (puede ser lata)</td><td>3 unid. o 1 lata</td></tr>
-          <tr><td>Remolacha</td><td>3 unid.</td></tr>
-          <tr><td>Apio</td><td>½ atado (para caldo)</td></tr>
-          <tr><td>Manzana o pera</td><td>1 kg</td></tr>
-          <tr><td>Banana</td><td>1 kg (~6 unid.)</td></tr>
-          <tr><td>Naranja o mandarina</td><td>½ kg</td></tr>
-        </table>
-      </div>
-      <div class="card" style="margin-bottom:0">
-        <h4>🥩 Carnicería / pollería</h4>
-        <table>
-          <tr><th>Producto</th><th>Cantidad</th></tr>
-          <tr><td>Pechuga de pollo</td><td>1 kg</td></tr>
-          <tr><td>Carne magra (nalga o cuadril)</td><td>400 g</td></tr>
-          <tr><td>Huesos de pollo (para caldo)</td><td>500 g</td></tr>
-        </table>
-        <hr class="divider">
-        <h4>🥛 Lácteos y huevos</h4>
-        <table>
-          <tr><th>Producto</th><th>Cantidad</th></tr>
-          <tr><td>Huevos</td><td>1 docena</td></tr>
-          <tr><td>Leche (entera o desc.)</td><td>1 litro</td></tr>
-          <tr><td>Yogur natural (no 0%)</td><td>4 pot. x 200 g</td></tr>
-          <tr><td>Ricota</td><td>250 g</td></tr>
-          <tr><td>Queso untable</td><td>200 g</td></tr>
-        </table>
-      </div>
-      <div class="card" style="margin-bottom:0">
-        <h4>🏪 Almacén / dietética</h4>
-        <table>
-          <tr><th>Producto</th><th>Cantidad</th></tr>
-          <tr><td>Avena arrollada</td><td>500 g</td></tr>
-          <tr><td>Arroz integral</td><td>500 g</td></tr>
-          <tr><td>Lentejas</td><td>500 g</td></tr>
-          <tr><td>Garbanzos</td><td>500 g</td></tr>
-          <tr><td>Porotos (para locro)</td><td>250 g</td></tr>
-          <tr><td>Maíz partido (para locro)</td><td>250 g</td></tr>
-          <tr><td>Fideos finos o cabello ángel</td><td>250 g</td></tr>
-          <tr><td>Pan integral de molde</td><td>1 paquete</td></tr>
-          <tr><td>Galletas de arroz</td><td>1 paquete</td></tr>
-          <tr><td>Atún al agua (lata)</td><td>3 latas</td></tr>
-          <tr><td>Tomate triturado (lata)</td><td>1 lata</td></tr>
-          <tr><td>Aceite de oliva</td><td>c/n (250 ml)</td></tr>
-          <tr><td>Mantequilla de maní s/azúcar</td><td>1 frasco</td></tr>
-          <tr><td>Nueces</td><td>100 g</td></tr>
-          <tr><td>Semillas de lino</td><td>100 g</td></tr>
-          <tr><td>Cacao amargo sin azúcar</td><td>100 g</td></tr>
-          <tr><td>Miel</td><td>1 frasco chico</td></tr>
-        </table>
-      </div>
-      <div class="card" style="margin-bottom:0">
-        <h4>🌿 Especias e infusiones</h4>
-        <table>
-          <tr><th>Producto</th><th>Cantidad</th></tr>
-          <tr><td>Cúrcuma en polvo</td><td>50 g</td></tr>
-          <tr><td>Jengibre fresco</td><td>1 trozo</td></tr>
-          <tr><td>Canela en polvo</td><td>50 g</td></tr>
-          <tr><td>Comino</td><td>50 g</td></tr>
-          <tr><td>Pimentón dulce</td><td>50 g</td></tr>
-          <tr><td>Sal y pimienta</td><td>c/n</td></tr>
-          <tr><td>Té verde</td><td>1 caja</td></tr>
-          <tr><td>Manzanilla o tilo</td><td>1 caja</td></tr>
-          <tr><td>Jengibre en saquitos (opcional)</td><td>1 caja</td></tr>
-        </table>
-        <hr class="divider">
-        <h4>❄️ Congelados (opcional)</h4>
-        <table>
-          <tr><th>Producto</th><th>Cantidad</th></tr>
-          <tr><td>Espinaca congelada</td><td>400 g</td></tr>
-          <tr><td>Mezcla de vegetales</td><td>400 g</td></tr>
-          <tr><td>Choclo en grano</td><td>200 g</td></tr>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- DÍAS DIFÍCILES -->
-  <div id="nutri-tab-energia" class="section">
-    <div class="warm-box"><p>Este apartado es tan importante como el menú. Los días difíciles no son fallas — son parte del plan. Tener protocolos para ellos es lo que hace que el plan funcione a largo plazo.</p></div>
-    <div class="card">
-      <h3>Comidas de emergencia — días sin energía o tiempo</h3>
-      <div class="table-scroll"><table>
-        <tr><th>Situación</th><th>Opción A (2 min)</th><th>Opción B (5 min)</th></tr>
-        <tr><td>Desayuno sin ganas</td><td>Yogur + banana + té caliente</td><td>Avena con leche en microondas 2 min + canela</td></tr>
-        <tr><td>Almuerzo en medio de estudiar</td><td>Caldo del batch + arroz + pollo (solo recalentar)</td><td>Lata de atún + arroz cocido + zanahoria asada del batch</td></tr>
-        <tr><td>Cena sin ganas de cocinar</td><td>2 huevos duros + tostada + fruta</td><td>Revuelto rápido de huevo + espinaca congelada a la sartén</td></tr>
-        <tr><td>Merienda ansiosa / atracón</td><td>Té caliente + ricota + 1 cda miel (saciante, calmante)</td><td>Yogur + nueces + banana (tarda 1 min, llena de verdad)</td></tr>
-        <tr><td>Día de bajo estado de ánimo / falta de apetito</td><td>Solo caldo caliente con pollo. No forzar más.</td><td>Porridge + banana. Simple, caliente, nutritivo.</td></tr>
-      </table></div>
-    </div>
-    <div class="card">
-      <h3>Estrategias para los estados Vata-Pitta típicos del invierno</h3>
-      <table>
-        <tr><th>Estado</th><th>Señal</th><th>Protocolo</th></tr>
-        <tr><td>Mente dispersa, no puedo concentrarme (Vata alto)</td><td>Saltar de tarea en tarea, ansiedad sin foco</td><td>Comer algo caliente y graso (porridge o sopa). Té de manzanilla. 10 min de silencio. No saltear la merienda.</td></tr>
-        <tr><td>Irritabilidad, sobrecalentamiento mental (Pitta alto)</td><td>Frustración, perfeccionismo, agotamiento intelectual</td><td>Agua o infusión fría-tibia. Salir a caminar aunque sea 10 min. Cena liviana. No forzar productividad.</td></tr>
-        <tr><td>Desmotivación estacional activa</td><td>Apatía, sin apetito, frío constante, sueño excesivo</td><td>Luz solar matutina aunque sea 10 min. Mínimo vital: caldo + porridge + caminata. Sin culpa por no cumplir el plan completo.</td></tr>
-        <tr><td>Hambre ansiosa nocturna</td><td>Buscar comida después de cenar</td><td>Merienda más nutritiva (con proteína). Taza de leche caliente con canela antes de dormir. Preguntar si es hambre real o ansiedad.</td></tr>
-        <tr><td>Post-salida larga en bici (agotamiento)</td><td>Fatiga extrema, irritabilidad, hambre intensa</td><td>Comer dentro de los 30–45 min: arroz + pollo + zapallo asado. Hidratación con electrolitos caseros (agua + limón + pizca de sal). Descanso sin culpa el día siguiente.</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Sistema mínimo viable para días malos</h3>
-      <div class="metric-grid">
-        <div class="metric"><div class="metric-label">Comer mínimo</div><div class="metric-value" style="font-size:14px">Porridge + caldo + yogur</div><div class="metric-sub">3 comidas, todas calientes</div></div>
-        <div class="metric"><div class="metric-label">Moverse mínimo</div><div class="metric-value" style="font-size:14px">10 min al sol</div><div class="metric-sub">Caminata o estiramiento</div></div>
-        <div class="metric"><div class="metric-label">Hidratación mínima</div><div class="metric-value" style="font-size:14px">2 infusiones + 1 L agua</div><div class="metric-sub">Todo tibio o caliente</div></div>
-        <div class="metric"><div class="metric-label">Actitud</div><div class="metric-value" style="font-size:14px">Sin culpa</div><div class="metric-sub">El mínimo sostenido gana</div></div>
-      </div>
-    </div>
-    <div class="purple-box"><p>Para desafíos de concentración y días de baja energía: la consistencia del 60–70% durante meses supera por mucho al 100% durante dos semanas. El plan está diseñado para ser abandonado y retomado sin drama.</p></div>
-  </div>
-</div><!-- /module-nutri -->
-
-
-<!-- ══════════════════════════════════════════════
-     MÓDULO 2 — ENTRENAMIENTO
-     ══════════════════════════════════════════════ -->
-<div id="module-entren" class="module">
-  <h2 class="sr-only">Plan de entrenamiento personalizado Vata-Pitta para invierno, 12 semanas</h2>
-
-  <div class="tabs" role="tablist">
-    <button class="tab-btn active" onclick="showTab('entren','principios')" role="tab">Principios</button>
-    <button class="tab-btn" onclick="showTab('entren','semana')" role="tab">Semana tipo</button>
-    <button class="tab-btn" onclick="showTab('entren','fases')" role="tab">12 semanas</button>
-    <button class="tab-btn" onclick="showTab('entren','rutinas')" role="tab">Rutinas detalladas</button>
-    <button class="tab-btn" onclick="showTab('entren','energia')" role="tab">Por nivel de energía</button>
-    <button class="tab-btn" onclick="showTab('entren','sensibilidad respiratoria')" role="tab">Sensibilidad respiratoria y frío</button>
-  </div>
-
-  <!-- PRINCIPIOS -->
-  <div id="entren-tab-principios" class="section visible">
-    <div class="metric-grid">
-      <div class="metric"><div class="metric-label">Base cardio existente</div><div class="metric-value">Excelente</div><div class="metric-sub">práctica regular de ciclismo</div></div>
-      <div class="metric"><div class="metric-label">Foco del plan</div><div class="metric-value">Fuerza</div><div class="metric-sub">Agregar músculo al cardio</div></div>
-      <div class="metric"><div class="metric-label">Sesiones semanales</div><div class="metric-value">5 – 6</div><div class="metric-sub">Flexibles según energía</div></div>
-      <div class="metric"><div class="metric-label">Duración sesión</div><div class="metric-value">20 – 45 min</div><div class="metric-sub">Según el día</div></div>
-      <div class="metric"><div class="metric-label">Entorno invierno</div><div class="metric-value">Casa / Bici</div><div class="metric-sub">Reducir gimnasio en frío</div></div>
-    </div>
-    <div class="card">
-      <h3>Cómo el perfil Vata-Pitta define el entrenamiento</h3>
-      <table>
-        <tr><th>Característica</th><th>Implicancia práctica</th></tr>
-        <tr><td>Vata: energía irregular, tiende al agotamiento</td><td>No entrenar con la misma intensidad todos los días. El plan tiene días «ancla» (fuerza), días suaves (movilidad) y días libres sin culpa.</td></tr>
-        <tr><td>Vata: sistema nervioso sensible al frío</td><td>Calentamiento obligatorio de 8–10 min antes de cualquier sesión. El frío sin activación agrava Vata y aumenta riesgo de lesión.</td></tr>
-        <tr><td>Pitta: tendencia a la sobreexigencia</td><td>No entrenar hasta el límite. El entrenamiento moderado-intenso sostenido da mejores resultados que el intenso-esporádico. Parar cuando la forma se rompe.</td></tr>
-        <tr><td>Desmotivación estacional (invierno)</td><td>El ejercicio aeróbico suave es el antidepresivo más potente disponible. En días de baja motivación, el objetivo es solo moverse — no rendir.</td></tr>
-        <tr><td>Desafíos de concentración</td><td>Rutinas con estructura fija y pocos ejercicios por sesión. Sin variedad innecesaria. El aburrimiento productivo es mejor que la estimulación dispersa.</td></tr>
-        <tr><td>Sensibilidad respiratoria</td><td>Calentamiento progresivo siempre. En invierno preferir casa sobre gimnasio (evitar bronquitis al salir transpirada). Tener broncodilatador cerca.</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Principios ayurvédicos aplicados al movimiento</h3>
-      <table>
-        <tr><th>Principio</th><th>Aplicación concreta</th></tr>
-        <tr><td>Abhyanga antes de entrenar (opcional)</td><td>2 min de auto-masaje con aceite de sésamo en articulaciones frías (rodillas, tobillos, hombros) antes del calentamiento en días muy fríos. Activa circulación, protege articulaciones Vata.</td></tr>
-        <tr><td>Ejercicio a la mañana temprana o media mañana</td><td>El momento Kapha (6–10 hs) es el mejor para entrenar: la energía está disponible y el cuerpo más despierto. Para Vata-Pitta, evitar entrenar después de las 18 hs en invierno (activa el sistema nervioso cuando debería calmarse).</td></tr>
-        <tr><td>Savasana o 5 min de quietud post-entrenamiento</td><td>Fundamental para Vata: terminar el movimiento abruptamente agrava la irregularidad. 5 min en el suelo, respiración consciente. Es parte del entrenamiento, no opcional.</td></tr>
-        <tr><td>Hidratación tibia durante el entrenamiento</td><td>Agua a temperatura ambiente o té de jengibre diluido. No agua fría: contrae los bronquios (sensibilidad respiratoria) y agrava Vata.</td></tr>
-      </table>
-    </div>
-    <div class="teal-box"><p>Tu experiencia previa en ciclismo te proporciona una base cardiovascular sólida. No estás empezando de cero; simplemente estás incorporando una nueva dimensión de entrenamiento: la fuerza.</p></div>
-  </div>
-
-  <!-- SEMANA TIPO -->
-  <div id="entren-tab-semana" class="section">
-    <div class="card">
-      <h3>Distribución semanal tipo</h3>
-      <div class="table-scroll"><table>
-        <tr><th>Día</th><th>Tipo de sesión</th><th>Duración</th><th>Intensidad</th><th>Entorno preferido</th></tr>
-        <tr><td><strong>Lunes</strong></td><td>Fuerza tren inferior + core</td><td>35–40 min</td><td><span class="badge bg">Moderada</span></td><td>Casa</td></tr>
-        <tr><td><strong>Martes</strong></td><td>Movilidad + yoga activo</td><td>20–25 min</td><td><span class="badge bt">Suave</span></td><td>Casa</td></tr>
-        <tr><td><strong>Miércoles</strong></td><td>Fuerza tren superior + core</td><td>35–40 min</td><td><span class="badge bg">Moderada</span></td><td>Casa o gimnasio</td></tr>
-        <tr><td><strong>Jueves</strong></td><td>Caminata activa o bici suave</td><td>30–40 min</td><td><span class="badge bt">Suave</span></td><td>Exterior (si hay sol: mejor)</td></tr>
-        <tr><td><strong>Viernes</strong></td><td>Fuerza cuerpo completo</td><td>40–45 min</td><td><span class="badge bg">Moderada</span></td><td>Casa o gimnasio</td></tr>
-        <tr><td><strong>Sábado</strong></td><td>Salida en bicicleta</td><td>Habitual</td><td><span class="badge ba">Moderada-alta</span></td><td>Exterior</td></tr>
-        <tr><td><strong>Domingo</strong></td><td>Descanso activo o stretching</td><td>15–20 min</td><td><span class="badge bt">Muy suave</span></td><td>Casa</td></tr>
-      </table></div>
-    </div>
-    <div class="warm-box"><p>Los días martes y jueves son deliberadamente suaves. No son días «perdidos» — son los que permiten que el cuerpo Vata se recupere sin acumular tensión y llegue bien al siguiente día de fuerza.</p></div>
-    <div class="card">
-      <h3>Calentamiento obligatorio — 8 min (válido para todas las sesiones)</h3>
-      <table>
-        <tr><th>Ejercicio</th><th>Duración</th><th>Para qué sirve</th></tr>
-        <tr><td>Marcha en el lugar con brazos activos</td><td>2 min</td><td>Elevar temperatura central. Clave en invierno.</td></tr>
-        <tr><td>Círculos de cadera y hombros</td><td>1 min</td><td>Lubricar articulaciones (Vata seca las articulaciones en frío).</td></tr>
-        <tr><td>Sentadillas sin peso, lentas</td><td>10 reps</td><td>Activar cadena posterior, rodillas, tobillos.</td></tr>
-        <tr><td>Gato-vaca en el suelo (columna)</td><td>10 reps</td><td>Movilizar columna lumbar y cervical.</td></tr>
-        <tr><td>Estocadas de movilidad (sin saltar)</td><td>6 reps c/lado</td><td>Abrir cadera, activar glúteos y cuádriceps.</td></tr>
-        <tr><td>Respiraciones profundas (4-7-8)</td><td>3 ciclos</td><td>Activar el nervio vago. Fundamental: abrir bronquios antes del esfuerzo.</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Enfriamiento — 5 min (no saltear, es parte del entrenamiento)</h3>
-      <table>
-        <tr><th>Ejercicio</th><th>Duración</th></tr>
-        <tr><td>Caminata lenta en el lugar</td><td>1 min</td></tr>
-        <tr><td>Estiramiento de cuádriceps de pie</td><td>30 seg c/lado</td></tr>
-        <tr><td>Estiramiento de isquiotibiales sentada</td><td>30 seg c/lado</td></tr>
-        <tr><td>Apertura de pecho con brazos atrás</td><td>1 min</td></tr>
-        <tr><td>Savasana o postura del niño (suelo)</td><td>2 min</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- 12 SEMANAS -->
-  <div id="entren-tab-fases" class="section">
-    <div class="phase-btns">
-      <button class="p-btn active" onclick="showPhase('f1')">Fase 1 — Semanas 1–4</button>
-      <button class="p-btn" onclick="showPhase('f2')">Fase 2 — Semanas 5–8</button>
-      <button class="p-btn" onclick="showPhase('f3')">Fase 3 — Semanas 9–12</button>
-    </div>
-    <div id="phase-f1" class="p-section visible">
-      <div class="card">
-        <h3>Fase 1 — Activación y anclaje (semanas 1–4)</h3>
-        <p>Objetivo: activar grupos musculares, establecer el hábito, aprender la forma correcta. Énfasis en la conciencia corporal más que en la carga. Para Vata: crear rutina previsible que calme el sistema nervioso.</p>
-        <table>
-          <tr><th>Día</th><th>Sesión</th><th>Progresión semana a semana</th></tr>
-          <tr><td>Lunes</td><td>Fuerza inferior A: sentadilla, glute bridge, estocada estática, plancha 20 seg</td><td>Sem 1–2: 3 series x 10 reps. Sem 3–4: 3x12. Descanso 60 seg.</td></tr>
-          <tr><td>Martes</td><td>Yoga básico o movilidad guiada (YouTube 20 min)</td><td>Misma rutina toda la fase. La repetición es el objetivo.</td></tr>
-          <tr><td>Miércoles</td><td>Fuerza superior B: flexiones en rodillas, remo con botella, press hombros, curl bíceps</td><td>Igual que lunes. Sem 3–4 intentar 1–2 flexiones completas.</td></tr>
-          <tr><td>Jueves</td><td>Caminata 30 min al aire libre, ritmo conversacional</td><td>Agregar 5 min cada 2 semanas si el clima lo permite.</td></tr>
-          <tr><td>Viernes</td><td>Circuito completo: 5 ejercicios, 3 rondas, 40 seg trabajo / 20 seg descanso</td><td>Sem 1–2: ritmo lento controlado. Sem 3–4: ritmo un poco más fluido.</td></tr>
-          <tr><td>Sábado</td><td>Bicicleta habitual</td><td>Sin cambios. Mantener el ritmo que ya tenés.</td></tr>
-          <tr><td>Domingo</td><td>Stretching 15 min o descanso</td><td>—</td></tr>
-        </table>
-      </div>
-      <div class="teal-box"><p>Semana 1: hacer test inicial. Anotar cuántas sentadillas, flexiones y segundos de plancha podés hacer. Va a ser tu punto de comparación en semana 12.</p></div>
-    </div>
-    <div id="phase-f2" class="p-section">
-      <div class="card">
-        <h3>Fase 2 — Progresión (semanas 5–8)</h3>
-        <p>Objetivo: aumentar carga progresiva, reducir descansos, agregar variantes más exigentes. Introducir intervalos en el cardio. Para Vata: la progresión debe ser gradual — no duplicar la carga de golpe.</p>
-        <table>
-          <tr><th>Día</th><th>Cambio respecto a Fase 1</th></tr>
-          <tr><td>Lunes — Fuerza inferior</td><td>Pasar a sentadilla con mochila o mancuernas. Hip thrust en lugar de glute bridge. Estocadas caminando. 3x12–15. Descanso 45 seg.</td></tr>
-          <tr><td>Martes — Cardio intervalos suaves</td><td>Bici estática o caminata: 2 min ritmo normal + 1 min ritmo elevado x 10 ciclos. 30 min total.</td></tr>
-          <tr><td>Miércoles — Fuerza superior</td><td>Flexiones completas (aunque sean 3–5). Remo inclinado con más peso. Agregar tríceps en silla. 3x12. Descanso 45 seg.</td></tr>
-          <tr><td>Jueves — Movilidad + core</td><td>20 min movilidad + 10 min core: dead bug, bird dog, plancha lateral 20 seg.</td></tr>
-          <tr><td>Viernes — Cuerpo completo</td><td>Circuito 4 rondas. Agregar sentadilla con salto suave (si la sensibilidad respiratoria lo permite) o sentadilla pulsada.</td></tr>
-          <tr><td>Sábado — Bicicleta</td><td>Intentar aumentar velocidad promedio o duración +10–15%.</td></tr>
-          <tr><td>Domingo</td><td>Descanso activo o stretching profundo.</td></tr>
-        </table>
-      </div>
-    </div>
-    <div id="phase-f3" class="p-section">
-      <div class="card">
-        <h3>Fase 3 — Consolidación (semanas 9–12)</h3>
-        <p>Objetivo: afianzar los cambios, aumentar la exigencia con inteligencia, preparar el plan para que se sostenga más allá de las 12 semanas. Para Vata-Pitta: la fase 3 debe sentirse desafiante pero no agotadora.</p>
-        <table>
-          <tr><th>Día</th><th>Sesión</th></tr>
-          <tr><td>Lunes — Tren inferior</td><td>Sentadilla búlgara (pie trasero en silla), hip thrust con carga, estocadas laterales. 4x10. Descanso 45 seg.</td></tr>
-          <tr><td>Martes — Cardio moderado</td><td>40 min bicicleta o caminata rápida a ritmo constante moderado. Zona 2: podés hablar pero con algo de esfuerzo.</td></tr>
-          <tr><td>Miércoles — Tren superior</td><td>Flexiones completas 3–5 series. Remo con mancuerna, press de hombros, fondos de tríceps en silla. 4x10.</td></tr>
-          <tr><td>Jueves — HIIT suave + core</td><td>5 ejercicios x 40 seg trabajo / 20 seg descanso x 3 rondas. Terminar con 10 min core profundo.</td></tr>
-          <tr><td>Viernes — Cuerpo completo</td><td>Sesión larga 45 min: combinar tren inferior + superior + core. Menos descanso (30 seg entre ejercicios).</td></tr>
-          <tr><td>Sábado — Bicicleta</td><td>Salida larga habitual + intentar sostener un tramo a ritmo más alto (sprint suave de 5 min).</td></tr>
-          <tr><td>Domingo</td><td>Descanso completo o yoga restaurativo.</td></tr>
-        </table>
-      </div>
-      <div class="warm-box"><p>Semana 12: repetir el test de semana 1. Medir circunferencias, contar reps y registrar la energía subjetiva. La diferencia va a ser más visible en fuerza y composición que en la balanza.</p></div>
-    </div>
-  </div>
-
-  <!-- RUTINAS DETALLADAS -->
-  <div id="entren-tab-rutinas" class="section">
-    <div class="card">
-      <h3>Rutina A — Tren inferior + core (lunes)</h3>
-      <div class="table-scroll"><table>
-        <tr><th>Ejercicio</th><th>Series x Reps</th><th>Cómo hacerlo</th><th>Versión gimn.</th></tr>
-        <tr><td>Sentadilla con peso corporal → mochila</td><td>3 x 12–15</td><td>Pies al ancho de hombros, bajar hasta 90°, rodillas no adelantan los pies</td><td>Sentadilla con barra o Smith</td></tr>
-        <tr><td>Glute bridge → hip thrust</td><td>3 x 15</td><td>Espalda en el suelo o en banco, empujar cadera hacia el techo, apretar glúteo arriba</td><td>Hip thrust con barra en banco</td></tr>
-        <tr><td>Estocada estática → caminando</td><td>3 x 10 c/lado</td><td>Rodilla trasera casi toca el suelo, torso erguido, peso en talón delantero</td><td>Estocada con mancuernas</td></tr>
-        <tr><td>Peso muerto rumano con botellas</td><td>3 x 12</td><td>Bisagra de cadera, espalda neutra, bajar botellas por las piernas hasta la mitad de la tibia</td><td>Peso muerto con barra o mancuernas</td></tr>
-        <tr><td>Plancha frontal</td><td>3 x 20–40 seg</td><td>Cuerpo recto de cabeza a talones, no hundir caderas ni elevar cola</td><td>Igual</td></tr>
-        <tr><td>Elevación de pantorrillas de pie</td><td>3 x 20</td><td>En el borde de un escalón si es posible, bajada lenta (3 seg)</td><td>En prensa o máquina de pantorrillas</td></tr>
-      </table></div>
-    </div>
-    <div class="card">
-      <h3>Rutina B — Tren superior + core (miércoles)</h3>
-      <div class="table-scroll"><table>
-        <tr><th>Ejercicio</th><th>Series x Reps</th><th>Cómo hacerlo</th><th>Versión gimn.</th></tr>
-        <tr><td>Flexiones (rodillas → completas)</td><td>3 x 8–12</td><td>Cuerpo recto, codos a 45° del torso, bajar el pecho cerca del suelo</td><td>Press banca con mancuernas</td></tr>
-        <tr><td>Remo inclinado con mancuerna</td><td>3 x 12 c/lado</td><td>Apoyo en banco o silla, tirar el codo hacia el techo, no rotar el torso</td><td>Remo en máquina o con barra</td></tr>
-        <tr><td>Press de hombros con mancuernas</td><td>3 x 12</td><td>Sentada o de pie, codos a 90°, empujar hacia arriba sin arquear la espalda</td><td>Press en máquina de hombros</td></tr>
-        <tr><td>Curl de bíceps con botellas/mancuernas</td><td>3 x 12</td><td>Codos pegados al torso, subida controlada, bajada lenta (3 seg)</td><td>Curl en polea o con barra</td></tr>
-        <tr><td>Fondos de tríceps en silla</td><td>3 x 10</td><td>Manos en borde de silla, codos atrás, bajar hasta 90° y subir</td><td>Fondos en paralelas o polea</td></tr>
-        <tr><td>Dead bug (core profundo)</td><td>3 x 8 c/lado</td><td>Espalda baja pegada al suelo, extender brazo y pierna opuestos lentamente</td><td>Igual</td></tr>
-      </table></div>
-    </div>
-    <div class="card">
-      <h3>Rutina C — Circuito cuerpo completo (viernes)</h3>
-      <p>4 rondas. 40 seg de trabajo / 20 seg de descanso. 1 min entre rondas.</p>
-      <table>
-        <tr><th>Ejercicio</th><th>Qué trabaja</th></tr>
-        <tr><td>Sentadilla con pausa abajo (3 seg)</td><td>Cuádriceps, glúteos, fuerza mental</td></tr>
-        <tr><td>Flexiones lentas (bajada 3 seg)</td><td>Pecho, tríceps, estabilidad</td></tr>
-        <tr><td>Hip thrust bilateral</td><td>Glúteos, isquiotibiales</td></tr>
-        <tr><td>Remo con botella alternado</td><td>Espalda alta, bíceps, core</td></tr>
-        <tr><td>Plancha + toque de hombro alterno</td><td>Core antirotacional, hombros</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Rutina de movilidad — 20 min (martes y opcional domingos)</h3>
-      <table>
-        <tr><th>Ejercicio</th><th>Reps / Tiempo</th><th>Beneficio Vata-Pitta</th></tr>
-        <tr><td>Postura del niño con brazos extendidos</td><td>60 seg</td><td>Elongar espalda baja. Calmar sistema nervioso.</td></tr>
-        <tr><td>Paloma (apertura de cadera)</td><td>60 seg c/lado</td><td>Liberar tensión en caderas donde Vata acumula bloqueos.</td></tr>
-        <tr><td>Gato-vaca dinámico</td><td>15 reps</td><td>Movilizar columna. Estimular digestión (nervio vago).</td></tr>
-        <tr><td>Torsión supina</td><td>60 seg c/lado</td><td>Soltar tensión lumbar. Pitta tiende a acumular calor en la zona media.</td></tr>
-        <tr><td>Cobra o perro boca arriba</td><td>3 x 30 seg</td><td>Abrir pecho. Mejorar capacidad respiratoria.</td></tr>
-        <tr><td>Viparita Karani (piernas en la pared)</td><td>3–5 min</td><td>Recuperación venosa, calmar el sistema nervioso, ideal post-bici.</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- POR NIVEL DE ENERGÍA -->
-  <div id="entren-tab-energia" class="section">
-    <div class="purple-box"><p>Cada día tiene tres variantes. Elegí la que mejor se adapte a tu nivel de energía y disponibilidad.</p></div>
-    <div class="energy-btns">
-      <button class="e-btn active" onclick="showEnergy('alta')">Energía alta (7–10)</button>
-      <button class="e-btn" onclick="showEnergy('media')">Energía media (4–6)</button>
-      <button class="e-btn" onclick="showEnergy('baja')">Energía baja (1–3)</button>
-    </div>
-    <div id="energy-alta" class="e-section visible">
-      <div class="card">
-        <h3>Días de energía alta — hacer el plan completo</h3>
-        <table>
-          <tr><th>Sesión</th><th>Lo que hacés</th></tr>
-          <tr><td>Fuerza (lun / mié / vie)</td><td>Rutina completa A, B o C. Todas las series y reps del plan. Buscás la última rep con buena forma. Podés agregar una serie extra si te sobra energía.</td></tr>
-          <tr><td>Movilidad (mar)</td><td>Rutina completa de 20 min. Podés agregar 10 min de caminata rápida al final.</td></tr>
-          <tr><td>Cardio suave (jue)</td><td>40–45 min de bici o caminata. Ritmo zona 2 sostenido.</td></tr>
-          <tr><td>Bicicleta (sáb)</td><td>Salida completa habitual. Podés intentar un tramo más exigente.</td></tr>
-        </table>
-      </div>
-    </div>
-    <div id="energy-media" class="e-section">
-      <div class="card">
-        <h3>Días de energía media — versión reducida</h3>
-        <table>
-          <tr><th>Sesión</th><th>Lo que hacés</th></tr>
-          <tr><td>Fuerza (lun / mié / vie)</td><td>Solo 2 series en lugar de 3. O hacer solo los primeros 3 ejercicios de la rutina. Objetivo: no perder el hábito.</td></tr>
-          <tr><td>Movilidad (mar)</td><td>15 min en lugar de 20. Priorizar postura del niño + paloma + viparita karani.</td></tr>
-          <tr><td>Cardio (jue)</td><td>30 min caminata tranquila. Sin intervalos.</td></tr>
-          <tr><td>Bicicleta (sáb)</td><td>Salida más corta o a ritmo más suave. una práctica regular de ciclismo en lugar de 60 si el cuerpo lo pide.</td></tr>
-        </table>
-      </div>
-      <div class="warm-box"><p>Versión media: el 60% del plan ejecutado es 100% de las veces mejor que el 0% porque «no daba para más».</p></div>
-    </div>
-    <div id="energy-baja" class="e-section">
-      <div class="card">
-        <h3>Días de energía baja — protocolo mínimo vital</h3>
-        <table>
-          <tr><th>Tipo de día</th><th>Lo que hacés</th><th>Tiempo</th></tr>
-          <tr><td>Día de fuerza programado</td><td>Solo el calentamiento (8 min) + 1 serie de sentadillas + 1 serie de flexiones. Fin. Te pusiste ropa de entreno y moviste el cuerpo.</td><td>15 min</td></tr>
-          <tr><td>Día de cardio programado</td><td>Caminata de 15 min al aire libre. Si hace mucho frío: marcha en el lugar dentro de casa durante una canción.</td><td>15 min</td></tr>
-          <tr><td>Cualquier día</td><td>5 min de respiración consciente (4-7-8) + viparita karani (piernas en la pared) 5 min. Es el mínimo que activa el sistema parasimpático.</td><td>10 min</td></tr>
-          <tr><td>Día de bajo estado de ánimo activa</td><td>Salir a la vereda 10 min. Si hay sol, mirar hacia él. Eso es suficiente. No entrenar.</td><td>10 min</td></tr>
-        </table>
-      </div>
-      <div class="teal-box"><p>Los días de energía baja en invierno son esperables para el perfil Vata. No son fallas del plan — están anticipados. El protocolo mínimo existe precisamente para ellos.</p></div>
-    </div>
-    <div class="card" style="margin-top:1rem">
-      <h3>Señales de que necesitás bajar la intensidad (no ignorar)</h3>
-      <table>
-        <tr><th>Señal</th><th>Qué significa</th><th>Qué hacer</th></tr>
-        <tr><td>Fatiga que no cede con el descanso</td><td>Posible sobreentrenamiento o Vata muy elevado</td><td>2–3 días de solo movilidad. Revisar sueño y alimentación.</td></tr>
-        <tr><td>Dolor articular (no muscular)</td><td>Articulaciones Vata bajo frío o sobrecarga</td><td>Descansar la articulación. Calor local. Consultar si persiste.</td></tr>
-        <tr><td>Irritabilidad extrema post-entrenamiento</td><td>Pitta sobre-activado</td><td>Reducir intensidad. Enfriar con movilidad. Cena liviana.</td></tr>
-        <tr><td>Síntomas respiratorios (tos, pecho cerrado)</td><td>Sensibilidad respiratoria reagudizada</td><td>Pausa total. Usar broncodilatador si corresponde. Reiniciar solo cuando el síntoma cede completamente.</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- ASMA Y FRÍO -->
-  <div id="entren-tab-sensibilidad respiratoria" class="section">
-    <div class="coral-box"><p>La sensibilidad respiratoria no impide entrenar — requiere protocolo específico. La mayoría de personas con sensibilidad respiratoria bien controlada puede hacer ejercicio de intensidad moderada sin problemas si respeta el calentamiento y el ambiente.</p></div>
-    <div class="card">
-      <h3>Protocolo anti-broncoespasmo por ejercicio</h3>
-      <table>
-        <tr><th>Momento</th><th>Acción</th></tr>
-        <tr><td>Antes de salir en bici en invierno</td><td>Verificar temperatura. Por debajo de 8°C: usar bufanda o barbijo sobre nariz y boca. El aire frío y seco es el principal desencadenante.</td></tr>
-        <tr><td>Calentamiento (siempre)</td><td>Los 8 min de calentamiento no son opcionales. El broncoespasmo inducido por ejercicio ocurre principalmente cuando se pasa de reposo a intensidad sin transición.</td></tr>
-        <tr><td>Durante el entrenamiento</td><td>Respirar por nariz en lo posible (el aire llega más caliente y húmedo a los bronquios). Agua tibia, nunca fría.</td></tr>
-        <tr><td>Al terminar (especialmente en gym)</td><td>No salir al frío transpirada. Cambiarse dentro. Esperar 15–20 min a que la temperatura corporal baje antes de salir. Este es el momento de mayor riesgo de bronquitis.</td></tr>
-        <tr><td>Broncodilatador (si lo usás)</td><td>Tenerlo siempre cerca. Si el médico indicó broncodilatador pre-ejercicio, usarlo 15–20 min antes de sesiones de mayor intensidad.</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Ejercicios más seguros y a evitar según sensibilidad respiratoria</h3>
-      <table>
-        <tr><th>Preferir</th><th>Evitar o moderar</th></tr>
-        <tr><td>Fuerza en casa (temperatura controlada)</td><td>Ejercicio al aire libre con viento frío y seco</td></tr>
-        <tr><td>Bicicleta (respiración más controlable que correr)</td><td>Sprints o intervalos de alta intensidad sin calentamiento</td></tr>
-        <tr><td>Yoga y movilidad (respiración consciente)</td><td>Piscina con mucho cloro (puede irritar bronquios)</td></tr>
-        <tr><td>Caminata tranquila exterior con clima moderado</td><td>Entrenamiento en ambientes con polvo, moho o químicos</td></tr>
-        <tr><td>HIIT suave con intervalos de trabajo moderado</td><td>Salir corriendo bajo lluvia o con neblina fría</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Entornos recomendados por mes (invierno La Plata)</h3>
-      <table>
-        <tr><th>Mes</th><th>Clima típico</th><th>Entorno prioritario</th></tr>
-        <tr><td>Junio</td><td>Frío moderado, humedad alta, niebla frecuente</td><td>Casa para fuerza. Bici solo con buenas condiciones y abrigada.</td></tr>
-        <tr><td>Julio</td><td>Mes más frío. Heladas posibles. Viento norte a veces seco.</td><td>Casa principalmente. Bici en horas más cálidas (12–15 hs) con ropa técnica.</td></tr>
-        <tr><td>Agosto</td><td>Frío pero con días más secos y con sol. Empieza a mejorar.</td><td>Casa + retomar más el exterior. Aprovechar días soleados para exposición solar.</td></tr>
-      </table>
-    </div>
-    <div class="teal-box"><p>La bicicleta es uno de los deportes mejor tolerados por personas con sensibilidad respiratoria porque el ritmo respiratorio es más controlable que correr y el cuerpo genera su propio «microclima» de aire. Seguir con ella es una muy buena decisión.</p></div>
-  </div>
-</div><!-- /module-entren -->
-
-
-</div>
 <script>
 function setSeason(season) {
   if (season !== 'summer' && season !== 'winter') return;
@@ -1029,59 +338,31 @@ function setSeason(season) {
   activeButton.setAttribute('aria-pressed', 'true');
   try { localStorage.setItem('ayurveda-wellness-season', season); } catch (error) {}
 }
-
 (function initializeSeason() {
   let savedSeason = 'summer';
-  try {
-    const storedSeason = localStorage.getItem('ayurveda-wellness-season');
-    if (storedSeason === 'summer' || storedSeason === 'winter') savedSeason = storedSeason;
-  } catch (error) {}
+  try { const storedSeason = localStorage.getItem('ayurveda-wellness-season'); if (storedSeason === 'summer' || storedSeason === 'winter') savedSeason = storedSeason; } catch (error) {}
   setSeason(savedSeason);
 })();
-
-function showSummerTab(tabId, button) {
-  document.querySelectorAll('#season-summer .summer-section').forEach(section => section.classList.remove('visible'));
-  document.querySelectorAll('#season-summer .summer-tabs .tab-btn').forEach(tab => {
-    tab.classList.remove('active');
-    tab.setAttribute('aria-selected', 'false');
-  });
-  document.getElementById('summer-tab-' + tabId).classList.add('visible');
+function showSeasonModule(season, moduleId, button) {
+  const panel = document.getElementById('season-' + season);
+  panel.querySelectorAll('.module').forEach(m => m.classList.remove('visible'));
+  panel.querySelectorAll('.module-btns .mod-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(season + '-module-' + moduleId).classList.add('visible');
   button.classList.add('active');
-  button.setAttribute('aria-selected', 'true');
 }
-
-function showModule(id) {
-  document.querySelectorAll('.module').forEach(m => m.classList.remove('visible'));
-  document.querySelectorAll('.mod-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('module-' + id).classList.add('visible');
-  event.target.classList.add('active');
-  // reset tabs of the newly shown module to first tab
-  var mod = document.getElementById('module-' + id);
-  var firstBtn = mod.querySelector('.tab-btn');
-  var firstSection = mod.querySelector('.section');
-  mod.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  mod.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
-  if (firstBtn) firstBtn.classList.add('active');
-  if (firstSection) firstSection.classList.add('visible');
+function showSeasonTab(season, moduleId, tabId, button) {
+  const module = document.getElementById(season + '-module-' + moduleId);
+  module.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+  module.querySelectorAll('.tabs .tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(season + '-' + moduleId + '-tab-' + tabId).classList.add('visible');
+  button.classList.add('active');
 }
-function showTab(moduleId, tabId) {
-  var mod = document.getElementById('module-' + moduleId);
-  mod.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
-  mod.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(moduleId + '-tab-' + tabId).classList.add('visible');
-  event.target.classList.add('active');
-}
-function showPhase(id) {
-  document.querySelectorAll('.p-section').forEach(s => s.classList.remove('visible'));
-  document.querySelectorAll('.p-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('phase-' + id).classList.add('visible');
-  event.target.classList.add('active');
-}
-function showEnergy(id) {
-  document.querySelectorAll('.e-section').forEach(s => s.classList.remove('visible'));
-  document.querySelectorAll('.e-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('energy-' + id).classList.add('visible');
-  event.target.classList.add('active');
+function showSeasonEnergy(season, level, button) {
+  const module = document.getElementById('season-' + season);
+  module.querySelectorAll('.e-section').forEach(s => s.classList.remove('visible'));
+  module.querySelectorAll('.energy-btns .e-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(season + '-energy-' + level).classList.add('visible');
+  button.classList.add('active');
 }
 </script>
 </body>
